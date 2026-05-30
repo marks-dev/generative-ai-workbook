@@ -3,7 +3,7 @@
 ## 現在の状況
 
 - 現在フェーズ: 実装
-- 現在ステップ: GitHub Actions構築
+- 現在ステップ: Category Page実装
 
 ---
 
@@ -41,10 +41,10 @@
 ### Phase 3: 実装
 
 - [x] Eleventy環境構築
-- [ ] GitHub Actions構築
-- [ ] 共通レイアウト実装
-- [ ] 共通CSS実装
-- [ ] Top Page実装
+- [x] GitHub Actions構築
+- [x] 共通レイアウト実装
+- [x] 共通CSS実装
+- [x] Top Page実装
 - [ ] Category Page実装
 - [ ] Content Page実装
 - [ ] 学習状況管理実装
@@ -131,12 +131,12 @@
 - Eleventy環境構築を完了
 - `npm run build` と `npm run dev` を追加
 - トップページをMarkdown正本に移行
+- GitHub Pages公開確認済み
+- Top Page表示確認済み
+- docs / AGENTS / README / LICENSE のみの更新ではdeployを起動しない方針とする
 
 ---
 
 ## 次に行う作業
 
-- GitHub Actions構築
-- 共通レイアウト実装
-- 共通CSS実装
-- Top Page実装
+- Category Page実装
