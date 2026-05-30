@@ -6,7 +6,67 @@
   <title>{{ title }}</title>
 </head>
 <body>
-  <main>
+  <header class="site-header">
+    <div class="site-header__global">
+      <a class="site-header__logo" href="/">Generative AI Workbook</a>
+      <nav class="site-header__nav" aria-label="グローバルナビゲーション">
+        <a class="site-header__nav-link" href="/about/">このサイトについて</a>
+        <a class="site-header__nav-link" href="/glossary/">用語集</a>
+        <button class="site-header__nav-button" type="button" data-learning-progress-open>
+          学習状況管理
+        </button>
+      </nav>
+    </div>
+
+    <div class="site-header__context">
+      {% if breadcrumbs %}
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol class="breadcrumb__list">
+            {% for item in breadcrumbs %}
+              <li class="breadcrumb__item">
+                {% if item.url and not loop.last %}
+                  <a class="breadcrumb__link" href="{{ item.url }}">{{ item.label }}</a>
+                {% else %}
+                  <span class="breadcrumb__current" aria-current="page">{{ item.label }}</span>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ol>
+        </nav>
+      {% endif %}
+
+      {% if difficulty or plan or service %}
+        <dl class="content-meta" aria-label="教材メタ情報">
+          {% if difficulty %}
+            <div class="content-meta__item">
+              <dt class="content-meta__label">難易度</dt>
+              <dd class="content-meta__value">{{ difficulty }}</dd>
+            </div>
+          {% endif %}
+          {% if plan %}
+            <div class="content-meta__item">
+              <dt class="content-meta__label">推奨プラン</dt>
+              <dd class="content-meta__value">{{ plan }}</dd>
+            </div>
+          {% endif %}
+          {% if service %}
+            <div class="content-meta__item">
+              <dt class="content-meta__label">利用サービス</dt>
+              <dd class="content-meta__value">{{ service | join(", ") }}</dd>
+            </div>
+          {% endif %}
+        </dl>
+      {% endif %}
+
+      {% if pageType == "content" and completionId %}
+        <button class="completion-button" type="button" data-completion-id="{{ completionId }}">
+          完了にする
+        </button>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="site-main">
     {{ content | safe }}
   </main>
 </body>
