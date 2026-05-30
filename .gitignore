@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Build output (if a static site generator is introduced later)
+dist/
+build/
+_site/
+
+# Dependencies (if Node.js tooling is introduced later)
+node_modules/
