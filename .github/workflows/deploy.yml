@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "AGENTS.md"
+      - "README.md"
+      - "LICENSE"
+      - "docs/**"
   workflow_dispatch:
 
 permissions:
