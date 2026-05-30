@@ -40,7 +40,7 @@
 
 ### Phase 3: 実装
 
-  - [x] Eleventy環境構築
+- [x] Eleventy環境構築
 - [ ] GitHub Actions構築
 - [ ] 共通レイアウト実装
 - [ ] 共通CSS実装
