@@ -18,7 +18,7 @@ layout: base.njk
               {% else %}
                 <a class="content-sidebar__link" href="{{ item.url | url }}">{{ item.title }}</a>
               {% endif %}
-              <span class="content-sidebar__status">{{ item.status or "未実施" }}</span>
+              <span class="content-sidebar__status"{% if item.completionId %} data-completion-status="{{ item.completionId }}"{% endif %}>{{ item.status or "未実施" }}</span>
             </li>
           {% endfor %}
         </ol>
@@ -40,7 +40,7 @@ layout: base.njk
       <section class="completion-prompt" aria-labelledby="completion-prompt-title">
         <h2 id="completion-prompt-title">読み終わりましたか？</h2>
         <p>内容を確認できたら、この教材を完了にできます。</p>
-        <button class="completion-button" type="button" data-completion-id="{{ completionId }}">
+        <button class="completion-button" type="button" data-completion-id="{{ completionId }}" data-completion-title="{{ title }}">
           完了にする
         </button>
       </section>

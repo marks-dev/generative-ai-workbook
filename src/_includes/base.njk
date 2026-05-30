@@ -60,15 +60,47 @@
       {% endif %}
 
       {% if pageType == "content" and completionId %}
-        <button class="completion-button" type="button" data-completion-id="{{ completionId }}">
+        <button class="completion-button" type="button" data-completion-id="{{ completionId }}" data-completion-title="{{ title }}">
           完了にする
         </button>
       {% endif %}
     </div>
   </header>
 
+  <div class="learning-progress-panel" hidden data-learning-progress-panel>
+    <div class="learning-progress-panel__backdrop" data-learning-progress-close></div>
+    <section class="learning-progress-panel__dialog" role="dialog" aria-modal="true" aria-labelledby="learning-progress-title">
+      <div class="learning-progress-panel__header">
+        <div>
+          <p class="learning-progress-panel__eyebrow">LocalStorage</p>
+          <h2 id="learning-progress-title">学習状況管理</h2>
+        </div>
+        <button class="learning-progress-panel__close" type="button" data-learning-progress-close aria-label="学習状況管理を閉じる">閉じる</button>
+      </div>
+
+      <p class="learning-progress-panel__summary" data-learning-progress-summary>
+        完了済みの教材はまだありません。
+      </p>
+
+      <ul class="learning-progress-panel__list" data-learning-progress-list></ul>
+
+      <div class="learning-progress-panel__actions" aria-label="学習状況データ操作">
+        <button class="learning-progress-panel__action" type="button" data-learning-progress-export>
+          JSONエクスポート
+        </button>
+        <label class="learning-progress-panel__action learning-progress-panel__action--file">
+          JSONインポート
+          <input type="file" accept="application/json,.json" data-learning-progress-import>
+        </label>
+      </div>
+
+      <p class="learning-progress-panel__message" data-learning-progress-message aria-live="polite"></p>
+    </section>
+  </div>
+
   <main class="site-main{% if pageType %} site-main--{{ pageType }}{% endif %}">
     {{ content | safe }}
   </main>
+  <script src="{{ '/assets/js/learning-progress.js' | url }}"></script>
 </body>
 </html>
