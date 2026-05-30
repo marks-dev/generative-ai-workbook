@@ -15,6 +15,8 @@ PC:
 ```text
 ┌──────────────────────────────┐
 │ Header                       │
+│ ├ Global Area                │
+│ └ Context Area               │
 ├──────────────────────────────┤
 │ Main Content                 │
 └──────────────────────────────┘
@@ -25,6 +27,8 @@ PC:
 ```text
 ┌──────────────────────────────┐
 │ Header                       │
+│ ├ Global Area                │
+│ └ Context Area               │
 ├──────────────────────────────┤
 │ Main Content                 │
 └──────────────────────────────┘
@@ -38,7 +42,6 @@ PC:
 
 - サイトの入口
 - 学習導線の案内
-- 続きから学習
 
 構成:
 
@@ -50,10 +53,6 @@ Header
 ┌─────────────────┬─────────────────┐
 │ 読んで学ぶ      │ 触って学ぶ      │
 └─────────────────┴─────────────────┘
-
-学習状況サマリー
-
-続きから学習
 ```
 
 補足:
@@ -105,7 +104,8 @@ PC構成:
 ```text
 Header
 
-Breadcrumb
+Header Context Area
+(Breadcrumb / 教材メタ情報 / 完了)
 
 ┌─────────────┬──────────────────┐
 │ Sidebar     │ Content          │
@@ -122,7 +122,8 @@ Previous / Next
 ```text
 Header
 
-Breadcrumb
+Header Context Area
+(Breadcrumb / 教材メタ情報 / 完了)
 
 Content
 
@@ -146,6 +147,27 @@ Previous / Next
 
 - Headerは固定表示（Sticky Header）とする
 - スクロール時も常にアクセス可能とする
+- Headerは2段構成とする
+- グローバル機能とページ固有機能を分離する
+
+構成:
+
+### Global Area
+
+- ロゴ
+- このサイトについて
+- 用語集
+- 学習状況管理
+
+### Context Area
+
+ページ固有情報を表示する。
+
+例:
+
+- Breadcrumb
+- 教材メタ情報
+- 完了ボタン
 
 主要メニュー:
 
@@ -187,7 +209,7 @@ Previous / Next
 
 ## 今後決めること
 
-- Header内の学習状況管理UI
 - Sidebar詳細構成
 - コンテンツ最大幅
 - レスポンシブ時の余白ルール
+- Context Area詳細仕様
