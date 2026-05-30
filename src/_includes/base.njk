@@ -9,10 +9,10 @@
 <body>
   <header class="site-header">
     <div class="site-header__global">
-      <a class="site-header__logo" href="/">Generative AI Workbook</a>
+      <a class="site-header__logo" href="{{ '/' | url }}">Generative AI Workbook</a>
       <nav class="site-header__nav" aria-label="グローバルナビゲーション">
-        <a class="site-header__nav-link" href="/about/">このサイトについて</a>
-        <a class="site-header__nav-link" href="/glossary/">用語集</a>
+        <a class="site-header__nav-link" href="{{ '/about/' | url }}">このサイトについて</a>
+        <a class="site-header__nav-link" href="{{ '/glossary/' | url }}">用語集</a>
         <button class="site-header__nav-button" type="button" data-learning-progress-open>
           学習状況管理
         </button>
@@ -26,7 +26,7 @@
             {% for item in breadcrumbs %}
               <li class="breadcrumb__item">
                 {% if item.url and not loop.last %}
-                  <a class="breadcrumb__link" href="{{ item.url }}">{{ item.label }}</a>
+                  <a class="breadcrumb__link" href="{{ item.url | url }}">{{ item.label }}</a>
                 {% else %}
                   <span class="breadcrumb__current" aria-current="page">{{ item.label }}</span>
                 {% endif %}
