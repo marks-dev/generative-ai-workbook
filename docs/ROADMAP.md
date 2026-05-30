@@ -2,8 +2,8 @@
 
 ## 現在の状況
 
-- 現在フェーズ: 仕上げ
-- 現在ステップ: 動作確認
+- 現在フェーズ: 完了
+- 現在ステップ: 初期実装完了
 
 ---
 
@@ -51,9 +51,9 @@
 
 ### Phase 4: 仕上げ
 
-- [ ] 動作確認
-- [ ] レスポンシブ確認
-- [ ] GitHub Pages確認
+- [x] 動作確認
+- [x] レスポンシブ確認
+- [x] GitHub Pages確認
 
 ---
 
@@ -135,11 +135,16 @@
 - Top Page表示確認済み
 - docs / AGENTS / README / LICENSE のみの更新ではdeployを起動しない方針とする
 - 学習状況管理はLocalStorageで実装し、GitHub Pages上で動作確認済み
+- GitHub Actions deploy成功
+- GitHub Pages上でTop / Category / Content Pageを確認済み
+- pathPrefix対応済み
+- 学習状況管理の本番動作確認済み
+- 320px / 375px幅で主要ページに明らかな表示崩れなし
 
 ---
 
 ## 次に行う作業
 
-- 動作確認
-- レスポンシブ確認
-- GitHub Pages確認
+- 未生成ページ追加
+- 教材本文拡充
+- 表示品質調整
