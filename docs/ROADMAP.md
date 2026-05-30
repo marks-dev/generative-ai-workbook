@@ -2,8 +2,8 @@
 
 ## 現在の状況
 
-- 現在フェーズ: 実装
-- 現在ステップ: Category Page実装
+- 現在フェーズ: 仕上げ
+- 現在ステップ: 動作確認
 
 ---
 
@@ -45,9 +45,9 @@
 - [x] 共通レイアウト実装
 - [x] 共通CSS実装
 - [x] Top Page実装
-- [ ] Category Page実装
-- [ ] Content Page実装
-- [ ] 学習状況管理実装
+- [x] Category Page実装
+- [x] Content Page実装
+- [x] 学習状況管理実装
 
 ### Phase 4: 仕上げ
 
@@ -134,9 +134,12 @@
 - GitHub Pages公開確認済み
 - Top Page表示確認済み
 - docs / AGENTS / README / LICENSE のみの更新ではdeployを起動しない方針とする
+- 学習状況管理はLocalStorageで実装し、GitHub Pages上で動作確認済み
 
 ---
 
 ## 次に行う作業
 
-- Category Page実装
+- 動作確認
+- レスポンシブ確認
+- GitHub Pages確認
