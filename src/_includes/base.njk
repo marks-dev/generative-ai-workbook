@@ -36,7 +36,7 @@
         </nav>
       {% endif %}
 
-      {% if difficulty or plan or service %}
+      {% if pageType == "content" and (difficulty or plan or service) %}
         <dl class="content-meta" aria-label="教材メタ情報">
           {% if difficulty %}
             <div class="content-meta__item">
@@ -67,7 +67,7 @@
     </div>
   </header>
 
-  <main class="site-main">
+  <main class="site-main{% if pageType %} site-main--{{ pageType }}{% endif %}">
     {{ content | safe }}
   </main>
 </body>
