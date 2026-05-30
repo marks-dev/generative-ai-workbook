@@ -27,6 +27,7 @@ sidebar:
       status: 未実施
     - title: AIの歴史
       url: /reading/fundamentals/ai-history/
+      completionId: reading-fundamentals-ai-history
       status: 未実施
     - title: AIの種類
       url: /reading/fundamentals/ai-types/
