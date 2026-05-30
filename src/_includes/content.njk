@@ -1,0 +1,69 @@
+---
+layout: base.njk
+---
+
+<div class="content-layout">
+  {% if sidebar %}
+    <aside class="content-sidebar" aria-label="カテゴリ内教材">
+      {% if sidebar.title %}
+        <p class="content-sidebar__title">{{ sidebar.title }}</p>
+      {% endif %}
+
+      {% if sidebar.items %}
+        <ol class="content-sidebar__list">
+          {% for item in sidebar.items %}
+            <li class="content-sidebar__item">
+              {% if item.url == page.url %}
+                <span class="content-sidebar__current" aria-current="page">{{ item.title }}</span>
+              {% else %}
+                <a class="content-sidebar__link" href="{{ item.url | url }}">{{ item.title }}</a>
+              {% endif %}
+              <span class="content-sidebar__status">{{ item.status or "未実施" }}</span>
+            </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </aside>
+  {% endif %}
+
+  <article class="content-article">
+    <header class="content-article__header">
+      <h1>{{ title }}</h1>
+      {% if description %}
+        <p class="content-article__description">{{ description }}</p>
+      {% endif %}
+    </header>
+
+    {{ content | safe }}
+
+    {% if completionId %}
+      <section class="completion-prompt" aria-labelledby="completion-prompt-title">
+        <h2 id="completion-prompt-title">読み終わりましたか？</h2>
+        <p>内容を確認できたら、この教材を完了にできます。</p>
+        <button class="completion-button" type="button" data-completion-id="{{ completionId }}">
+          完了にする
+        </button>
+      </section>
+    {% endif %}
+
+    {% if previous or next %}
+      <nav class="previous-next" aria-label="前後の教材">
+        {% if previous %}
+          <a class="previous-next__link previous-next__link--previous" href="{{ previous.url | url }}">
+            <span class="previous-next__label">前の教材</span>
+            <span class="previous-next__title">{{ previous.title }}</span>
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+
+        {% if next %}
+          <a class="previous-next__link previous-next__link--next" href="{{ next.url | url }}">
+            <span class="previous-next__label">次の教材</span>
+            <span class="previous-next__title">{{ next.title }}</span>
+          </a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  </article>
+</div>
