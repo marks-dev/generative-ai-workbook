@@ -31,7 +31,9 @@ git push
 ↓
 GitHub Actions
 ↓
-HTML生成
+npm ci
+↓
+Eleventy build
 ↓
 GitHub Pages公開
 ```
@@ -93,11 +95,23 @@ mainブランチへのpush
 
 - ローカルでもビルド可能とする
 - GitHub Actions専用構成にしない
+- `npm run build` でローカルビルドする
+- `npm run dev` でローカル確認する
 
 目的:
 
 - デバッグ容易化
 - AI支援時の検証容易化
+
+フロー:
+
+```text
+ローカル確認
+↓
+問題なければpush
+↓
+GitHub Actionsで本番ビルド
+```
 
 ---
 
@@ -105,12 +119,13 @@ mainブランチへのpush
 
 方針:
 
-- SSG選定結果に依存する
+- Eleventyを利用する
 - GitHub Actionsは実行基盤とする
 
 補足:
 
-- ビルド処理そのものはSSG側が担当する
+- ビルド処理そのものはEleventy側が担当する
+- `_site` は生成物として扱い、Git管理しない
 
 ---
 
@@ -119,6 +134,7 @@ mainブランチへのpush
 採用方針:
 
 - GitHub Actionsを利用する
+- GitHub Actions DeployでGitHub Pagesへ公開する
 
 理由:
 
@@ -128,9 +144,9 @@ mainブランチへのpush
 
 ---
 
-## 今後決めること
+## Pages設定
 
-- Workflow詳細
-- ビルドコマンド
-- Pages設定
-- エラー通知方針
+方針:
+
+- GitHub Pagesのdocs公開方式は利用しない
+- GitHub Actions経由で公開する

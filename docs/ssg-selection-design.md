@@ -13,7 +13,7 @@ Static Site Generator（SSG）の選定方針を定義する。
 ## 基本方針
 
 - 要件を先に定義する
-- ツールは後から選定する
+- Eleventyを採用する
 - 学習コストが低いことを重視する
 - AIが理解しやすい構成を重視する
 - 人間が保守しやすい構成を重視する
@@ -100,26 +100,38 @@ GitHub Pages
 
 ## 現時点の評価
 
-第一候補:
+採用:
 
-- Eleventy
+- Eleventy（11ty）
 
 理由:
 
 - 現在の要件と親和性が高い
 - Markdown中心設計と相性が良い
 - AI運用時の複雑性が低い
-
-補足:
-
-- 最終決定ではない
-- 実装前に再確認する
+- HTML生成物方針と整合する
+- GitHub Pages運用と整合する
+- テンプレート制御自由度が高い
+- CSS / JSを自由に管理できる
 
 ---
 
-## 今後決めること
+## ビルド・公開方針
 
-- 最終採用ツール
-- GitHub Actions利用方針
-- ビルド手順
-- デプロイ手順
+採用:
+
+- GitHub Actions build
+
+フロー:
+
+```text
+git push
+↓
+GitHub Actions
+↓
+npm ci
+↓
+Eleventy build
+↓
+GitHub Pages
+```

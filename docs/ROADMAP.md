@@ -2,8 +2,8 @@
 
 ## 現在の状況
 
-- 現在フェーズ: UI設計
-- 現在ステップ: 静的サイト生成方式設計
+- 現在フェーズ: 実装
+- 現在ステップ: 共通レイアウト実装
 
 ---
 
@@ -24,7 +24,19 @@
 - [x] 教材フォーマット設計
 - [x] コンテンツ管理設計
 - [x] 静的サイト生成方式設計
-- [ ] CSS設計
+- [x] CSS設計
+- [x] Design Token設計
+- [x] SSG選定方針設計
+- [x] GitHub Actions設計
+- [x] 設計書整合性レビュー
+- [x] AGENTS統治レビュー
+
+### Phase 2.5: 実装準備
+
+- [x] 実装順序確定
+- [x] 共通レイアウト実装方針確定
+- [x] CSS構成確定
+- [x] SSG最終選定
 
 ### Phase 3: 実装
 
@@ -94,12 +106,32 @@
 - コンテンツとレイアウトを分離する
 - HTML直接編集を前提としない
 - 教材コンテンツはMarkdownで管理する
-- 独自記法は必要最小限とする
+- 独自記法は必要になるまで追加しない
+- design-token-design.md を作成
+- ssg-selection-design.md を作成
+- github-actions-design.md を作成
+- CSSは共通資産として管理する
+- AIにページ単位のCSS生成をさせない
+- Design Tokenを利用する
+- GitHub Actionsを利用する
+- Eleventyを採用する
+- GitHub Actionsビルドを採用する
+- GitHub PagesへActions経由で公開する
+- _siteは生成物として扱う
+- _siteはGit管理しない
+- 標準Markdown中心で運用する
+- 学習状況管理はHeaderから利用する
+- 学習状況管理の独立ページは作成しない
+- SidebarはスマートフォンではDrawer表示とする
+- 設計書整合性レビューを実施
+- AGENTS.mdに設計書参照ルールを追加
 
 ---
 
 ## 次に行う作業
 
-- CSS設計
-- Static Site Generator選定
-- GitHub Actions利用方針決定
+- Eleventy環境構築
+- GitHub Actions構築
+- 共通レイアウト実装
+- 共通CSS実装
+- Top Page実装

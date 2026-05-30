@@ -28,7 +28,7 @@ MarkdownからHTMLを生成する方式を定義する。
 ```text
 Markdown
 ↓
-Static Site Generator
+Eleventy
 ↓
 HTML
 ↓
@@ -67,7 +67,7 @@ Markdown作成
 ↓
 メタ情報付与
 ↓
-HTML生成
+Eleventy build
 ↓
 GitHub Pages公開
 ```
@@ -116,26 +116,46 @@ plan: free
 
 ## 採用ツール
 
-現時点:
-
-- 未決定
-
-候補:
+採用:
 
 - Eleventy
-- Astro
-- 自前生成
 
 補足:
 
-- 先に要件を確定する
-- ツール選定は後で行う
+- Markdown正本方針と整合する
+- HTML生成物方針と整合する
+- GitHub Pages運用と整合する
+- テンプレート制御自由度が高い
+- CSS / JSを自由に管理できる
 
 ---
 
-## 今後決めること
+## ビルド方式
 
-- Static Site Generator選定
-- ビルド手順
-- GitHub Actions利用有無
-- デプロイ手順
+採用:
+
+- GitHub Actions build
+
+フロー:
+
+```text
+git push
+↓
+GitHub Actions
+↓
+npm ci
+↓
+Eleventy build
+↓
+GitHub Pages
+```
+
+ローカル開発:
+
+- `npm run build`
+- `npm run dev`
+
+生成物:
+
+- `_site` は生成物として扱う
+- `_site` はGit管理しない

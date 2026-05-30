@@ -63,7 +63,7 @@ AIが作業する際のルールを管理する。
 補足:
 
 - 現時点では初期実装のHTMLである。
-- 将来的にMarkdownからHTMLを生成する構成へ移行する方針である。
+- EleventyによるMarkdownからHTMLを生成する構成へ移行する方針である。
 
 ### README.md
 
@@ -224,13 +224,13 @@ MarkdownからHTMLを生成する方式を管理する。
 
 ### docs/ssg-selection-design.md
 
-Static Site Generatorの選定方針を管理する。
+Static Site Generatorの選定結果と採用理由を管理する。
 
 変更例:
 
-- Eleventy / Astro / 自前生成の比較
+- Eleventy採用理由
 - SSG必須要件
-- SSG選定基準
+- SSG運用方針
 
 ### docs/github-actions-design.md
 
@@ -366,7 +366,7 @@ GitHub Actionsの利用方針を管理する。
 
 ### _site/
 
-HTML生成物の出力先として想定する。
+EleventyによるHTML生成物の出力先として想定する。
 
 現状:
 
@@ -376,6 +376,7 @@ HTML生成物の出力先として想定する。
 
 - 生成物を直接編集しない。
 - GitHub Pages公開用の出力として扱う。
+- .gitignore対象とする。
 
 ### CSS / JavaScript
 
@@ -400,8 +401,8 @@ HTML生成物の出力先として想定する。
 - top-page-design.md、category-page-design.md、content-page-design.mdは画面別の設計を管理する。
 - content-format-design.mdは教材本文の書き方を管理する。
 - content-management-design.mdはMarkdown管理方針を管理する。
-- static-site-generation-design.mdはMarkdownからHTMLへの生成方式を管理する。
-- ssg-selection-design.mdはSSG選定基準を管理する。
+- static-site-generation-design.mdはEleventyによるMarkdownからHTMLへの生成方式を管理する。
+- ssg-selection-design.mdはSSG選定結果と採用理由を管理する。
 - github-actions-design.mdは公開自動化方針を管理する。
 - css-design.mdはCSS全体方針を管理する。
 - design-token-design.mdはCSSで利用する共通値を管理する。
