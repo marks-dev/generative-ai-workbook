@@ -1,5 +1,8 @@
 export default function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("src/assets");
+
   return {
+    pathPrefix: "/generative-ai-workbook/",
     dir: {
       input: "src",
       includes: "_includes",
