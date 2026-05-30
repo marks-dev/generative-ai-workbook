@@ -26,8 +26,7 @@
 Header（固定）
 ├ グローバルエリア
 └ ページ固有エリア
-
-Breadcrumb
+  └ Breadcrumb / 教材メタ情報 / 完了ボタン
 
 ┌─────────────┬──────────────────┐
 │ Sidebar     │ Content          │
@@ -43,8 +42,9 @@ Previous / Next
 
 ```text
 Header（固定）
-
-Breadcrumb
+├ グローバルエリア
+└ ページ固有エリア
+  └ Breadcrumb / 教材メタ情報 / 完了ボタン
 
 Content
 
@@ -53,8 +53,8 @@ Previous / Next
 
 補足:
 
-- Sidebarは表示しない
-- ハンバーガーメニューから利用する
+- SidebarはDrawer表示する
+- ハンバーガーメニューからDrawerを利用する
 
 ---
 

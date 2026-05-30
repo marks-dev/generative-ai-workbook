@@ -76,13 +76,14 @@ Header
 ```text
 Header
 
-Breadcrumb
+Header Context Area
+(Breadcrumb)
 
 Category Overview
 
-Content Card
-Content Card
-Content Card
+Learning Card
+Learning Card
+Learning Card
 ...
 ```
 

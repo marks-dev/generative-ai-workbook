@@ -21,8 +21,9 @@
 
 ```text
 Header
-
-Breadcrumb
+├ Global Area
+└ Context Area
+  └ Breadcrumb
 
 Category Overview
 
