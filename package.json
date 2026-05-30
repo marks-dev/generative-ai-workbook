@@ -4,7 +4,7 @@
   "type": "module",
   "description": "生成AIを体系的に学ぶための自習式教材です。",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy --pathprefix=/generative-ai-workbook/",
     "dev": "eleventy --serve"
   },
   "license": "MIT",
