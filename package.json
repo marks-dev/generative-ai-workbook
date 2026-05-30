@@ -1,0 +1,14 @@
+{
+  "name": "generative-ai-workbook",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "生成AIを体系的に学ぶための自習式教材です。",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

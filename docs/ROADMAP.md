@@ -3,7 +3,7 @@
 ## 現在の状況
 
 - 現在フェーズ: 実装
-- 現在ステップ: Eleventy環境構築
+- 現在ステップ: GitHub Actions構築
 
 ---
 
@@ -40,7 +40,7 @@
 
 ### Phase 3: 実装
 
-- [ ] Eleventy環境構築
+- [x] Eleventy環境構築
 - [ ] GitHub Actions構築
 - [ ] 共通レイアウト実装
 - [ ] 共通CSS実装
@@ -128,12 +128,14 @@
 - SidebarはスマートフォンではDrawer表示とする
 - 設計書整合性レビューを実施
 - AGENTS.mdに設計書参照ルールを追加
+- Eleventy環境構築を完了
+- `npm run build` と `npm run dev` を追加
+- トップページをMarkdown正本に移行
 
 ---
 
 ## 次に行う作業
 
-- Eleventy環境構築
 - GitHub Actions構築
 - 共通レイアウト実装
 - 共通CSS実装
