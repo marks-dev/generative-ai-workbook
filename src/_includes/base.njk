@@ -20,6 +20,10 @@
     </div>
 
     <div class="site-header__context">
+      {% if pageType == "top" %}
+        <p class="site-header__description">生成AIを体系的に学ぶための自習用ワークブックです。</p>
+      {% endif %}
+
       {% if breadcrumbs %}
         <nav class="breadcrumb" aria-label="パンくずリスト">
           <ol class="breadcrumb__list">
