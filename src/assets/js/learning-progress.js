@@ -279,8 +279,45 @@
     sidebarDetails.removeAttribute("open");
   }
 
+  // 用語集のインクリメンタル検索機能
+  function applyGlossarySearch() {
+    var searchInput = document.querySelector("[data-glossary-search]");
+    var glossaryItems = document.querySelectorAll(".glossary-item");
+    var noResultsMessage = document.querySelector(".glossary-no-results");
+    var glossaryTableWrapper = document.querySelector(".glossary-table-wrapper");
+    
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", function (event) {
+      var query = event.target.value.toLowerCase().trim();
+      var hasVisibleItems = false;
+
+      glossaryItems.forEach(function (item) {
+        var title = item.querySelector(".glossary-table__term").textContent.toLowerCase();
+        var content = item.querySelector(".glossary-table__def").textContent.toLowerCase();
+        var searchTerms = item.getAttribute("data-search-terms") || "";
+        
+        // タイトル、解説、または検索用タグのいずれかにヒットする場合に表示
+        if (title.indexOf(query) !== -1 || content.indexOf(query) !== -1 || searchTerms.toLowerCase().indexOf(query) !== -1) {
+          item.hidden = false;
+          hasVisibleItems = true;
+        } else {
+          item.hidden = true;
+        }
+      });
+
+      if (noResultsMessage) {
+        noResultsMessage.hidden = hasVisibleItems;
+      }
+      if (glossaryTableWrapper) {
+        glossaryTableWrapper.hidden = !hasVisibleItems;
+      }
+    });
+  }
+
   applyExternalLinks();
   applyAlertStyles();
+  applyGlossarySearch();
   updateCompletionButtons();
   renderPanel();
 })();

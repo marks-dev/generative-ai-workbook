@@ -914,6 +914,108 @@ details[open] .content-sidebar__toggle-icon {
   font-size: var(--font-size-small);
 }
 
+/* Glossary container and search styling */
+.glossary-container {
+  margin-top: var(--space-xl);
+}
+
+.glossary-search-wrapper {
+  margin-bottom: var(--space-xl);
+}
+
+.glossary-search {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-body);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: all 0.25s ease;
+  color: var(--color-text);
+}
+
+.glossary-search:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgb(36 36 36 / 0.06);
+}
+
+/* Notion-style database table */
+.glossary-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.glossary-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+}
+
+.glossary-table th,
+.glossary-table td {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.glossary-table th {
+  background: var(--color-surface-muted);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.glossary-table__th-term {
+  width: 260px;
+}
+
+.glossary-table__th-def {
+  width: auto;
+}
+
+.glossary-item {
+  transition: background-color 0.2s ease;
+}
+
+.glossary-item:last-child td {
+  border-bottom: none;
+}
+
+.glossary-item:hover {
+  background-color: var(--color-surface-muted);
+}
+
+.glossary-table__term {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.glossary-table__def {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+}
+
+.glossary-no-results {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body);
+  border: var(--border-width) dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+  margin: 0;
+}
+
 @media (max-width: 720px) {
   .site-header__global,
   .site-header__context,
