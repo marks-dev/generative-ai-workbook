@@ -64,9 +64,14 @@
       {% endif %}
 
       {% if pageType == "content" and completionId %}
-        <button class="completion-button" type="button" data-completion-id="{{ completionId }}" data-completion-title="{{ title }}">
-          完了にする
-        </button>
+        <div class="completion-tooltip-wrapper">
+          <button class="completion-button" type="button" data-completion-id="{{ completionId }}" data-completion-title="{{ title }}">
+            完了にする
+          </button>
+          <div class="completion-tooltip" role="tooltip" aria-hidden="true" data-completion-tooltip>
+            読み終わったら完了を押しましょう。
+          </div>
+        </div>
       {% endif %}
     </div>
   </header>

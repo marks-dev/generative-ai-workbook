@@ -128,6 +128,13 @@
     writeState(state);
     updateCompletionButtons();
     renderPanel();
+
+    // 完了ボタン押下時にツールチップが表示中であれば非表示にする
+    var tooltip = document.querySelector("[data-completion-tooltip]");
+    if (tooltip) {
+      tooltip.classList.remove("is-visible");
+      tooltip.setAttribute("aria-hidden", "true");
+    }
   }
 
   function renderPanel() {
@@ -343,9 +350,57 @@
     });
   }
 
+  // スクロール最下部検知と完了誘導ツールチップ表示
+  function applyCompletionTooltipScroll() {
+    var tooltip = document.querySelector("[data-completion-tooltip]");
+    var button = document.querySelector(".completion-button[data-completion-id]");
+    if (!tooltip || !button) return;
+
+    var completionId = button.getAttribute("data-completion-id");
+    // すでに完了している場合はスクロール検知・誘導を行わない
+    if (isCompleted(completionId)) return;
+
+    var hasShown = false;
+
+    function onScroll() {
+      if (hasShown) return;
+
+      var scrollHeight = document.documentElement.scrollHeight;
+      var scrollPosition = window.innerHeight + window.scrollY;
+
+      // ページ最下部から 30px 以内に到達したか判定
+      if (scrollHeight - scrollPosition <= 30) {
+        hasShown = true;
+        showTooltip();
+        window.removeEventListener("scroll", onScroll);
+      }
+    }
+
+    function showTooltip() {
+      // ユーザーが最下部到達前に完了済みにした場合は表示しない
+      if (isCompleted(completionId)) return;
+
+      tooltip.classList.add("is-visible");
+      tooltip.setAttribute("aria-hidden", "false");
+
+      // 3秒後に自動非表示
+      setTimeout(function () {
+        hideTooltip();
+      }, 3000);
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove("is-visible");
+      tooltip.setAttribute("aria-hidden", "true");
+    }
+
+    window.addEventListener("scroll", onScroll);
+  }
+
   applyExternalLinks();
   applyAlertStyles();
   applyGlossarySearch();
   updateCompletionButtons();
   renderPanel();
+  applyCompletionTooltipScroll();
 })();

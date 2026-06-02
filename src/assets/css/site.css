@@ -178,6 +178,52 @@ button {
   color: var(--color-surface);
 }
 
+/* 完了誘導吹き出しツールチップ */
+.completion-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.completion-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 100;
+  width: max-content;
+  max-width: 320px;
+  padding: 6px 14px;
+  background: rgba(47, 111, 115, 0.88); /* 全体カラー（アクセントの青緑 #2f6f73）を意識した美しい半透明 */
+  color: #ffffff;
+  font-size: 12px; /* 固定の極小サイズではみ出しを防ぐ */
+  line-height: 1.4;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(47, 111, 115, 0.2);
+  backdrop-filter: blur(8px); /* グラスモーフィズム */
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* 吹き出しのツノ（上向き） */
+.completion-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 24px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(47, 111, 115, 0.88) transparent; /* ツノの色も合わせる */
+}
+
+/* 表示状態 */
+.completion-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .is-learning-progress-open {
   overflow: hidden;
 }
