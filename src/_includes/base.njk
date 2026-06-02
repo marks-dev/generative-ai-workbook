@@ -40,28 +40,7 @@
         </nav>
       {% endif %}
 
-      {% if pageType == "content" and (difficulty or plan or service) %}
-        <dl class="content-meta" aria-label="教材メタ情報">
-          {% if difficulty %}
-            <div class="content-meta__item">
-              <dt class="content-meta__label">難易度</dt>
-              <dd class="content-meta__value">{{ difficulty }}</dd>
-            </div>
-          {% endif %}
-          {% if plan %}
-            <div class="content-meta__item">
-              <dt class="content-meta__label">推奨プラン</dt>
-              <dd class="content-meta__value">{{ plan }}</dd>
-            </div>
-          {% endif %}
-          {% if service %}
-            <div class="content-meta__item">
-              <dt class="content-meta__label">利用サービス</dt>
-              <dd class="content-meta__value">{{ service | join(", ") }}</dd>
-            </div>
-          {% endif %}
-        </dl>
-      {% endif %}
+
 
       {% if pageType == "content" and completionId %}
         <div class="completion-tooltip-wrapper">
