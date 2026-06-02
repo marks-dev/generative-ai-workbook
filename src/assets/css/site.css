@@ -388,7 +388,7 @@ button {
 
 
 .site-main {
-  width: min(100% - var(--space-xl), var(--content-width));
+  width: min(100% - var(--space-xl), var(--container-width)); /* 760pxから1040px幅へ拡張 */
   margin-inline: auto;
   padding-block: var(--space-2xl);
 }
@@ -885,8 +885,15 @@ details[open] .content-sidebar__list-container {
 
 .content-article {
   min-width: 0;
-  width: min(100%, var(--content-width)); /* 本文エリアを横幅いっぱいに広げる */
+  width: min(100% - var(--space-xl), var(--container-width)); /* 最大幅を1040pxへ拡張し余白を統一 */
   margin-inline: auto;
+}
+
+/* 画面幅が狭くなった時に左のフローティングバッジと本文が被るのを防ぐ安全余白 */
+@media (max-width: 1120px) {
+  .content-article {
+    padding-left: 64px;
+  }
 }
 
 .content-article__header {
