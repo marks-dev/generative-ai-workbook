@@ -190,15 +190,16 @@ button {
   right: 0;
   z-index: 100;
   width: max-content;
-  max-width: 260px;
-  padding: var(--space-xs) var(--space-sm);
-  background: rgba(33, 33, 33, 0.9);
+  max-width: 320px;
+  padding: 6px 14px;
+  background: rgba(47, 111, 115, 0.88); /* 全体カラー（アクセントの青緑 #2f6f73）を意識した美しい半透明 */
   color: #ffffff;
-  font-size: var(--font-size-xsmall);
+  font-size: 12px; /* 固定の極小サイズではみ出しを防ぐ */
+  line-height: 1.4;
   font-weight: 500;
   border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(47, 111, 115, 0.2);
+  backdrop-filter: blur(8px); /* グラスモーフィズム */
   pointer-events: none;
   opacity: 0;
   transform: translateY(-8px);
@@ -214,7 +215,7 @@ button {
   right: 24px;
   border-width: 6px;
   border-style: solid;
-  border-color: transparent transparent rgba(33, 33, 33, 0.9) transparent;
+  border-color: transparent transparent rgba(47, 111, 115, 0.88) transparent; /* ツノの色も合わせる */
 }
 
 /* 表示状態 */
