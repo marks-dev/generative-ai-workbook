@@ -236,6 +236,12 @@
     }
   });
 
+  // スマホ表示時のサイドバーアコーディオン初期化
+  var sidebarDetails = document.querySelector(".content-sidebar__details");
+  if (sidebarDetails && window.innerWidth <= 720) {
+    sidebarDetails.removeAttribute("open");
+  }
+
   updateCompletionButtons();
   renderPanel();
 })();
