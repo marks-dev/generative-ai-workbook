@@ -38,7 +38,7 @@ layout: base.njk
 
         <ul class="learning-card-group__list">
           {% for item in group.items %}
-            <li class="learning-card">
+            <li class="learning-card" {% if item.completionId %}data-completion-card="{{ item.completionId }}"{% endif %}>
               <a class="learning-card__link" href="{{ item.url | url }}">
                 <span class="learning-card__icon" aria-hidden="true">{{ item.icon or "📘" }}</span>
                 <span class="learning-card__body">
@@ -48,7 +48,7 @@ layout: base.njk
                     <span class="learning-card__meta-item">難易度: {{ item.difficulty }}</span>
                     <span class="learning-card__meta-item">推奨プラン: {{ item.plan }}</span>
                     <span class="learning-card__meta-item">利用サービス: {{ item.service | join(", ") }}</span>
-                    <span class="learning-card__meta-item">状態: {{ item.status or "未実施" }}</span>
+                    <span class="learning-card__meta-item" {% if item.completionId %}data-completion-status="{{ item.completionId }}"{% endif %}>状態: {{ item.status or "未実施" }}</span>
                   </span>
                 </span>
               </a>

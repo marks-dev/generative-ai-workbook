@@ -820,8 +820,12 @@ details[open] .content-sidebar__toggle-icon {
 .category-overview__meta-item {
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: var(--color-surface-muted);
   padding: var(--space-md);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .category-overview__meta-label {
@@ -845,6 +849,7 @@ details[open] .content-sidebar__toggle-icon {
 
 .learning-card-group__list {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-md);
   margin: 0;
   padding: 0;
@@ -866,11 +871,32 @@ details[open] .content-sidebar__toggle-icon {
   padding: var(--space-md);
   color: var(--color-text);
   text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: border-color var(--transition-normal), background var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .learning-card__link:hover {
   border-color: var(--color-accent);
-  background: var(--color-surface-muted);
+  background: var(--color-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* 完了状態の学習カード */
+.learning-card.is-completed .learning-card__link {
+  border-color: #c2e7d9;
+  background: #f4fbf8;
+}
+
+.learning-card.is-completed .learning-card__link:hover {
+  border-color: #8ed2b7;
+  background: #ebf9f3;
+  box-shadow: 0 6px 16px rgba(15, 118, 82, 0.05), 0 2px 6px rgba(15, 118, 82, 0.03);
+}
+
+.learning-card.is-completed .learning-card__icon {
+  background: #d1f2e5;
+  color: #0f7652;
 }
 
 .learning-card__icon {
@@ -881,6 +907,7 @@ details[open] .content-sidebar__toggle-icon {
   border-radius: var(--radius-md);
   background: var(--color-accent-muted);
   font-size: var(--font-size-h3);
+  transition: background var(--transition-normal), color var(--transition-normal);
 }
 
 .learning-card__body,
@@ -912,6 +939,21 @@ details[open] .content-sidebar__toggle-icon {
   padding: 0.15rem var(--space-xs);
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
+  transition: all var(--transition-normal);
+}
+
+/* 動的な進捗バッジの状態別スタイル */
+.learning-card__meta-item[data-completion-status-state="completed"] {
+  border-color: #a3e2c9;
+  background: #e6f9f1;
+  color: #0f7652;
+  font-weight: 700;
+}
+
+.learning-card__meta-item[data-completion-status-state="todo"] {
+  border-color: var(--color-border);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
 }
 
 /* Glossary container and search styling */
@@ -1074,6 +1116,10 @@ details[open] .content-sidebar__toggle-icon {
   .content-sidebar__summary {
     cursor: pointer;
     padding-block: var(--space-xs);
+  }
+
+  .learning-card-group__list {
+    grid-template-columns: 1fr;
   }
 
   .learning-card__link {

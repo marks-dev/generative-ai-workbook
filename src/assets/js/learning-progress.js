@@ -73,7 +73,17 @@
     var statusElements = document.querySelectorAll("[data-completion-status]");
     statusElements.forEach(function (statusElement) {
       var completionId = statusElement.getAttribute("data-completion-status");
-      statusElement.textContent = isCompleted(completionId) ? "完了" : "未実施";
+      var completed = isCompleted(completionId);
+      statusElement.textContent = completed ? "🟢 完了" : "⚪ 未実施";
+      statusElement.dataset.completionStatusState = completed ? "completed" : "todo";
+    });
+
+    var cardElements = document.querySelectorAll("[data-completion-card]");
+    cardElements.forEach(function (cardElement) {
+      var completionId = cardElement.getAttribute("data-completion-card");
+      var completed = isCompleted(completionId);
+      cardElement.classList.toggle("is-completed", completed);
+      cardElement.dataset.completionState = completed ? "completed" : "todo";
     });
   }
 

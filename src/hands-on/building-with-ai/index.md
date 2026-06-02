@@ -17,6 +17,7 @@ learningCards:
     items:
       - title: AIコーディング
         url: /hands-on/building-with-ai/ai-coding/
+        completionId: hands-on-building-with-ai-ai-coding
         icon: 🛠️
         description: CursorやGitHub Copilotを利用して、AIの支援を受けながら高速にプログラミングを行う体験をします。
         difficulty: 中級から上級
@@ -27,6 +28,7 @@ learningCards:
         status: 未実施
       - title: Codex入門
         url: /hands-on/building-with-ai/codex-intro/
+        completionId: hands-on-building-with-ai-codex-intro
         icon: 🧩
         description: プロジェクト管理・実装をAI主体で進行する「Codex」を用いた開発を体験します。
         difficulty: 上級
@@ -36,6 +38,7 @@ learningCards:
         status: 未実施
       - title: MCP入門
         url: /hands-on/building-with-ai/mcp-intro/
+        completionId: hands-on-building-with-ai-mcp-intro
         icon: 🔌
         description: MCPサーバーを実際に構築・接続して、AIが自由に使える独自のツールを作成します。
         difficulty: 上級
