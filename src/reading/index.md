@@ -15,6 +15,10 @@ learningCards:
     items:
       - title: 基礎
         url: /reading/fundamentals/
+        completionIds:
+          - reading-fundamentals-what-is-ai
+          - reading-fundamentals-ai-history
+          - reading-fundamentals-ai-types
         icon: 📘
         description: AIとは何か、生成AIの仕組み、LLM、AI利用時の注意点などを学びます。
         difficulty: 初級
@@ -26,6 +30,10 @@ learningCards:
         status: 未実施
       - title: チャットレベル
         url: /reading/chat-level/
+        completionIds:
+          - reading-chat-level-prompt-intro
+          - reading-chat-level-business-use
+          - reading-chat-level-ai-search
         icon: 💬
         description: プロンプト、業務活用、AI検索、ファイルや画像の活用を学びます。
         difficulty: 初級から中級
@@ -39,6 +47,10 @@ learningCards:
     items:
       - title: 開発
         url: /reading/development/
+        completionIds:
+          - reading-development-what-is-ai-dev
+          - reading-development-api-basics
+          - reading-development-rag
         icon: 🧩
         description: API、RAG、Embedding、AIアプリ設計など、開発で必要になる考え方を学びます。
         difficulty: 中級
@@ -51,6 +63,10 @@ learningCards:
     items:
       - title: 高度
         url: /reading/advanced/
+        completionIds:
+          - reading-advanced-mcp
+          - reading-advanced-agents
+          - reading-advanced-local-llm
         icon: 🚀
         description: MCP、AIエージェント、AIコーディング、ローカルLLMなど高度なテーマを学びます。
         difficulty: 中級から上級
