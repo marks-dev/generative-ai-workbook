@@ -6,8 +6,9 @@ layout: base.njk
   {% if sidebar %}
     <aside class="content-sidebar" aria-label="カテゴリ内教材">
       <details class="content-sidebar__details">
-        <summary class="content-sidebar__summary" title="教材一覧を開く" aria-label="教材一覧を開く">
-          <span class="content-sidebar__summary-icon" aria-hidden="true">📖</span>
+        <summary class="content-sidebar__summary" aria-label="サイドバー開閉">
+          <span class="content-sidebar__summary-icon content-sidebar__summary-icon--menu" aria-hidden="true">☰</span>
+          <span class="content-sidebar__summary-icon content-sidebar__summary-icon--close" aria-hidden="true">✕</span>
         </summary>
 
         {% if sidebar.items %}
@@ -27,7 +28,7 @@ layout: base.njk
                   {% else %}
                     <a class="content-sidebar__link" href="{{ item.url | url }}">{{ item.title }}</a>
                   {% endif %}
-                  <span class="content-sidebar__status"{% if item.completionId %} data-completion-status="{{ item.completionId }}"{% endif %}></span>
+                  <span class="content-sidebar__status" data-completion-status-url="{{ item.url | url }}"></span>
                 </li>
               {% endfor %}
             </ol>

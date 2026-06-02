@@ -696,6 +696,58 @@ blockquote.alert--caution .alert__label {
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* マウスオーバー時の吹き出しツールチップ（Gemini風） */
+.content-sidebar__summary::after {
+  content: "サイドバーを開く";
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  z-index: 100;
+  width: max-content;
+  padding: 5px 10px;
+  background: rgba(47, 111, 115, 0.96); /* 全体カラーと調和する半透明ティール */
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(47, 111, 115, 0.2);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* 吹き出しの小さな左向きツノ（矢印） */
+.content-sidebar__summary::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgba(47, 111, 115, 0.96) transparent transparent;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.content-sidebar__summary:hover::after,
+.content-sidebar__summary:hover::before {
+  opacity: 1;
+}
+
+.content-sidebar__summary:hover::after {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* アコーディオンが開いているときは「閉じる」に変更 */
+details[open] .content-sidebar__summary::after {
+  content: "サイドバーを閉じる";
+}
+
 .content-sidebar__summary::-webkit-details-marker {
   display: none;
 }
@@ -713,6 +765,20 @@ blockquote.alert--caution .alert__label {
 .content-sidebar__summary-icon {
   font-size: 1.25rem;
   line-height: 1;
+}
+
+/* メニューアイコンと閉じるアイコンのトグル表示 */
+.content-sidebar__summary-icon--close {
+  display: none;
+}
+
+details[open] .content-sidebar__summary-icon--menu {
+  display: none;
+}
+
+details[open] .content-sidebar__summary-icon--close {
+  display: inline-block;
+  font-size: 1.1rem;
 }
 
 /* アコーディオン展開時のリストコンテナ（白ではない独立したカード部品） */
