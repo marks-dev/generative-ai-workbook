@@ -41,34 +41,6 @@ layout: base.njk
 
     {{ content | safe }}
 
-    {% if completionId %}
-      <section class="completion-prompt" aria-labelledby="completion-prompt-title">
-        <h2 id="completion-prompt-title">読み終わりましたか？</h2>
-        <p>内容を確認できたら、この教材を完了にできます。</p>
-        <button class="completion-button" type="button" data-completion-id="{{ completionId }}" data-completion-title="{{ title }}">
-          完了にする
-        </button>
-      </section>
-    {% endif %}
 
-    {% if previous or next %}
-      <nav class="previous-next" aria-label="前後の教材">
-        {% if previous %}
-          <a class="previous-next__link previous-next__link--previous" href="{{ previous.url | url }}">
-            <span class="previous-next__label">前の教材</span>
-            <span class="previous-next__title">{{ previous.title }}</span>
-          </a>
-        {% else %}
-          <span></span>
-        {% endif %}
-
-        {% if next %}
-          <a class="previous-next__link previous-next__link--next" href="{{ next.url | url }}">
-            <span class="previous-next__label">次の教材</span>
-            <span class="previous-next__title">{{ next.title }}</span>
-          </a>
-        {% endif %}
-      </nav>
-    {% endif %}
   </article>
 </div>

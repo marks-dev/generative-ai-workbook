@@ -178,6 +178,51 @@ button {
   color: var(--color-surface);
 }
 
+/* 完了誘導吹き出しツールチップ */
+.completion-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.completion-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 100;
+  width: max-content;
+  max-width: 260px;
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(33, 33, 33, 0.9);
+  color: #ffffff;
+  font-size: var(--font-size-xsmall);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* 吹き出しのツノ（上向き） */
+.completion-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 24px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(33, 33, 33, 0.9) transparent;
+}
+
+/* 表示状態 */
+.completion-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .is-learning-progress-open {
   overflow: hidden;
 }
