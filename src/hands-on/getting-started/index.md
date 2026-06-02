@@ -17,6 +17,7 @@ learningCards:
     items:
       - title: AIと会話してみよう
         url: /hands-on/getting-started/chat/
+        completionId: hands-on-getting-started-chat
         icon: 🧪
         description: チャットAIを使って会話をしながら、質問の仕方や基本的な応答のやり取りを体験します。
         difficulty: 初級
@@ -28,6 +29,7 @@ learningCards:
         status: 未実施
       - title: 要約してみよう
         url: /hands-on/getting-started/summarize/
+        completionId: hands-on-getting-started-summarize
         icon: 📝
         description: 長い文章やニュース記事を、AIを使って簡潔に分かりやすく要約する実践を行います。
         difficulty: 初級
@@ -39,6 +41,7 @@ learningCards:
         status: 未実施
       - title: 画像を作ってみよう
         url: /hands-on/getting-started/image/
+        completionId: hands-on-getting-started-image
         icon: 🎨
         description: 描きたい画像の説明（プロンプト）を入力して、AIに高品質なイラストや写真を生成させます。
         difficulty: 初級

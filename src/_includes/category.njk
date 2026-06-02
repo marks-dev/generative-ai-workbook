@@ -2,53 +2,29 @@
 layout: base.njk
 ---
 
-<section class="category-overview" aria-labelledby="category-title">
-  <h1 id="category-title">{{ title }}</h1>
-  {{ content | safe }}
-
-  <dl class="category-overview__meta" aria-label="カテゴリメタ情報">
-    {% if audience %}
-      <div class="category-overview__meta-item">
-        <dt class="category-overview__meta-label">推奨対象</dt>
-        <dd class="category-overview__meta-value">{{ audience }}</dd>
-      </div>
-    {% endif %}
-    {% if duration %}
-      <div class="category-overview__meta-item">
-        <dt class="category-overview__meta-label">学習目安</dt>
-        <dd class="category-overview__meta-value">{{ duration }}</dd>
-      </div>
-    {% endif %}
-    {% if plan %}
-      <div class="category-overview__meta-item">
-        <dt class="category-overview__meta-label">対応プラン目安</dt>
-        <dd class="category-overview__meta-value">{{ plan }}</dd>
-      </div>
-    {% endif %}
-  </dl>
-</section>
+<h1 class="visually-hidden">{{ title }}</h1>
 
 {% if learningCards %}
-  <section class="learning-card-list" aria-labelledby="learning-card-list-title">
-    <h2 id="learning-card-list-title">教材一覧</h2>
-
+  <section class="learning-card-list" aria-label="教材一覧">
     {% for group in learningCards %}
       <section class="learning-card-group" aria-labelledby="learning-card-group-{{ loop.index }}">
-        <h3 id="learning-card-group-{{ loop.index }}">{{ group.group }}</h3>
+        <h2 id="learning-card-group-{{ loop.index }}" class="learning-card-group__title">{{ group.group }}</h2>
 
         <ul class="learning-card-group__list">
           {% for item in group.items %}
-            <li class="learning-card">
+            <li class="learning-card" 
+                {% if item.completionId %}data-card-completion-id="{{ item.completionId }}"{% endif %} 
+                {% if item.completionIds %}data-card-completion-ids="{{ item.completionIds | join(',') }}"{% endif %}>
               <a class="learning-card__link" href="{{ item.url | url }}">
                 <span class="learning-card__icon" aria-hidden="true">{{ item.icon or "📘" }}</span>
                 <span class="learning-card__body">
                   <span class="learning-card__title">{{ item.title }}</span>
                   <span class="learning-card__description">{{ item.description }}</span>
-                  <span class="learning-card__meta" aria-label="教材メタ情報">
-                    <span class="learning-card__meta-item">難易度: {{ item.difficulty }}</span>
-                    <span class="learning-card__meta-item">推奨プラン: {{ item.plan }}</span>
-                    <span class="learning-card__meta-item">利用サービス: {{ item.service | join(", ") }}</span>
-                    <span class="learning-card__meta-item">状態: {{ item.status or "未実施" }}</span>
+                </span>
+                <span class="learning-card__status" aria-label="学習状況">
+                  <span class="learning-card__status-badge" 
+                        {% if item.completionId %}data-completion-check-id="{{ item.completionId }}"{% endif %} 
+                        {% if item.completionIds %}data-completion-check-ids="{{ item.completionIds | join(',') }}"{% endif %}>
                   </span>
                 </span>
               </a>

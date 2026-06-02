@@ -70,10 +70,38 @@
       button.textContent = completed ? "完了済み" : "完了にする";
     });
 
-    var statusElements = document.querySelectorAll("[data-completion-status]");
-    statusElements.forEach(function (statusElement) {
-      var completionId = statusElement.getAttribute("data-completion-status");
-      statusElement.textContent = isCompleted(completionId) ? "完了" : "未実施";
+    // 個別の詳細教材用：自身が完了している場合のみ表示
+    var singleCheckElements = document.querySelectorAll("[data-completion-check-id]");
+    singleCheckElements.forEach(function (el) {
+      var completionId = el.getAttribute("data-completion-check-id");
+      var completed = isCompleted(completionId);
+      
+      el.textContent = completed ? "✅" : "";
+      el.dataset.completionState = completed ? "completed" : "todo";
+      
+      var card = el.closest(".learning-card");
+      if (card) {
+        card.classList.toggle("is-completed", completed);
+      }
+    });
+
+    // 親カテゴリ用：紐づくすべての所属教材が完了している場合のみ表示
+    var groupCheckElements = document.querySelectorAll("[data-completion-check-ids]");
+    groupCheckElements.forEach(function (el) {
+      var rawIds = el.getAttribute("data-completion-check-ids") || "";
+      var completionIds = rawIds.split(",").filter(Boolean);
+      
+      var allCompleted = completionIds.length > 0 && completionIds.every(function (id) {
+        return isCompleted(id);
+      });
+
+      el.textContent = allCompleted ? "✅" : "";
+      el.dataset.completionState = allCompleted ? "completed" : "todo";
+
+      var card = el.closest(".learning-card");
+      if (card) {
+        card.classList.toggle("is-completed", allCompleted);
+      }
     });
   }
 

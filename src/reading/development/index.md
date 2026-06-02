@@ -17,6 +17,7 @@ learningCards:
     items:
       - title: AI開発とは
         url: /reading/development/what-is-ai-dev/
+        completionId: reading-development-what-is-ai-dev
         icon: 🧩
         description: 従来の開発とAIを取り入れた開発の違いや、基本的なアーキテクチャを学びます。
         difficulty: 中級
@@ -28,6 +29,7 @@ learningCards:
         status: 未実施
       - title: API利用の基本
         url: /reading/development/api-basics/
+        completionId: reading-development-api-basics
         icon: 🔌
         description: 生成AIのAPIをシステムから呼び出すための基本原則と設定方法を学びます。
         difficulty: 中級
@@ -39,6 +41,7 @@ learningCards:
         status: 未実施
       - title: RAG
         url: /reading/development/rag/
+        completionId: reading-development-rag
         icon: 🗄️
         description: 外部データ（社内文書など）をAIに読み込ませて回答させるRAGの仕組みを学びます。
         difficulty: 中級
