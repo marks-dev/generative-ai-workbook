@@ -5,27 +5,34 @@ layout: base.njk
 <div class="content-layout">
   {% if sidebar %}
     <aside class="content-sidebar" aria-label="カテゴリ内教材">
-      <details class="content-sidebar__details" open>
-        <summary class="content-sidebar__summary">
-          {% if sidebar.title %}
-            <span class="content-sidebar__title">{{ sidebar.title }}</span>
-          {% endif %}
-          <span class="content-sidebar__toggle-icon" aria-hidden="true">▾</span>
+      <details class="content-sidebar__details">
+        <summary class="content-sidebar__summary" aria-label="サイドバー開閉">
+          <span class="content-sidebar__summary-icon content-sidebar__summary-icon--menu" aria-hidden="true">☰</span>
+          <span class="content-sidebar__summary-icon content-sidebar__summary-icon--close" aria-hidden="true">✕</span>
         </summary>
 
         {% if sidebar.items %}
-          <ol class="content-sidebar__list">
-            {% for item in sidebar.items %}
-              <li class="content-sidebar__item">
-                {% if item.url == page.url %}
-                  <span class="content-sidebar__current" aria-current="page">{{ item.title }}</span>
-                {% else %}
-                  <a class="content-sidebar__link" href="{{ item.url | url }}">{{ item.title }}</a>
-                {% endif %}
-                <span class="content-sidebar__status"{% if item.completionId %} data-completion-status="{{ item.completionId }}"{% endif %}>{{ item.status or "未実施" }}</span>
-              </li>
-            {% endfor %}
-          </ol>
+          <div class="content-sidebar__list-container">
+            {% if sidebar.title %}
+              <div class="content-sidebar__list-header">
+                <span class="content-sidebar__list-title">{{ sidebar.title }}</span>
+              </div>
+            {% endif %}
+            <ol class="content-sidebar__list">
+              {% for item in sidebar.items %}
+                <li class="content-sidebar__item">
+                  {% if item.url == page.url %}
+                    <span class="content-sidebar__current" aria-current="page">
+                      <span class="content-sidebar__current-icon" aria-hidden="true">👉</span>{{ item.title }}
+                    </span>
+                  {% else %}
+                    <a class="content-sidebar__link" href="{{ item.url | url }}">{{ item.title }}</a>
+                  {% endif %}
+                  <span class="content-sidebar__status" data-completion-status-url="{{ item.url | url }}"></span>
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
         {% endif %}
       </details>
     </aside>

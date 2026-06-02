@@ -59,6 +59,19 @@
     return Boolean(state.completed[completionId] && state.completed[completionId].completed);
   }
 
+  function getCompletionIdFromUrl(url) {
+    if (!url) return "";
+    // プレフィックスやドメインを削除してパスにする
+    var path = url;
+    // ローカルプレビュー環境や本番環境どちらのパス構造でも一貫して completionId にマッピングする
+    path = path.replace(/^(https?:\/\/[^\/]+)?\/generative-ai-workbook/, "");
+    // ドメイン直下の場合の考慮
+    if (path.indexOf("http") === 0) {
+      path = new URL(path).pathname;
+    }
+    return path.replace(/^\/|\/$/g, "").replace(/\//g, "-");
+  }
+
   function updateCompletionButtons() {
     var buttons = document.querySelectorAll("[data-completion-id]");
     buttons.forEach(function (button) {
@@ -103,6 +116,18 @@
         card.classList.toggle("is-completed", allCompleted);
       }
     });
+
+    // サイドバーの教材用：URLから動的に判定して完了時のみ ✅ を表示
+    var sidebarStatusElements = document.querySelectorAll("[data-completion-status-url]");
+    sidebarStatusElements.forEach(function (el) {
+      var url = el.getAttribute("data-completion-status-url");
+      var completionId = getCompletionIdFromUrl(url);
+      if (completionId) {
+        var completed = isCompleted(completionId);
+        el.textContent = completed ? "✅" : "";
+        el.dataset.completionState = completed ? "completed" : "todo";
+      }
+    });
   }
 
   function toggleCompletion(button) {
@@ -123,6 +148,12 @@
         title: title,
         updatedAt: new Date().toISOString()
       };
+
+      // 完了にした（チェックを入れた）タイミングでサイドバーを自動で開く
+      var sidebarDetails = document.querySelector(".content-sidebar__details");
+      if (sidebarDetails) {
+        sidebarDetails.setAttribute("open", "");
+      }
     }
 
     writeState(state);
