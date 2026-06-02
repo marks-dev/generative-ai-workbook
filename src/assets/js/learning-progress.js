@@ -236,12 +236,24 @@
     }
   });
 
+  // 外部リンクを別タブで開く処理
+  function applyExternalLinks() {
+    var links = document.querySelectorAll("a[href^='http']");
+    links.forEach(function (link) {
+      if (!link.href.includes(window.location.hostname)) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+  }
+
   // スマホ表示時のサイドバーアコーディオン初期化
   var sidebarDetails = document.querySelector(".content-sidebar__details");
   if (sidebarDetails && window.innerWidth <= 720) {
     sidebarDetails.removeAttribute("open");
   }
 
+  applyExternalLinks();
   updateCompletionButtons();
   renderPanel();
 })();
