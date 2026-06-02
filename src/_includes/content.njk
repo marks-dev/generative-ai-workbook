@@ -40,14 +40,61 @@ layout: base.njk
 
   <article class="content-article">
     <header class="content-article__header">
-      <h1>{{ title }}</h1>
+      <h1 class="content-article__title">{{ title }}</h1>
       {% if description %}
         <p class="content-article__description">{{ description }}</p>
       {% endif %}
     </header>
 
-    {{ content | safe }}
+    <div class="content-article__body">
+      {{ content | safe }}
+    </div>
 
-
+    {% if keypoints or relatedHandson %}
+      <footer class="content-summary-card">
+        <h2 class="content-summary-card__title">まとめ</h2>
+        
+        <div class="content-summary-card__stack">
+          {% if keypoints %}
+            <div class="content-summary-card__section content-summary-card__section--keypoints">
+              <h3 class="content-summary-card__subtitle">抑えるべきポイント</h3>
+              <ul class="content-summary-card__list">
+                {% for pt in keypoints %}
+                  <li class="content-summary-card__list-item">{{ pt }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          
+          {% if relatedHandson %}
+            <div class="content-summary-card__section content-summary-card__section--related">
+              <h3 class="content-summary-card__subtitle">
+                {% if "/reading/" in page.url %}
+                  関連ハンズオン
+                {% else %}
+                  関連読み物
+                {% endif %}
+              </h3>
+              <ul class="content-summary-card__links">
+                {% for handson in relatedHandson %}
+                  <li class="content-summary-card__link-item">
+                    <a class="content-summary-card__link" href="{{ handson.url | url }}">
+                      <span class="content-summary-card__link-icon" aria-hidden="true">
+                        {% if "/reading/" in page.url %}
+                          🛠️
+                        {% else %}
+                          📖
+                        {% endif %}
+                      </span>
+                      {{ handson.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      </footer>
+    {% endif %}
   </article>
 </div>
