@@ -247,6 +247,30 @@
     });
   }
 
+  // GitHub-style Alertsの変換処理
+  function applyAlertStyles() {
+    var blockquotes = document.querySelectorAll("blockquote");
+    blockquotes.forEach(function (bq) {
+      var html = bq.innerHTML;
+      var match = html.match(/^\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i);
+      if (match) {
+        var alertType = match[1].toUpperCase();
+        bq.className = "alert alert--" + alertType.toLowerCase();
+        
+        var newHtml = html.replace(/^\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]\s*(<br>)?/i, "");
+        var icon = "💡";
+        var label = "TIP";
+        
+        if (alertType === "NOTE") { icon = "ℹ️"; label = "NOTE"; }
+        else if (alertType === "IMPORTANT") { icon = "📢"; label = "IMPORTANT"; }
+        else if (alertType === "WARNING") { icon = "⚠️"; label = "WARNING"; }
+        else if (alertType === "CAUTION") { icon = "🚨"; label = "CAUTION"; }
+        
+        bq.innerHTML = "<div class='alert__header'><span class='alert__icon' aria-hidden='true'>" + icon + "</span><span class='alert__label'>" + label + "</span></div><div class='alert__content'>" + newHtml + "</div>";
+      }
+    });
+  }
+
   // スマホ表示時のサイドバーアコーディオン初期化
   var sidebarDetails = document.querySelector(".content-sidebar__details");
   if (sidebarDetails && window.innerWidth <= 720) {
@@ -254,6 +278,7 @@
   }
 
   applyExternalLinks();
+  applyAlertStyles();
   updateCompletionButtons();
   renderPanel();
 })();
