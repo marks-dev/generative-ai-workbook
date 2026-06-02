@@ -52,8 +52,8 @@ previous:
 最もシンプルで強力な連携として、ローカルファイルをAIが安全に探索できるようにする「Filesystem MCP Server」を導入します。
 
 Claude Desktopの構成ファイル（通常は以下のパスにあります）を開きます。
-- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 構成ファイルに以下のJSON設定を追加（マージ）します。
 
@@ -79,7 +79,7 @@ Claude Desktopの構成ファイル（通常は以下のパスにあります）
 2. チャットの入力欄の右下に「丸いコンセント型（プラグ）」のアイコンが表示され、接続が成功していることを確認します。
 3. AIに対して以下の質問をしてみましょう。
 
-> **プロンプト例:**
+> プロンプト例:
 > 私が指定したドキュメントフォルダ（MyDocuments）の中には、どのようなファイルやフォルダが入っていますか？一覧を教えてください。
 
 AIが実際にローカルのOSコマンド（MCP経由のAPI）を呼び出し、フォルダ一覧を回答してくれる体験を確認します。
