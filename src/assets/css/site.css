@@ -661,19 +661,11 @@ blockquote.alert--caution .alert__label {
 }
 
 .content-layout {
-  display: grid;
-  grid-template-columns: 240px minmax(0, var(--content-width));
-  gap: var(--space-xl);
-  align-items: start;
+  display: block; /* 1カラム化 */
 }
 
 .content-sidebar {
-  position: sticky;
-  top: 132px;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  padding: var(--space-md);
+  position: static;
 }
 
 .content-sidebar__details {
@@ -683,13 +675,25 @@ blockquote.alert--caution .alert__label {
   margin: 0;
 }
 
+/* 開閉バッジアイコン（丸型フローティング） */
 .content-sidebar__summary {
+  position: fixed;
+  top: 132px;
+  left: max(16px, calc(50% - var(--container-width)/2 - 54px));
+  z-index: 99;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgb(47 111 115 / 0.3);
+  cursor: pointer;
   list-style: none;
   user-select: none;
-  margin-bottom: var(--space-sm);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .content-sidebar__summary::-webkit-details-marker {
@@ -700,29 +704,60 @@ blockquote.alert--caution .alert__label {
   display: none;
 }
 
-.content-sidebar__toggle-icon {
-  font-size: 1.2em;
-  transition: transform 0.2s ease;
-  color: var(--color-text-muted);
+.content-sidebar__summary:hover {
+  transform: scale(1.08);
+  background: #245558; /* 少し濃いティール */
+  box-shadow: 0 6px 16px rgb(47 111 115 / 0.4);
 }
 
-details[open] .content-sidebar__toggle-icon {
-  transform: rotate(180deg);
+.content-sidebar__summary-icon {
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
-@media (min-width: 721px) {
-  .content-sidebar__summary {
-    pointer-events: none;
-    cursor: default;
+/* アコーディオン展開時のリストコンテナ（白ではない独立したカード部品） */
+.content-sidebar__list-container {
+  position: fixed;
+  top: 188px;
+  left: max(16px, calc(50% - var(--container-width)/2 - 54px));
+  z-index: 98;
+  width: 280px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  background: var(--color-accent-muted); /* ブランドを意識した極薄ティール調 */
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 8px 24px rgba(47, 111, 115, 0.15);
+  transform-origin: top left;
+}
+
+/* 展開時のフェードインアニメーション */
+details[open] .content-sidebar__list-container {
+  animation: sidebar-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sidebar-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
-  .content-sidebar__toggle-icon {
-    display: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.content-sidebar__title {
-  margin: 0;
+.content-sidebar__list-header {
+  border-bottom: var(--border-width) solid var(--color-border);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+}
+
+.content-sidebar__list-title {
   font-weight: 700;
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
 }
 
 .content-sidebar__list {
@@ -733,19 +768,24 @@ details[open] .content-sidebar__toggle-icon {
   list-style: none;
 }
 
+/* リストアイテム：横幅いっぱいに広げ、✅を右端に */
 .content-sidebar__item {
-  display: grid;
-  gap: 0.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .content-sidebar__link,
 .content-sidebar__current {
-  color: var(--color-text);
   font-size: var(--font-size-small);
+  line-height: 1.4;
 }
 
 .content-sidebar__link {
+  color: var(--color-text);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .content-sidebar__link:hover {
@@ -753,17 +793,34 @@ details[open] .content-sidebar__toggle-icon {
   text-decoration: underline;
 }
 
+/* カレント教材の太字＋👉表示 */
 .content-sidebar__current {
+  color: var(--color-text);
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.content-sidebar__current-icon {
+  animation: current-icon-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes current-icon-pulse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
 }
 
 .content-sidebar__status {
-  color: var(--color-text-muted);
   font-size: var(--font-size-small);
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .content-article {
   min-width: 0;
+  width: min(100%, var(--content-width)); /* 本文エリアを横幅いっぱいに広げる */
+  margin-inline: auto;
 }
 
 .content-article__header {
@@ -1096,7 +1153,6 @@ details[open] .content-sidebar__toggle-icon {
 
   .category-overview__meta,
   .top-route-list,
-  .content-layout,
   .previous-next {
     grid-template-columns: 1fr;
   }
@@ -1107,13 +1163,9 @@ details[open] .content-sidebar__toggle-icon {
     gap: var(--space-xs);
   }
 
-  .content-sidebar {
-    position: static;
-  }
-
-  .content-sidebar__summary {
-    cursor: pointer;
-    padding-block: var(--space-xs);
+  .content-sidebar__list-container {
+    width: calc(100vw - 32px);
+    max-width: 280px;
   }
 
   .learning-card__link {

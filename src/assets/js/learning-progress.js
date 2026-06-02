@@ -103,6 +103,16 @@
         card.classList.toggle("is-completed", allCompleted);
       }
     });
+
+    // サイドバーの教材用：自身が完了している場合のみ ✅ を表示
+    var sidebarStatusElements = document.querySelectorAll("[data-completion-status]");
+    sidebarStatusElements.forEach(function (el) {
+      var completionId = el.getAttribute("data-completion-status");
+      var completed = isCompleted(completionId);
+      
+      el.textContent = completed ? "✅" : "";
+      el.dataset.completionState = completed ? "completed" : "todo";
+    });
   }
 
   function toggleCompletion(button) {
@@ -123,6 +133,12 @@
         title: title,
         updatedAt: new Date().toISOString()
       };
+
+      // 完了にした（チェックを入れた）タイミングでサイドバーを自動で開く
+      var sidebarDetails = document.querySelector(".content-sidebar__details");
+      if (sidebarDetails) {
+        sidebarDetails.setAttribute("open", "");
+      }
     }
 
     writeState(state);
