@@ -236,12 +236,88 @@
     }
   });
 
+  // 外部リンクを別タブで開く処理
+  function applyExternalLinks() {
+    var links = document.querySelectorAll("a[href^='http']");
+    links.forEach(function (link) {
+      if (!link.href.includes(window.location.hostname)) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+  }
+
+  // GitHub-style Alertsの変換処理
+  function applyAlertStyles() {
+    var blockquotes = document.querySelectorAll("blockquote");
+    blockquotes.forEach(function (bq) {
+      var html = bq.innerHTML;
+      // <p> タグの開始を許容する正規表現パターンに修正
+      var match = html.match(/^\s*(?:<p>)?\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i);
+      if (match) {
+        var alertType = match[1].toUpperCase();
+        bq.className = "alert alert--" + alertType.toLowerCase();
+        
+        // [!TIP] の文字列のみを除去（<p>タグは維持）
+        var newHtml = html.replace(/\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i, "");
+        var icon = "💡";
+        var label = "TIP";
+        
+        if (alertType === "NOTE") { icon = "ℹ️"; label = "NOTE"; }
+        else if (alertType === "IMPORTANT") { icon = "📢"; label = "IMPORTANT"; }
+        else if (alertType === "WARNING") { icon = "⚠️"; label = "WARNING"; }
+        else if (alertType === "CAUTION") { icon = "🚨"; label = "CAUTION"; }
+        
+        bq.innerHTML = "<div class='alert__header'><span class='alert__icon' aria-hidden='true'>" + icon + "</span><span class='alert__label'>" + label + "</span></div><div class='alert__content'>" + newHtml + "</div>";
+      }
+    });
+  }
+
   // スマホ表示時のサイドバーアコーディオン初期化
   var sidebarDetails = document.querySelector(".content-sidebar__details");
   if (sidebarDetails && window.innerWidth <= 720) {
     sidebarDetails.removeAttribute("open");
   }
 
+  // 用語集のインクリメンタル検索機能
+  function applyGlossarySearch() {
+    var searchInput = document.querySelector("[data-glossary-search]");
+    var glossaryItems = document.querySelectorAll(".glossary-item");
+    var noResultsMessage = document.querySelector(".glossary-no-results");
+    var glossaryTableWrapper = document.querySelector(".glossary-table-wrapper");
+    
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", function (event) {
+      var query = event.target.value.toLowerCase().trim();
+      var hasVisibleItems = false;
+
+      glossaryItems.forEach(function (item) {
+        var title = item.querySelector(".glossary-table__term").textContent.toLowerCase();
+        var content = item.querySelector(".glossary-table__def").textContent.toLowerCase();
+        var searchTerms = item.getAttribute("data-search-terms") || "";
+        
+        // タイトル、解説、または検索用タグのいずれかにヒットする場合に表示
+        if (title.indexOf(query) !== -1 || content.indexOf(query) !== -1 || searchTerms.toLowerCase().indexOf(query) !== -1) {
+          item.hidden = false;
+          hasVisibleItems = true;
+        } else {
+          item.hidden = true;
+        }
+      });
+
+      if (noResultsMessage) {
+        noResultsMessage.hidden = hasVisibleItems;
+      }
+      if (glossaryTableWrapper) {
+        glossaryTableWrapper.hidden = !hasVisibleItems;
+      }
+    });
+  }
+
+  applyExternalLinks();
+  applyAlertStyles();
+  applyGlossarySearch();
   updateCompletionButtons();
   renderPanel();
 })();
