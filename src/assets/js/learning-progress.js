@@ -428,10 +428,54 @@
     window.addEventListener("scroll", onScroll);
   }
 
+  // コードブロックへのコピーボタン自動配置とイベントバインド
+  function applyCodeBlockCopyButtons() {
+    var codeBlocks = document.querySelectorAll("pre");
+    codeBlocks.forEach(function (pre) {
+      // 親がすでにラッパーになっているか、あるいはスライドなどの対象外かチェック
+      if (pre.parentElement.classList.contains("code-block-wrapper") || pre.closest(".slide")) return;
+
+      // ラッパーの作成
+      var wrapper = document.createElement("div");
+      wrapper.className = "code-block-wrapper";
+
+      // コピーボタンの作成
+      var copyBtn = document.createElement("button");
+      copyBtn.className = "code-block__copy-btn";
+      copyBtn.type = "button";
+      copyBtn.setAttribute("aria-label", "コードをコピー");
+      copyBtn.innerHTML = '<span class="code-block__copy-icon">📋</span>コピー';
+
+      // DOMの再構成: preの前にwrapperを置き、その中にpreとcopyBtnを格納
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+      wrapper.appendChild(copyBtn);
+
+      // コピー処理
+      copyBtn.addEventListener("click", function () {
+        var codeEl = pre.querySelector("code");
+        var codeText = codeEl ? codeEl.innerText : pre.innerText;
+
+        navigator.clipboard.writeText(codeText).then(function () {
+          var originalHTML = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span class="code-block__copy-icon">✅</span>コピー完了';
+          copyBtn.classList.add("code-block__copy-btn--copied");
+          setTimeout(function () {
+            copyBtn.innerHTML = originalHTML;
+            copyBtn.classList.remove("code-block__copy-btn--copied");
+          }, 2000);
+        }).catch(function (err) {
+          console.error("Failed to copy code: ", err);
+        });
+      });
+    });
+  }
+
   applyExternalLinks();
   applyAlertStyles();
   applyGlossarySearch();
   updateCompletionButtons();
   renderPanel();
   applyCompletionTooltipScroll();
+  applyCodeBlockCopyButtons();
 })();
