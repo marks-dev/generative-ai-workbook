@@ -252,12 +252,14 @@
     var blockquotes = document.querySelectorAll("blockquote");
     blockquotes.forEach(function (bq) {
       var html = bq.innerHTML;
-      var match = html.match(/^\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i);
+      // <p> タグの開始を許容する正規表現パターンに修正
+      var match = html.match(/^\s*(?:<p>)?\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i);
       if (match) {
         var alertType = match[1].toUpperCase();
         bq.className = "alert alert--" + alertType.toLowerCase();
         
-        var newHtml = html.replace(/^\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]\s*(<br>)?/i, "");
+        // [!TIP] の文字列のみを除去（<p>タグは維持）
+        var newHtml = html.replace(/\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i, "");
         var icon = "💡";
         var label = "TIP";
         
