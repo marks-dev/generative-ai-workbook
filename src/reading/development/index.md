@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 読んで学ぶ
     url: /reading/
   - label: 開発
-audience: APIの利用方法、RAGやEmbeddingの仕組み、AIアプリ設計などを学びたい開発者
-duration: 1テーマあたり30〜60分程度
-plan: 有料プラン推奨
 learningCards:
   - group: スタンダード
     items:
@@ -52,7 +49,3 @@ learningCards:
           - Claude
         status: 未実施
 ---
-
-生成AIを用いたシステム開発や、アプリケーションへのAI統合を検討するエンジニア・設計者向けのカテゴリです。
-
-APIの活用、RAG、Embeddingなど、開発に必要不可欠な技術要素や設計思想を学びます。

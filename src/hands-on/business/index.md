@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 触って学ぶ
     url: /hands-on/
   - label: 仕事で活用する
-audience: 議事録作成やスライド構成の支援など、日常の実務でAIを使いこなしたい人
-duration: 1テーマあたり25〜50分程度
-plan: 有料プラン推奨
 learningCards:
   - group: スタンダード
     items:
@@ -52,7 +49,3 @@ learningCards:
           - Claude
         status: 未実施
 ---
-
-ビジネスの実務の中で、生産性を圧倒的に高めるための実践的な活用方法を学ぶカテゴリです。
-
-日常の業務フローに生成AIをどのように組み込むか、具体的なシナリオを通じて身につけていきます。
