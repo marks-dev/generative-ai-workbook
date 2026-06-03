@@ -24,20 +24,30 @@ sidebar:
   items:
     - title: AIと会話してみよう
       url: /hands-on/getting-started/chat/
+      completionId: hands-on-getting-started-chat
       status: 未実施
     - title: 要約してみよう
       url: /hands-on/getting-started/summarize/
       completionId: hands-on-getting-started-summarize
       status: 未実施
+    - title: メールを書いてみよう
+      url: /hands-on/getting-started/email/
+      completionId: hands-on-getting-started-email
+      status: 未実施
+    - title: 表を作ってみよう
+      url: /hands-on/getting-started/table/
+      completionId: hands-on-getting-started-table
+      status: 未実施
     - title: 画像を作ってみよう
       url: /hands-on/getting-started/image/
+      completionId: hands-on-getting-started-image
       status: 未実施
 previous:
   title: AIと会話してみよう
   url: /hands-on/getting-started/chat/
 next:
-  title: 画像を作ってみよう
-  url: /hands-on/getting-started/image/
+  title: メールを書いてみよう
+  url: /hands-on/getting-started/email/
 ---
 
 ## 概要

@@ -79,8 +79,6 @@ Header
 Header Context Area
 (Breadcrumb)
 
-Category Overview
-
 Learning Card
 Learning Card
 Learning Card
@@ -106,16 +104,14 @@ PC構成:
 Header
 
 Header Context Area
-(Breadcrumb / 教材メタ情報 / 完了)
+(Breadcrumb / 完了)
 
 ┌─────────────┬──────────────────┐
 │ Sidebar     │ Content          │
 │             │                  │
 └─────────────┴──────────────────┘
 
-Related Content
-
-Previous / Next
+Summary Card
 ```
 
 スマートフォン構成:
@@ -124,13 +120,11 @@ Previous / Next
 Header
 
 Header Context Area
-(Breadcrumb / 教材メタ情報 / 完了)
+(Breadcrumb / 完了)
 
 Content
 
-Related Content
-
-Previous / Next
+Summary Card
 ```
 
 補足:
@@ -167,7 +161,6 @@ Previous / Next
 例:
 
 - Breadcrumb
-- 教材メタ情報
 - 完了ボタン
 
 主要メニュー:
