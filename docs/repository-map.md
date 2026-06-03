@@ -77,7 +77,7 @@ MIT Licenseを管理する。
 
 ## 設計ドキュメント
 
-### docs/site-map.md
+### docs/content/site-map.md
 
 サイト構造と学習導線を管理する。
 
@@ -87,7 +87,7 @@ MIT Licenseを管理する。
 - 教材構成変更
 - 学習導線変更
 
-### docs/url-design.md
+### docs/common/url-design.md
 
 URL設計を管理する。
 
@@ -97,7 +97,7 @@ URL設計を管理する。
 - URL命名規則変更
 - GitHub Pagesの公開URL方針変更
 
-### docs/ui-design.md
+### docs/common/ui-design.md
 
 サイト全体のUI設計思想を管理する。
 
@@ -107,7 +107,7 @@ URL設計を管理する。
 - UI全体の方向性
 - 配色・雰囲気の基本方針
 
-### docs/layout-design.md
+### docs/pages/layout-design.md
 
 画面レイアウト設計を管理する。
 
@@ -118,7 +118,7 @@ URL設計を管理する。
 - Sidebar
 - 画面ごとの領域配置
 
-### docs/navigation-design.md
+### docs/pages/navigation-design.md
 
 サイト全体のナビゲーション設計を管理する。
 
@@ -130,7 +130,7 @@ URL設計を管理する。
 - 前へ・次へ
 - 関連教材導線
 
-### docs/component-design.md
+### docs/common/component-design.md
 
 共通コンポーネント設計を管理する。
 
@@ -143,7 +143,7 @@ URL設計を管理する。
 - Exercise
 - Code Block
 
-### docs/learning-progress-design.md
+### docs/common/learning-progress-design.md
 
 学習状況管理機能を管理する。
 
@@ -154,7 +154,7 @@ URL設計を管理する。
 - JSONエクスポート
 - JSONインポート
 
-### docs/top-page-design.md
+### docs/pages/top-page-design.md
 
 トップページ設計を管理する。
 
@@ -165,7 +165,7 @@ URL設計を管理する。
 - 触って学ぶ入口
 - 学習再開支援
 
-### docs/category-page-design.md
+### docs/pages/category-page-design.md
 
 カテゴリページ設計を管理する。
 
@@ -176,7 +176,7 @@ URL設計を管理する。
 - 教材メタ情報表示
 - レベル別グルーピング
 
-### docs/content-page-design.md
+### docs/pages/content-page-design.md
 
 教材ページ設計を管理する。
 
@@ -188,7 +188,7 @@ URL設計を管理する。
 - 完了誘導
 - Previous / Next Navigation
 
-### docs/content-format-design.md
+### docs/content/content-format-design.md
 
 教材コンテンツの記述ルールを管理する。
 
@@ -200,7 +200,7 @@ URL設計を管理する。
 - ハンズオンStep構成
 - AI生成ルール
 
-### docs/content-management-design.md
+### docs/content/content-management-design.md
 
 教材コンテンツの管理方式を管理する。
 
@@ -211,7 +211,7 @@ URL設計を管理する。
 - メタ情報
 - 独自記法の採用可否
 
-### docs/static-site-generation-design.md
+### docs/system/static-site-generation-design.md
 
 MarkdownからHTMLを生成する方式を管理する。
 
@@ -222,7 +222,7 @@ MarkdownからHTMLを生成する方式を管理する。
 - メタ情報利用
 - 生成フロー
 
-### docs/ssg-selection-design.md
+### docs/system/ssg-selection-design.md
 
 Static Site Generatorの選定結果と採用理由を管理する。
 
@@ -232,7 +232,7 @@ Static Site Generatorの選定結果と採用理由を管理する。
 - SSG必須要件
 - SSG運用方針
 
-### docs/github-actions-design.md
+### docs/system/github-actions-design.md
 
 GitHub Actionsの利用方針を管理する。
 
@@ -243,7 +243,7 @@ GitHub Actionsの利用方針を管理する。
 - ビルド実行方針
 - 失敗時の扱い
 
-### docs/css-design.md
+### docs/common/css-design.md
 
 サイト全体のCSS方針を管理する。
 
@@ -255,7 +255,7 @@ GitHub Actionsの利用方針を管理する。
 - 余白
 - レスポンシブ対応
 
-### docs/design-token-design.md
+### docs/common/design-token-design.md
 
 デザインで利用する共通トークンを管理する。
 
@@ -282,59 +282,59 @@ GitHub Actionsの利用方針を管理する。
 
 参照するファイル:
 
-- docs/site-map.md
-- docs/url-design.md
-- docs/category-page-design.md
-- docs/content-page-design.md
-- docs/content-management-design.md
+- docs/content/site-map.md
+- docs/common/url-design.md
+- docs/pages/category-page-design.md
+- docs/pages/content-page-design.md
+- docs/content/content-management-design.md
 
 ### 画面・UI・導線を変更する場合
 
 参照するファイル:
 
-- docs/ui-design.md
-- docs/layout-design.md
-- docs/navigation-design.md
-- docs/component-design.md
-- docs/top-page-design.md
-- docs/category-page-design.md
-- docs/content-page-design.md
+- docs/common/ui-design.md
+- docs/pages/layout-design.md
+- docs/pages/navigation-design.md
+- docs/common/component-design.md
+- docs/pages/top-page-design.md
+- docs/pages/category-page-design.md
+- docs/pages/content-page-design.md
 
 ### 学習状況管理を変更する場合
 
 参照するファイル:
 
-- docs/learning-progress-design.md
-- docs/layout-design.md
-- docs/navigation-design.md
-- docs/component-design.md
+- docs/common/learning-progress-design.md
+- docs/pages/layout-design.md
+- docs/pages/navigation-design.md
+- docs/common/component-design.md
 
 ### 教材本文・Markdown管理を変更する場合
 
 参照するファイル:
 
-- docs/content-format-design.md
-- docs/content-management-design.md
-- docs/static-site-generation-design.md
+- docs/content/content-format-design.md
+- docs/content/content-management-design.md
+- docs/system/static-site-generation-design.md
 
 ### CSS・デザイン値を変更する場合
 
 参照するファイル:
 
-- docs/css-design.md
-- docs/design-token-design.md
-- docs/ui-design.md
-- docs/component-design.md
+- docs/common/css-design.md
+- docs/common/design-token-design.md
+- docs/common/ui-design.md
+- docs/common/component-design.md
 
 ### 静的サイト生成・公開方式を変更する場合
 
 参照するファイル:
 
-- docs/content-management-design.md
-- docs/static-site-generation-design.md
-- docs/ssg-selection-design.md
-- docs/github-actions-design.md
-- docs/url-design.md
+- docs/content/content-management-design.md
+- docs/system/static-site-generation-design.md
+- docs/system/ssg-selection-design.md
+- docs/system/github-actions-design.md
+- docs/common/url-design.md
 
 ---
 
