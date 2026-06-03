@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 読んで学ぶ
     url: /reading/
   - label: 基礎
-audience: 生成AIの考え方や用語を、基本から整理して理解したい人
-duration: 1テーマあたり15〜30分程度
-plan: Freeプランから学習可能
 learningCards:
   - group: ビギナー
     items:
@@ -52,7 +49,3 @@ learningCards:
           - Claude
         status: 未実施
 ---
-
-生成AIを学ぶための土台となる、基本的な概念や歴史、利用時の注意点などを知識中心に学ぶカテゴリです。
-
-まずは「AIとは」から始めて、順に読み進めていきましょう。

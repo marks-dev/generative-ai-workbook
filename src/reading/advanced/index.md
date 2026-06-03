@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 読んで学ぶ
     url: /reading/
   - label: 高度
-audience: MCP、AIエージェント、ローカルLLMなど、最先端で高度なAI技術を学びたい人
-duration: 1テーマあたり45〜90分程度
-plan: 有料プラン推奨
 learningCards:
   - group: アドバンスド
     items:
@@ -49,7 +46,3 @@ learningCards:
           - LM Studio
         status: 未実施
 ---
-
-最先端の生成AIトレンドや、自律型システム、独自のインフラ上で動くローカルAIなど、さらに一歩進んだ高度なテーマを学ぶカテゴリです。
-
-MCPを活用したツールの拡張や、AIエージェントの自律的な設計アプローチなどを学びます。

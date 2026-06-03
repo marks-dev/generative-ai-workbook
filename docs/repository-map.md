@@ -106,24 +106,15 @@ URL設計を管理する。
 
 ### docs/common/ui-design.md
 
-サイト全体のUI設計思想を管理する。
+サイト全体のUI設計思想と共通レイアウト構造（スケルトン）を管理する。
 
 変更例:
 
 - 対象デバイス方針
 - UI全体の方向性
 - 配色・雰囲気の基本方針
+- 共通レイアウト構造（スケルトン）
 
-### docs/pages/layout-design.md
-
-画面レイアウト設計を管理する。
-
-変更例:
-
-- Header
-- Footer採用有無
-- Sidebar
-- 画面ごとの領域配置
 
 ### docs/pages/navigation-design.md
 
@@ -300,7 +291,6 @@ GitHub Actionsの利用方針を管理する。
 参照するファイル:
 
 - docs/common/ui-design.md
-- docs/pages/layout-design.md
 - docs/pages/navigation-design.md
 - docs/common/component-design.md
 - docs/pages/top-page-design.md
@@ -312,7 +302,6 @@ GitHub Actionsの利用方針を管理する。
 参照するファイル:
 
 - docs/common/learning-progress-design.md
-- docs/pages/layout-design.md
 - docs/pages/navigation-design.md
 - docs/common/component-design.md
 
@@ -401,11 +390,10 @@ EleventyによるHTML生成物の出力先として想定する。
 
 - site-map.mdはサイト構造を管理する。
 - url-design.mdは公開URLを管理する。
-- ui-design.mdはUI全体の思想を管理する。
-- layout-design.mdは画面領域の配置を管理する。
+- ui-design.mdはUI全体の思想と共通レイアウト構造（スケルトン）を管理する。
 - navigation-design.mdは移動導線を管理する。
 - component-design.mdは共通UI部品を管理する。
-- top-page-design.md、category-page-design.md、content-page-design.mdは画面別の設計を管理する。
+- top-page-design.md、category-page-design.md、content-page-design.mdは画面別のレイアウトと詳細設計を管理する。
 - content-format-design.mdは教材本文の書き方を管理する。
 - content-management-design.mdはMarkdown管理方針を管理する。
 - static-site-generation-design.mdはEleventyによるMarkdownからHTMLへの生成方式を管理する。

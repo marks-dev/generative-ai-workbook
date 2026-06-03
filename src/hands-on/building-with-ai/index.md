@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 触って学ぶ
     url: /hands-on/
   - label: AIと仕組みを作る
-audience: AIを用いたプログラミングやワークフローの自動化に挑戦したい開発者
-duration: 1テーマあたり40〜80分程度
-plan: 有料プラン推奨
 learningCards:
   - group: アドバンスド
     items:
@@ -48,7 +45,3 @@ learningCards:
           - Cursor
         status: 未実施
 ---
-
-生成AIを「使う」立場から一歩進み、AIと協力してシステムを作ったり、AI自体を組み込んだ自律的な仕組みを開発するカテゴリです。
-
-AI時代の新しい開発手法（AIコーディングやエージェント設計）を実際に体験しながら学びます。

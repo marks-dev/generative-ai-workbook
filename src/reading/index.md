@@ -7,9 +7,6 @@ breadcrumbs:
   - label: トップページ
     url: /
   - label: 読んで学ぶ
-audience: 生成AIの考え方や用語を、順番に整理して理解したい人
-duration: 1カテゴリあたり30分から2時間程度
-plan: Freeプランから学習可能。有料プランがあると一部テーマを試しやすい
 learningCards:
   - group: ビギナー
     items:
@@ -77,7 +74,3 @@ learningCards:
           - Cursor
         status: 未実施
 ---
-
-生成AIの基本、チャットでの使い方、開発での活用、高度なトピックを知識中心に学ぶ入口です。
-
-まずは「基礎」で全体像をつかみ、必要に応じて「チャットレベル」「開発」「高度」へ進みます。

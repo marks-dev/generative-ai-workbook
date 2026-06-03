@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 触って学ぶ
     url: /hands-on/
   - label: はじめての生成AI
-audience: まずはAIと会話したり、メールや画像を作成する実践を重ねたい人
-duration: 1テーマあたり15〜30分程度
-plan: Freeプランから学習可能
 learningCards:
   - group: ビギナー
     items:
@@ -76,7 +73,3 @@ learningCards:
           - Copilot
         status: 未実施
 ---
-
-実際に生成AIを使って手を動かしながら、その便利な機能を体感するカテゴリです。
-
-難しく考えず、チャットAIとの楽しい会話や簡単な文章作成・画像生成から進めていきましょう。

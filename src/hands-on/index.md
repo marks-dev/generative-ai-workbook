@@ -7,9 +7,6 @@ breadcrumbs:
   - label: トップページ
     url: /
   - label: 触って学ぶ
-audience: 実際に生成AIを使いながら、仕事や開発での活用方法を身につけたい人
-duration: 1カテゴリあたり30分から90分程度
-plan: はじめての生成AIはFreeプラン中心。仕事・開発活用は有料プラン推奨
 learningCards:
   - group: ビギナー
     items:
@@ -63,7 +60,3 @@ learningCards:
           - Claude Code
         status: 未実施
 ---
-
-実際に生成AIを使いながら、仕事や開発に活用する方法を実践中心に学ぶ入口です。
-
-迷う場合は「はじめての生成AI」から始め、できることを増やしながら「仕事で活用する」「AIと仕組みを作る」へ進みます。

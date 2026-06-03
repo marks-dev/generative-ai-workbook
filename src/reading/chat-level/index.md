@@ -9,9 +9,6 @@ breadcrumbs:
   - label: 読んで学ぶ
     url: /reading/
   - label: チャットレベル
-audience: プロンプトの工夫やファイルの活用、日々の業務への応用方法を身につけたい人
-duration: 1テーマあたり20〜40分程度
-plan: Freeプランから有料プラン推奨
 learningCards:
   - group: ビギナー
     items:
@@ -52,7 +49,3 @@ learningCards:
           - Claude
         status: 未実施
 ---
-
-チャット形式で生成AIを扱う上で、より高度な操作や業務活用を行うための考え方を学ぶカテゴリです。
-
-プロンプトのテクニックだけでなく、AI検索やカスタムツールの考え方を順に身につけていきましょう。
