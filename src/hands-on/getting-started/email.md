@@ -57,11 +57,4 @@ relatedHandson:
     url: /reading/chat-level/prompt-practice/
 ---
 
-## ハンズオン：メールを書いてみよう
-
-チャットAIツールを使用して、実際にメールの作成・トーン調整・お詫びメール作成のプロセスを体験しましょう。
-
-### 【インタラクティブステップ】めくって進める実践スライド
-下のスライドには、今回のハンズオンで必要となる準備と、AIに入力するプロンプト例（**クリック一つでクリップボードにコピーできる機能付き**）がステップごとに整理されています。順番にめくりながら、自分のチャットAIにペーストして体験してみましょう。
-
 <iframe src="../../../assets/slides/email-steps.html" frameborder="0" allowfullscreen="true"></iframe>
