@@ -79,11 +79,17 @@ content/
 
 ```yaml
 ---
-title: AIの歴史
-difficulty: beginner
+title: メールを書いてみよう
+description: 送信相手や状況に合わせた、分かりやすく丁寧なビジネスメールをAIと作成します。
+permalink: /hands-on/getting-started/email/
+pageType: content
+difficulty: 初級
+plan: Free
 service:
   - ChatGPT
-plan: free
+  - Gemini
+  - Claude
+completionId: hands-on-getting-started-email
 ---
 ```
 
@@ -142,7 +148,4 @@ plan: free
 
 ## 今後決めること
 
-- MarkdownからHTMLへの生成方式
-- メタ情報詳細仕様
 - 独自記法採用可否
-- ビルド手順

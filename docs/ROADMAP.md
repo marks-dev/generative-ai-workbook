@@ -211,6 +211,9 @@
 - 自動生成される詳細ページの再現性担保のため、詳細ページの構成から「## まとめ」セクションを完全に排除し、フッターまとめカードへ一本化する仕様是正を [content-format-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-format-design.md) に反映
 - 新規詳細ページ（メール、表）の準備物・実践ステップを義務に基づきHTMLスライドへアセット化し、Markdown本文から手順テキストを完全に排除
 - 既存コンテンツやコードの参照・模倣（流用して寄せる行為）を厳重に禁止し、常に仕様書を正として新規生成する行動ルールを [AGENTS.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/AGENTS.md) および [content-format-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-format-design.md) に策定
+- 新規追加した「設計書の網羅的理解と不整合防止ルール」に基づき、docs内の全設計書をスキャンして発生していた不整合を修正：
+  - [layout-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/layout-design.md) から、廃止された「Category Overview（概要の画面表示）」「教材メタ情報のヘッダー表示」「Previous/Nextのナビゲーションリンクカード」の記述を削除し、最新の教材ページレイアウト（Summary Cardスタック形式）に更新
+  - [content-management-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-management-design.md) および [static-site-generation-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/static-site-generation-design.md) から、廃止された難易度等の古いメタバッジのYAML記述例を削除し、最新のメタ情報定義（`title`, `description`, `icon`, `completionId` 等）のYAML例に修正
 
 ---
 
