@@ -208,6 +208,9 @@
 
 - 「触って学ぶ - はじめての生成AI」カテゴリの未実装詳細ページである「メールを書いてみよう（email.md）」および「表を作ってみよう（table.md）」を新規作成
 - 既存の「AIと会話してみよう」「要約してみよう」「画像を作ってみよう」およびインデックスページのサイドバー、前後の教材へのリンク（previous/next）を更新し、全5ページの整合性および接続性を担保
+- 自動生成される詳細ページの再現性担保のため、詳細ページの構成から「## まとめ」セクションを完全に排除し、フッターまとめカードへ一本化する仕様是正を [content-format-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-format-design.md) に反映
+- 新規詳細ページ（メール、表）の準備物・実践ステップを義務に基づきHTMLスライドへアセット化し、Markdown本文から手順テキストを完全に排除
+- 既存コンテンツやコードの参照・模倣（流用して寄せる行為）を厳重に禁止し、常に仕様書を正として新規生成する行動ルールを [AGENTS.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/AGENTS.md) および [content-format-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-format-design.md) に策定
 
 ---
 
