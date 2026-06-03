@@ -39,6 +39,30 @@ learningCards:
           - Gemini
           - Claude
         status: 未実施
+      - title: メールを書いてみよう
+        url: /hands-on/getting-started/email/
+        completionId: hands-on-getting-started-email
+        icon: ✉️
+        description: 送信相手や状況に合わせた、分かりやすく丁寧なビジネスメールをAIと作成します。
+        difficulty: 初級
+        plan: Free
+        service:
+          - ChatGPT
+          - Gemini
+          - Claude
+        status: 未実施
+      - title: 表を作ってみよう
+        url: /hands-on/getting-started/table/
+        completionId: hands-on-getting-started-table
+        icon: 📊
+        description: 雑多な情報から、AIを使って整理された見やすい表（テーブルデータ）を自動生成させます。
+        difficulty: 初級
+        plan: Free
+        service:
+          - ChatGPT
+          - Gemini
+          - Claude
+        status: 未実施
       - title: 画像を作ってみよう
         url: /hands-on/getting-started/image/
         completionId: hands-on-getting-started-image

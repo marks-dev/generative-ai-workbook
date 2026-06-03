@@ -1,23 +1,26 @@
+# Pull Request 変更内容
+
 ## 変更内容
 
-ユーザー様のご要望に基づき、「このサイトについて」「用語集」「教材詳細（末端）ページ」の本文表示エリアの最大幅を、トップページやカテゴリページに合わせて `--container-width`（`1040px`）に統一し、全体の表示の広さと一貫性を向上させました。
+「触って学ぶ - はじめての生成AI」カテゴリの未実装詳細ページである「メールを書いてみよう（email.md）」および「表を作ってみよう（table.md）」を新規作成し、既存の各詳細ページとインデックスページのナビゲーション・サイドバーを更新して全5ページを正しく連結させました。
 
-1. **「このサイトについて」と「用語集」の本文幅を1040pxへ拡張**
-   - `src/assets/css/site.css` にて、標準レイアウト用コンテナである `.site-main` クラスの最大幅を、従来の `var(--content-width)` (`760px`) から `var(--container-width)` (`1040px`) へ変更しました。
-   - これにより、特に「用語集」ページの Notion風検索テーブルなど、横幅を広く使いたい要素が横幅いっぱいに美しく配置されるようになり、視認性と操作性が劇的に向上しました。
-2. **「教材詳細（末端）ページ」の本文幅を1040pxへ拡張**
-   - 同様に `.content-article` の最大幅を `760px` から `1040px` 幅（`var(--container-width)`）へ拡張しました。
-   - 全体のベージュ背景の幅に教材本文エリアの最大幅が調和するようになり、ダイナミックでプレミアムな読書体験が実現します。
-3. **フローティングバッジと本文の重なり防止対策**
-   - コンテンツ最大幅を 1040px に広げたことに伴い、画面幅が狭くなった場合（`1120px` 以下）に左上に浮遊するサイドバー開閉バッジ（`☰` / `✕`）と本文テキストが重なってしまうのを防ぐため、メディアクエリで `.content-article` に対して `padding-left: 64px;` の安全余白を動的に付与する調整を行いました。
-   - これにより、大画面からノートPC、タブレットに至るまで、すべてのスクリーンサイズにおいて完璧な表示崩れ防止と美しさが保証されます。
+### 1. 新規教材の追加
+- **メールを書いてみよう (`src/hands-on/getting-started/email.md`)**: ビジネスメール作成、トーン変更、お詫びメール作成のステップを執筆。
+- **表を作ってみよう (`src/hands-on/getting-started/table.md`)**: 文章からの表生成、列の追加、CSV形式へのエクスポートステップを執筆。
+
+### 2. ナビゲーションおよびサイドバーの更新
+- `src/hands-on/getting-started/index.md` の `learningCards` に上記2件を追加。
+- 既存の `chat.md`, `summarize.md`, `image.md` のサイドバーに新規ページへのリンクと `completionId` を反映。
+- 各ページの `previous` / `next` ナビゲーションのポインタを更新し、順番（会話 -> 要約 -> メール -> 表 -> 画像）通りに遷移できるように修正。
 
 ---
 
 ## 確認した設計書
 
-1. `AGENTS.md` (ルール厳守)
-2. `docs/content-page-design.md` (教材ページ設計書)
+- [AGENTS.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/AGENTS.md) (行動ルール)
+- [repository-map.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/repository-map.md) (責務境界・設計書マップ)
+- [ROADMAP.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/ROADMAP.md) (進行状況・決定事項)
+- [content-format-design.md](file:///Users/tanji/MyDocuments/myDev/working/generative-ai-workbook/docs/content-format-design.md) (教材形式ガイドライン)
 
 ---
 
@@ -32,12 +35,11 @@ npm run build
 
 ## 確認結果
 
-- `npm run build` にて、静的HTMLファイルがすべてエラーなく正常に出力されることを確認しました。
-- ローカル環境での表示検証により、「このサイトについて」「用語集」「教材詳細ページ」の本文エリアが最大 `1040px` まで美しく広がり、広々とした一貫性のあるレイアウトになったことを確認しました。
-- 画面幅を縮めていった際にも、左上のフローティングバッジを避けるように `padding-left: 64px;` が正しく作動し、本文とバッジが絶対に重ならないプレミアムなレスポンシブ挙動を確認しました。
+- `npm run build` にて、新規教材を含む全35ファイルがエラーなく正常に静的HTMLへとビルドされることを確認しました。
+- リンク切れや余計な差分が発生していないことを `git diff` 等で確認済みです。
 
 ---
 
 ## 未対応事項
 
-- 特になし。
+- なし
