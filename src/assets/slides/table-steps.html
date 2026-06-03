@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>表を作ってみよう - ハンズオンステップ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #333333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      box-sizing: border-box;
+    }
+    .slide-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slide {
+      display: none;
+      width: 80%;
+      max-width: 580px;
+      text-align: left;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide h2 {
+      color: #2f6f73;
+      font-size: 1.6rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 2px solid rgba(47, 111, 115, 0.2);
+      padding-bottom: 8px;
+      font-weight: 800;
+    }
+    .slide p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+    .prep-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .prep-list li {
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .prep-list a {
+      color: #2f6f73;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid #2f6f73;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      background: #ffffff;
+    }
+    .prep-list a:hover {
+      background: #2f6f73;
+      color: #ffffff;
+    }
+    .prompt-box {
+      background: #f5f5f5;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .prompt-text {
+      margin: 0;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: #2f6f73;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      padding-right: 80px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffffff;
+      border: 1px solid #2f6f73;
+      color: #2f6f73;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+    .copy-btn:hover {
+      background: #2f6f73;
+      color: #ffffff;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      color: #2f6f73;
+      font-size: 1.2rem;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      user-select: none;
+    }
+    .nav-btn:hover {
+      background: #e6f0ef;
+      border-color: #2f6f73;
+      transform: translateY(-50%) scale(1.05);
+    }
+    .prev-btn { left: 16px; }
+    .next-btn { right: 16px; }
+    .indicator {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #666666;
+      background: #f5f5f5;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.05em;
+    }
+    .toast {
+      position: absolute;
+      top: 16px;
+      background: rgba(47, 111, 115, 0.9);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀</button>
+    
+    <!-- Slide 1: 準備するもの -->
+    <div class="slide active">
+      <h2>準備するもの</h2>
+      <p>いずれかのチャットAIツールのアカウントを作成しておきましょう（すべて無料プランで体験できます）。</p>
+      <ul class="prep-list">
+        <li>
+          <span>ChatGPT (OpenAI)</span>
+          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+        </li>
+        <li>
+          <span>Gemini (Google)</span>
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+        </li>
+        <li>
+          <span>Claude (Anthropic)</span>
+          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Slide 2: Step 1 -->
+    <div class="slide">
+      <h2>ステップ 1: 文章から表を生成する</h2>
+      <p>以下の文章から、「ツール名」「提供企業」「主な特徴」の3つの列を持つ表を作成してください。下の「コピーする」ボタンを押して貼り付けます。</p>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('prompt1')">コピーする</button>
+        <p class="prompt-text" id="prompt1">以下の文章から、「ツール名」「提供企業」「主な特徴」の3つの列を持つ表を作成してください。
+
+---
+OpenAIが開発したChatGPTは、高度な自然言語処理能力を持ち、対話や要約、文章生成など多岐にわたる用途で世界中で使われています。一方、Googleが提供するGeminiは、検索エンジンとの強力な連携やマルチモーダル機能に強みを持っています。また、Anthropicが開発するClaudeは、高い文章表現力や長文の論理的な処理能力において高い評価を得ています。</p>
+      </div>
+      <p>AIがMarkdownの表形式で美しく出力したか確認しましょう。</p>
+    </div>
+    
+    <!-- Slide 3: Step 2 -->
+    <div class="slide">
+      <h2>ステップ 2: 列を追加・編集する</h2>
+      <p>作成された表に対して、新しい情報を追加するように指示します。</p>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('prompt2')">コピーする</button>
+        <p class="prompt-text" id="prompt2">作成してくれた表に、「無料プランの有無」という列を追加してください。また、それぞれのツールが無料で使えるかどうかを調べて反映させてください。</p>
+      </div>
+      <p>「無料プランの有無」という列が新しく表に追加されたかを確認します。</p>
+    </div>
+
+    <!-- Slide 4: Step 3 -->
+    <div class="slide">
+      <h2>ステップ 3: 別のデータ形式（CSVなど）に変換する</h2>
+      <p>作成した表を他のソフトウェアで使いやすくするため、データ形式を変更させます。</p>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('prompt3')">コピーする</button>
+        <p class="prompt-text" id="prompt3">今の表のデータを、Excelやスプレッドシートにそのまま貼り付けられる「CSV形式（カンマ区切り）」のテキストとして出力し直してください。</p>
+      </div>
+      <p>表のデータがカンマ区切りのテキストに正しく変換されたかを確認します。</p>
+    </div>
+    
+    <button class="nav-btn next-btn" onclick="changeSlide(1)">▶</button>
+    <div class="indicator" id="slide-indicator">1 / 4</div>
+    <div class="toast" id="toast">コピーしました！</div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slide-indicator');
+    const toast = document.getElementById('toast');
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function copyPrompt(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        toast.style.opacity = 1;
+        setTimeout(() => {
+          toast.style.opacity = 0;
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
