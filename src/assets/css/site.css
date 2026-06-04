@@ -686,13 +686,18 @@ blockquote.alert--caution .alert__header {
   cursor: pointer;
   text-decoration: none;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 .top-route-card:hover,
 .top-route-card:focus-visible {
   border-color: var(--color-accent);
-  background: var(--color-accent-muted);
-  box-shadow: 0 4px 12px rgb(36 36 36 / 0.08);
+  background: var(--color-surface-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(47, 111, 115, 0.12);
 }
 
 .top-route-card__icon {
@@ -831,6 +836,23 @@ details[open] .content-sidebar__summary-icon--close {
 }
 
 /* アコーディオン展開時のリストコンテナ（白ではない独立したカード部品） */
+/* サイドバーの背景バックドロップ */
+.content-sidebar__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 97;
+  background: rgba(36, 36, 36, 0.12);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.content-sidebar__backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .content-sidebar__list-container {
   position: fixed;
   top: 188px;
@@ -839,11 +861,12 @@ details[open] .content-sidebar__summary-icon--close {
   width: 280px;
   max-height: calc(100vh - 220px);
   overflow-y: auto;
-  background: var(--color-accent-muted); /* ブランドを意識した極薄ティール調 */
-  border: var(--border-width) solid var(--color-border);
+  background: rgba(251, 250, 247, 0.92); /* 極薄の砂白色 + 透過 */
+  backdrop-filter: blur(16px); /* グラスモーフィズム */
+  border: var(--border-width) solid rgba(47, 111, 115, 0.18);
   border-radius: var(--radius-md);
   padding: var(--space-md);
-  box-shadow: 0 8px 24px rgba(47, 111, 115, 0.15);
+  box-shadow: 0 12px 36px -4px rgba(47, 111, 115, 0.22);
   transform-origin: top left;
 }
 
@@ -1207,24 +1230,34 @@ details[open] .content-sidebar__list-container {
   padding: var(--space-md);
   color: var(--color-text);
   text-decoration: none;
-  transition: border-color var(--transition-normal), background var(--transition-normal), box-shadow var(--transition-normal);
+  transition: border-color var(--transition-normal), 
+              background var(--transition-normal), 
+              box-shadow var(--transition-normal),
+              transform var(--transition-normal);
 }
 
 .learning-card__link:hover {
   border-color: var(--color-accent);
   background: var(--color-surface-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -2px rgba(47, 111, 115, 0.08);
 }
 
 /* 完了状態のカードスタイル（紐づく子階層がすべて完了、または詳細教材が完了時） */
 .learning-card.is-completed .learning-card__link {
   border-color: #c2e7d9;
   background: #f7fdfb;
+  transition: border-color var(--transition-normal), 
+              background var(--transition-normal), 
+              box-shadow var(--transition-normal),
+              transform var(--transition-normal);
 }
 
 .learning-card.is-completed .learning-card__link:hover {
   border-color: #a3e2c9;
   background: #effaf6;
-  box-shadow: 0 2px 8px rgba(15, 118, 82, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -2px rgba(15, 118, 82, 0.08);
 }
 
 .learning-card.is-completed .learning-card__icon {
@@ -1392,15 +1425,36 @@ details[open] .content-sidebar__list-container {
   .site-header__global {
     min-height: auto;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-xs);
+    align-items: stretch;
+    gap: var(--space-sm);
     padding-block: var(--space-sm);
+  }
+
+  .site-header__logo {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
   }
 
   .site-header__nav {
     width: 100%;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    padding-bottom: 2px;
+  }
+
+  .site-header__nav::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .site-header__nav-link,
+  .site-header__nav-button {
+    flex-shrink: 0;
   }
 
   .site-header__context {
@@ -1441,6 +1495,10 @@ details[open] .content-sidebar__list-container {
     width: calc(100vw - 48px);
     max-width: 280px;
     max-height: calc(100vh - 120px);
+    background: rgba(251, 250, 247, 0.94);
+    backdrop-filter: blur(16px);
+    border: var(--border-width) solid rgba(47, 111, 115, 0.18);
+    box-shadow: 0 16px 40px -6px rgba(47, 111, 115, 0.28);
     transform-origin: bottom right;
   }
 
