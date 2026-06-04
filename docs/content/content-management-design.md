@@ -90,6 +90,12 @@ service:
   - Gemini
   - Claude
 completionId: hands-on-getting-started-email
+keypoints:
+  - 送信相手（上司、取引先等）に応じた適切な敬語表現を使い分ける
+  - 要件が明確で簡潔に伝わるメール構成の基本パターンを理解する
+relatedHandson:
+  - title: ビジネスメールの基本構造
+    url: /reading/fundamentals/business-email-structure/
 ---
 ```
 
@@ -98,10 +104,14 @@ completionId: hands-on-getting-started-email
 - 一覧生成
 - カテゴリ生成
 - ナビゲーション生成
+- 教材詳細ページ最下部の「まとめカード」の表示
 
 補足:
 
-- 項目詳細は今後決定する
+- **表示が廃止されたメタ情報の扱い**: `difficulty`（難易度）、`plan`（プラン）、`service`（サービス）は教材詳細ページでの画面表示は廃止されましたが、今後の絞り込み機能や学習管理トラッキング用にYAMLのメタ情報としては引き続き定義し、内部で保持します。
+- **まとめ用メタデータの定義**: 
+  - `keypoints`（配列・必須）: 教材のまとめカードに表示する「抑えるべきポイント」を箇条書きで定義。
+  - `relatedHandson`（配列・必須）: 関連コンテンツへのリンク情報を `title` と `url` のオブジェクト形式で定義。閲覧ページが `/reading`（読んで学ぶ）配下の場合は「関連ハンズオン」として、`/hands-on`（触って学ぶ）配下の場合は「関連読み物」として画面上は自動でラベルが切り替わって表示されます（YAMLのキー名は `relatedHandson` で統一します）。
 
 ---
 
