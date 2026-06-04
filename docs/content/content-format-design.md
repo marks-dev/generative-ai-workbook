@@ -46,7 +46,100 @@
 ### 2. スライド (ローカルHTMLスライドへの完全統一)
 - **原則と配置**: ハンズオンの「準備するもの」「実践ステップ」は、**必ずHTMLスライドとしてアセット化し、Markdown中から iframe で埋め込み**ます（外部スライドサービスの iframe 直接埋め込みは全面禁止）。スライドは `src/assets/slides/` 配下に配置します。
 - **記述制約**: Eleventyのフロントマターが画面上に露出するのを防ぐため、スライドHTML内にはフロントマターを一切書かず、ピュアな静的HTMLとして作成します。
-- **デザイン**: ページ番号（例: `1 / 4`）を**フッター右端**に必ず常時表示します。配色は教材と調和する**ホワイト系（明るい色合い）**に統一します。
+- **デザインと実装要件**: ページ番号（例: `1 / 4`）を**フッター右端**に必ず常時表示します。配色は教材と調和する**ホワイト系（明るい色合い）**に統一します。iframe読み込み時のサイズとして、幅 `100%`、高さ `450`（`style="border: 1px solid var(--color-border); border-radius: var(--border-radius-md);"`）を指定します。
+- **スライドHTMLのボイラープレート**: デザインおよび動作の一貫性を保つため、新規スライドを作成する際は必ず以下のボイラープレートコードをベースとして使用します。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スライドタイトル</title>
+  <link rel="stylesheet" href="../../css/site.css">
+  <style>
+    body {
+      background: var(--color-surface, #ffffff);
+      margin: 0;
+      padding: 24px;
+      font-family: var(--font-family, sans-serif);
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+    .slide-step {
+      flex: 1;
+      display: none;
+    }
+    .slide-step.is-active {
+      display: block;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-border);
+    }
+    .slide-controls {
+      display: flex;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- スライド 1/N: 準備するもの -->
+  <div class="slide-step is-active" data-step="1">
+    <h2>準備するもの</h2>
+    <ul>
+      <li>準備アイテム...</li>
+    </ul>
+  </div>
+
+  <!-- スライド 2/N: 実践ステップ -->
+  <div class="slide-step" data-step="2">
+    <h2>ステップ 1: タイトル</h2>
+    <p>ステップ説明文...</p>
+  </div>
+
+  <!-- 共通フッター -->
+  <div class="slide-footer">
+    <div class="slide-controls">
+      <button type="button" id="prev-btn" disabled>戻る</button>
+      <button type="button" id="next-btn">次へ</button>
+    </div>
+    <div class="slide-page-number" id="page-num">1 / 2</div>
+  </div>
+
+  <script>
+    var current = 1;
+    var steps = document.querySelectorAll('.slide-step');
+    var total = steps.length;
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    var pageNum = document.getElementById('page-num');
+
+    function updateSlide() {
+      steps.forEach(function(step) {
+        step.classList.toggle('is-active', parseInt(step.dataset.step) === current);
+      });
+      prevBtn.disabled = current === 1;
+      nextBtn.disabled = current === total;
+      pageNum.textContent = current + ' / ' + total;
+    }
+
+    prevBtn.addEventListener('click', function() {
+      if (current > 1) { current--; updateSlide(); }
+    });
+    nextBtn.addEventListener('click', function() {
+      if (current < total) { current++; updateSlide(); }
+    });
+  </script>
+</body>
+</html>
+```
+
 - **AI生成動作**: 必要と判断した場合、Markdown生成と同時にガイドラインに準拠したHTMLスライドモックアセットを自動で作成・格納します。
 
 ### 3. YouTube動画 (埋め込み禁止・注記付き外部リンク化)
