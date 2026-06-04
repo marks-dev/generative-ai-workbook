@@ -35,6 +35,10 @@
   --header-z-index: 10;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 *,
 *::before,
 *::after {
@@ -1384,8 +1388,15 @@ details[open] .content-sidebar__list-container {
   }
 
   .content-sidebar__list-container {
-    width: calc(100vw - 32px);
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    left: auto;
+    top: auto;
+    width: calc(100vw - 48px);
     max-width: 280px;
+    max-height: calc(100vh - 120px);
+    transform-origin: bottom right;
   }
 
   .learning-card__link {
@@ -1394,6 +1405,88 @@ details[open] .content-sidebar__list-container {
 
   .learning-card__icon {
     width: 3rem;
+  }
+
+  /* 用語集テーブルのレスポンシブ化 */
+  .glossary-table,
+  .glossary-table thead,
+  .glossary-table tbody,
+  .glossary-table th,
+  .glossary-table td,
+  .glossary-table tr {
+    display: block;
+  }
+
+  .glossary-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .glossary-item {
+    padding: var(--space-md);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .glossary-item:last-child {
+    border-bottom: none;
+  }
+
+  .glossary-table__term,
+  .glossary-table__def {
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
+
+  .glossary-table__term {
+    margin-bottom: var(--space-xs);
+    font-size: var(--font-size-body);
+  }
+
+  /* 教材詳細画面の本文余白解除 */
+  .content-article {
+    padding-left: 0;
+  }
+
+  /* フローティングバッジを右下に退避 */
+  .content-sidebar__summary {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+    top: auto;
+    box-shadow: 0 4px 16px rgba(47, 111, 115, 0.4);
+  }
+
+  /* マウスオーバーの吹き出し方向を左側に調整 */
+  .content-sidebar__summary::after {
+    left: auto;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+  }
+
+  .content-sidebar__summary::before {
+    left: auto;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-color: transparent transparent transparent rgba(47, 111, 115, 0.96);
+  }
+
+  .content-sidebar__summary:hover::after {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* アコーディオンが開いているときは「閉じる」に変更 */
+  details[open] .content-sidebar__summary::after {
+    content: "閉じる";
   }
 }
 
