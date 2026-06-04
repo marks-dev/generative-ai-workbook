@@ -339,10 +339,31 @@
     });
   }
 
-  // スマホ表示時のサイドバーアコーディオン初期化
+  // サイドバーアコーディオン展開時のバックドロップ制御
   var sidebarDetails = document.querySelector(".content-sidebar__details");
-  if (sidebarDetails && window.innerWidth <= 720) {
-    sidebarDetails.removeAttribute("open");
+  if (sidebarDetails) {
+    if (window.innerWidth <= 720) {
+      sidebarDetails.removeAttribute("open");
+    }
+
+    // バックドロップ要素を動的に作成してサイドバーの直前に挿入
+    var sidebarBackdrop = document.createElement("div");
+    sidebarBackdrop.className = "content-sidebar__backdrop";
+    sidebarDetails.parentNode.insertBefore(sidebarBackdrop, sidebarDetails);
+
+    // detailsのトグル（開閉）イベントを監視
+    sidebarDetails.addEventListener("toggle", function () {
+      if (sidebarDetails.open) {
+        sidebarBackdrop.classList.add("is-visible");
+      } else {
+        sidebarBackdrop.classList.remove("is-visible");
+      }
+    });
+
+    // バックドロップクリック時にサイドバーを閉じる
+    sidebarBackdrop.addEventListener("click", function () {
+      sidebarDetails.removeAttribute("open");
+    });
   }
 
   // 用語集のインクリメンタル検索機能
