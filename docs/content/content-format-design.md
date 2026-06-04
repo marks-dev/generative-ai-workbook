@@ -70,9 +70,65 @@
     .slide-step {
       flex: 1;
       display: none;
+      animation: fadeIn 0.4s ease-in-out forwards;
+      overflow-y: auto; /* 縦溢れ時のスクロール安全対策 */
     }
     .slide-step.is-active {
       display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-step h2 {
+      color: #2f6f73;
+      font-size: 1.6rem;
+      margin-top: 0;
+      margin-bottom: 12px;
+      border-bottom: 2px solid rgba(47, 111, 115, 0.2);
+      padding-bottom: 8px;
+      font-weight: 800;
+    }
+    .slide-step p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555555;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+    .prompt-box {
+      background: #f5f5f5;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column; /* 常にコピーボタンを縦積みにし、スマホの幅狭画面を圧迫しない設計 */
+      gap: 8px;
+    }
+    .prompt-text {
+      margin: 0;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: #2f6f73;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      align-self: flex-end; /* 右下に流す */
+      background: #ffffff;
+      border: 1px solid #2f6f73;
+      color: #2f6f73;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+    .copy-btn:hover {
+      background: #2f6f73;
+      color: #ffffff;
     }
     .slide-footer {
       display: flex;
@@ -80,11 +136,52 @@
       align-items: center;
       margin-top: auto;
       padding-top: 12px;
-      border-top: 1px solid var(--color-border);
+      border-top: 1px solid var(--color-border, #e0e0e0);
     }
     .slide-controls {
       display: flex;
       gap: 8px;
+    }
+    .slide-controls button {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      color: #2f6f73;
+      padding: 6px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .slide-controls button:hover:not(:disabled) {
+      background: #e6f0ef;
+      border-color: #2f6f73;
+    }
+    .slide-controls button:disabled {
+      color: #cccccc;
+      cursor: not-allowed;
+      background: #f5f5f5;
+    }
+    .slide-page-number {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #666666;
+      letter-spacing: 0.05em;
+    }
+    .toast {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(47, 111, 115, 0.9);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 100;
     }
   </style>
 </head>
@@ -97,10 +194,14 @@
     </ul>
   </div>
 
-  <!-- スライド 2/N: 実践ステップ -->
+  <!-- スライド 2/N: 実践ステップ（プロンプト例） -->
   <div class="slide-step" data-step="2">
     <h2>ステップ 1: タイトル</h2>
     <p>ステップ説明文...</p>
+    <div class="prompt-box">
+      <p class="prompt-text" id="prompt1">コピーしたいプロンプトテキスト...</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt1')">📋 コピー</button>
+    </div>
   </div>
 
   <!-- 共通フッター -->
@@ -112,6 +213,8 @@
     <div class="slide-page-number" id="page-num">1 / 2</div>
   </div>
 
+  <div class="toast" id="toast">コピーしました！</div>
+
   <script>
     var current = 1;
     var steps = document.querySelectorAll('.slide-step');
@@ -119,6 +222,7 @@
     var prevBtn = document.getElementById('prev-btn');
     var nextBtn = document.getElementById('next-btn');
     var pageNum = document.getElementById('page-num');
+    var toast = document.getElementById('toast');
 
     function updateSlide() {
       steps.forEach(function(step) {
@@ -135,6 +239,20 @@
     nextBtn.addEventListener('click', function() {
       if (current < total) { current++; updateSlide(); }
     });
+
+    function copyPrompt(id) {
+      var textEl = document.getElementById(id);
+      if (!textEl) return;
+      var text = textEl.innerText;
+      navigator.clipboard.writeText(text).then(function() {
+        toast.style.opacity = 1;
+        setTimeout(function() {
+          toast.style.opacity = 0;
+        }, 1500);
+      }).catch(function(err) {
+        console.error("Failed to copy text: ", err);
+      });
+    }
   </script>
 </body>
 </html>
