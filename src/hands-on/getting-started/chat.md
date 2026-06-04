@@ -42,9 +42,6 @@ sidebar:
       url: /hands-on/getting-started/image/
       completionId: hands-on-getting-started-image
       status: 未実施
-next:
-  title: 要約してみよう
-  url: /hands-on/getting-started/summarize/
 keypoints:
   - チャットAIは「一問一答」ではなく、「対話（会話を重ねること）」を前提に設計されている
   - AIは過去の会話の流れ（コンテキスト）を記憶しているため、前の話題を前提とした深掘りの質問が可能
@@ -54,11 +51,9 @@ relatedHandson:
     url: /reading/chat-level/prompt-intro/
 ---
 
-## ハンズオン：AIと会話してみよう
+## 実践ステップ
 
 チャットAIツールを使用して、実際に会話を行いながら、対話によるパーソナライズされた回答引き出しプロセスを体験しましょう。
-
-### 【インタラクティブステップ】めくって進める実践スライド
 
 下のスライドには、今回のハンズオンで必要となる準備と、AIに入力するプロンプト例（**クリック一つでクリップボードにコピーできる機能付き**）がステップごとに整理されています。順番にめくりながら、自分のチャットAIにペーストして体験してみましょう。
 

@@ -19,6 +19,7 @@
       flex: 1;
       display: none;
       animation: fadeIn 0.4s ease-in-out forwards;
+      overflow-y: auto; /* 縦溢れ時のスクロール安全対策 */
     }
     .slide-step.is-active {
       display: block;
@@ -80,7 +81,9 @@
       border-radius: 8px;
       padding: 12px;
       margin-bottom: 12px;
-      position: relative;
+      display: flex;
+      flex-direction: column; /* 常にコピーボタンを縦積みにし、スマホの幅狭画面を圧迫しない設計 */
+      gap: 8px;
     }
     .prompt-text {
       margin: 0;
@@ -89,12 +92,9 @@
       color: #2f6f73;
       line-height: 1.5;
       white-space: pre-wrap;
-      padding-right: 90px;
     }
     .copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+      align-self: flex-end; /* 右下に流す */
       background: #ffffff;
       border: 1px solid #2f6f73;
       color: #2f6f73;
@@ -190,10 +190,10 @@
     <h2>ステップ 1: 自己紹介と雑談</h2>
     <p>AIツールを開き、最初のメッセージを送ってみましょう。下の「コピー」ボタンを押して貼り付けると簡単です。</p>
     <div class="prompt-box">
+      <p class="prompt-text" id="prompt1">こんにちは！私の名前は太郎です。生成AIの勉強を始めたばかりなのですが、応援のメッセージをもらえますか？</p>
       <button class="copy-btn" onclick="copyPrompt('prompt1')">📋 コピー</button>
-      <p class="prompt-text" id="prompt1">こんにちは！私の名前はMARKSです。生成AIの勉強を始めたばかりなのですが、応援のメッセージをもらえますか？</p>
     </div>
-    <p>送信後, AIがMARKSさんを歓迎して応援してくれる反応を確認しましょう。</p>
+    <p>送信後、AIが歓迎して応援してくれる反応を確認しましょう。</p>
   </div>
 
   <!-- スライド 3/4: ステップ 2 -->
@@ -201,8 +201,8 @@
     <h2>ステップ 2: 質問を深掘りする</h2>
     <p>AIの返答に対して、さらに質問を重ねます。チャットAIはこれまでの会話の流れを記憶しています。</p>
     <div class="prompt-box">
-      <button class="copy-btn" onclick="copyPrompt('prompt2')">📋 コピー</button>
       <p class="prompt-text" id="prompt2">ありがとう！まずはどんなことから勉強を始めるといいでしょうか？初心者向けのステップを3つ提案してください。</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt2')">📋 コピー</button>
     </div>
     <p>AIが対話の流れを汲んで、初心者向けの具体的な3ステップを提案してくれます。</p>
   </div>
@@ -212,8 +212,8 @@
     <h2>ステップ 3: 役割（ペルソナ）を指定する</h2>
     <p>AIにキャラクターになりきってもらい、回答の口調やトーンを劇的に変化させてみます。</p>
     <div class="prompt-box">
-      <button class="copy-btn" onclick="copyPrompt('prompt3')">📋 コピー</button>
       <p class="prompt-text" id="prompt3">今提案してくれたステップを、ファンタジー世界の頼れる魔法使いの口調で、熱く説明し直してください！</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt3')">📋 コピー</button>
     </div>
     <p>口調が変わるだけで、AIのパーソナリティが変わり、親しみやすさが増す体験を確認します。</p>
   </div>
