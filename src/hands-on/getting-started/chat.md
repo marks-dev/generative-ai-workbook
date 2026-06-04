@@ -54,18 +54,12 @@ relatedHandson:
     url: /reading/chat-level/prompt-intro/
 ---
 
-### 【イメージ画像】チャット対話のイメージ (WebPテスト)
-以下は、WebP形式（.webp）画像アセットの表示挙動をテストするための実在する検証用イメージファイルの埋め込みです。
-
-![チャットAIとの会話イメージ](https://www.gstatic.com/webp/gallery/1.webp)
-
----
-
 ## ハンズオン：AIと会話してみよう
 
 チャットAIツールを使用して、実際に会話を行いながら、対話によるパーソナライズされた回答引き出しプロセスを体験しましょう。
 
 ### 【インタラクティブステップ】めくって進める実践スライド
+
 下のスライドには、今回のハンズオンで必要となる準備と、AIに入力するプロンプト例（**クリック一つでクリップボードにコピーできる機能付き**）がステップごとに整理されています。順番にめくりながら、自分のチャットAIにペーストして体験してみましょう。
 
-<iframe src="../../../assets/slides/chat-steps.html" frameborder="0" allowfullscreen="true"></iframe>
+<iframe src="../../../assets/slides/chat-steps.html" width="100%" height="450" style="border: 1px solid var(--color-border); border-radius: var(--border-radius-md);" title="実践ステップスライド"></iframe>
