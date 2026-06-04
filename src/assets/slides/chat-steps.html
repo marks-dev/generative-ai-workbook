@@ -3,46 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>AIと会話してみよう - ハンズオンステップ</title>
+  <link rel="stylesheet" href="../css/site.css">
   <style>
     body {
+      background: var(--color-surface, #ffffff);
       margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #ffffff;
-      color: #333333;
+      padding: 24px;
+      font-family: var(--font-family, sans-serif);
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      border: 1px solid #e0e0e0;
       box-sizing: border-box;
-    }
-    .slide-container {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .slide {
-      display: none;
-      width: 80%;
-      max-width: 580px;
-      text-align: left;
-      animation: fadeIn 0.4s ease-in-out forwards;
-    }
-    .slide.active {
       display: flex;
       flex-direction: column;
+    }
+    .slide-step {
+      flex: 1;
+      display: none;
+      animation: fadeIn 0.4s ease-in-out forwards;
+      overflow-y: auto; /* 縦溢れ時のスクロール安全対策 */
+    }
+    .slide-step.is-active {
+      display: block;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .slide h2 {
+    .slide-step h2 {
       color: #2f6f73;
       font-size: 1.6rem;
       margin-top: 0;
@@ -51,7 +37,7 @@
       padding-bottom: 8px;
       font-weight: 800;
     }
-    .slide p {
+    .slide-step p {
       font-size: 0.95rem;
       line-height: 1.6;
       color: #555555;
@@ -95,7 +81,9 @@
       border-radius: 8px;
       padding: 12px;
       margin-bottom: 12px;
-      position: relative;
+      display: flex;
+      flex-direction: column; /* 常にコピーボタンを縦積みにし、スマホの幅狭画面を圧迫しない設計 */
+      gap: 8px;
     }
     .prompt-text {
       margin: 0;
@@ -104,12 +92,9 @@
       color: #2f6f73;
       line-height: 1.5;
       white-space: pre-wrap;
-      padding-right: 80px; /* コピーボタンとの重なりを完全に防ぐ右パディング */
     }
     .copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+      align-self: flex-end; /* 右下に流す */
       background: #ffffff;
       border: 1px solid #2f6f73;
       color: #2f6f73;
@@ -124,48 +109,48 @@
       background: #2f6f73;
       color: #ffffff;
     }
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-border, #e0e0e0);
+    }
+    .slide-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .slide-controls button {
       background: #ffffff;
       border: 1px solid #cccccc;
       color: #2f6f73;
-      font-size: 1.2rem;
-      padding: 10px 14px;
+      padding: 6px 16px;
       cursor: pointer;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      user-select: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.2s;
     }
-    .nav-btn:hover {
+    .slide-controls button:hover:not(:disabled) {
       background: #e6f0ef;
       border-color: #2f6f73;
-      transform: translateY(-50%) scale(1.05);
     }
-    .prev-btn { left: 16px; }
-    .next-btn { right: 16px; }
-    .indicator {
-      position: absolute;
-      bottom: 16px;
-      right: 20px; /* フッター右端に配置 */
+    .slide-controls button:disabled {
+      color: #cccccc;
+      cursor: not-allowed;
+      background: #f5f5f5;
+    }
+    .slide-page-number {
       font-size: 0.85rem;
       font-weight: 600;
       color: #666666;
-      background: #f5f5f5;
-      padding: 4px 10px;
-      border-radius: 12px;
       letter-spacing: 0.05em;
     }
     .toast {
       position: absolute;
       top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       background: rgba(47, 111, 115, 0.9);
       color: #ffffff;
       padding: 6px 14px;
@@ -180,87 +165,106 @@
   </style>
 </head>
 <body>
-  <div class="slide-container">
-    <button class="nav-btn prev-btn" onclick="changeSlide(-1)">◀</button>
-    
-    <!-- Slide 1: 準備するもの -->
-    <div class="slide active">
-      <h2>準備するもの</h2>
-      <p>いずれかのチャットAIツールのアカウントを作成しておきましょう（すべて無料プランで体験できます）。</p>
-      <ul class="prep-list">
-        <li>
-          <span>ChatGPT (OpenAI)</span>
-          <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
-        </li>
-        <li>
-          <span>Gemini (Google)</span>
-          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
-        </li>
-        <li>
-          <span>Claude (Anthropic)</span>
-          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- Slide 2: Step 1 -->
-    <div class="slide">
-      <h2>ステップ 1: 自己紹介と雑談</h2>
-      <p>AIツールを開き、最初のメッセージを送ってみましょう。下の「コピーする」ボタンを押して貼り付けると簡単です。</p>
-      <div class="prompt-box">
-        <button class="copy-btn" onclick="copyPrompt('prompt1')">コピーする</button>
-        <p class="prompt-text" id="prompt1">こんにちは！私の名前はMARKSです。生成AIの勉強を始めたばかりなのですが、応援のメッセージをもらえますか？</p>
-      </div>
-      <p>送信後、AIがMARKSさんを歓迎して応援してくれる反応を確認しましょう。</p>
-    </div>
-    
-    <!-- Slide 3: Step 2 -->
-    <div class="slide">
-      <h2>ステップ 2: 質問を深掘りする</h2>
-      <p>AIの返答に対して、さらに質問を重ねます。チャットAIはこれまでの会話の流れを記憶しています。</p>
-      <div class="prompt-box">
-        <button class="copy-btn" onclick="copyPrompt('prompt2')">コピーする</button>
-        <p class="prompt-text" id="prompt2">ありがとう！まずはどんなことから勉強を始めるといいでしょうか？初心者向けのステップを3つ提案してください。</p>
-      </div>
-      <p>AIが対話の流れを汲んで、初心者向けの具体的な3ステップを提案してくれます。</p>
-    </div>
-
-    <!-- Slide 4: Step 3 -->
-    <div class="slide">
-      <h2>ステップ 3: 役割（ペルソナ）を指定する</h2>
-      <p>AIにキャラクターになりきってもらい、回答の口調やトーンを劇的に変化させてみます。</p>
-      <div class="prompt-box">
-        <button class="copy-btn" onclick="copyPrompt('prompt3')">コピーする</button>
-        <p class="prompt-text" id="prompt3">今提案してくれたステップを、ファンタジー世界の頼れる魔法使いの口調で、熱く説明し直してください！</p>
-      </div>
-      <p>口調が変わるだけで、AIのパーソナリティが変わり、親しみやすさが増す体験を確認します。</p>
-    </div>
-    
-    <button class="nav-btn next-btn" onclick="changeSlide(1)">▶</button>
-    <div class="indicator" id="slide-indicator">1 / 4</div>
-    <div class="toast" id="toast">コピーしました！</div>
+  <!-- スライド 1/4: 準備するもの -->
+  <div class="slide-step is-active" data-step="1">
+    <h2>準備するもの</h2>
+    <p>いずれかのチャットAIツールのアカウントを作成しておきましょう（すべて無料プランで体験できます）。</p>
+    <ul class="prep-list">
+      <li>
+        <span>ChatGPT (OpenAI)</span>
+        <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+      </li>
+      <li>
+        <span>Gemini (Google)</span>
+        <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+      </li>
+      <li>
+        <span>Claude (Anthropic)</span>
+        <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">サイトを開く ↗</a>
+      </li>
+    </ul>
   </div>
 
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const indicator = document.getElementById('slide-indicator');
-    const toast = document.getElementById('toast');
+  <!-- スライド 2/4: ステップ 1 -->
+  <div class="slide-step" data-step="2">
+    <h2>ステップ 1: 自己紹介と雑談</h2>
+    <p>AIツールを開き、最初のメッセージを送ってみましょう。下の「コピー」ボタンを押して貼り付けると簡単です。</p>
+    <div class="prompt-box">
+      <p class="prompt-text" id="prompt1">こんにちは！私の名前は太郎です。生成AIの勉強を始めたばかりなのですが、応援のメッセージをもらえますか？</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt1')">📋 コピー</button>
+    </div>
+    <p>送信後、AIが歓迎して応援してくれる反応を確認しましょう。</p>
+  </div>
 
-    function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-      indicator.textContent = `${currentSlide + 1} / ${slides.length}`;
+  <!-- スライド 3/4: ステップ 2 -->
+  <div class="slide-step" data-step="3">
+    <h2>ステップ 2: 質問を深掘りする</h2>
+    <p>AIの返答に対して、さらに質問を重ねます。チャットAIはこれまでの会話の流れを記憶しています。</p>
+    <div class="prompt-box">
+      <p class="prompt-text" id="prompt2">ありがとう！まずはどんなことから勉強を始めるといいでしょうか？初心者向けのステップを3つ提案してください。</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt2')">📋 コピー</button>
+    </div>
+    <p>AIが対話の流れを汲んで、初心者向けの具体的な3ステップを提案してくれます。</p>
+  </div>
+
+  <!-- スライド 4/4: ステップ 3 -->
+  <div class="slide-step" data-step="4">
+    <h2>ステップ 3: 役割（ペルソナ）を指定する</h2>
+    <p>AIにキャラクターになりきってもらい、回答の口調やトーンを劇的に変化させてみます。</p>
+    <div class="prompt-box">
+      <p class="prompt-text" id="prompt3">今提案してくれたステップを、ファンタジー世界の頼れる魔法使いの口調で、熱く説明し直してください！</p>
+      <button class="copy-btn" onclick="copyPrompt('prompt3')">📋 コピー</button>
+    </div>
+    <p>口調が変わるだけで、AIのパーソナリティが変わり、親しみやすさが増す体験を確認します。</p>
+  </div>
+
+  <!-- 共通フッター -->
+  <div class="slide-footer">
+    <div class="slide-controls">
+      <button type="button" id="prev-btn" disabled>戻る</button>
+      <button type="button" id="next-btn">次へ</button>
+    </div>
+    <div class="slide-page-number" id="page-num">1 / 4</div>
+  </div>
+
+  <div class="toast" id="toast">コピーしました！</div>
+
+  <script>
+    var current = 1;
+    var steps = document.querySelectorAll('.slide-step');
+    var total = steps.length;
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    var pageNum = document.getElementById('page-num');
+    var toast = document.getElementById('toast');
+
+    function updateSlide() {
+      steps.forEach(function(step) {
+        step.classList.toggle('is-active', parseInt(step.dataset.step) === current);
+      });
+      prevBtn.disabled = current === 1;
+      nextBtn.disabled = current === total;
+      pageNum.textContent = current + ' / ' + total;
     }
 
+    prevBtn.addEventListener('click', function() {
+      if (current > 1) { current--; updateSlide(); }
+    });
+    nextBtn.addEventListener('click', function() {
+      if (current < total) { current++; updateSlide(); }
+    });
+
     function copyPrompt(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
+      var textEl = document.getElementById(id);
+      if (!textEl) return;
+      var text = textEl.innerText;
+      navigator.clipboard.writeText(text).then(function() {
         toast.style.opacity = 1;
-        setTimeout(() => {
+        setTimeout(function() {
           toast.style.opacity = 0;
         }, 1500);
+      }).catch(function(err) {
+        console.error("Failed to copy text: ", err);
       });
     }
   </script>
