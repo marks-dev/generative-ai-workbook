@@ -16,34 +16,52 @@
 ---
 
 ## 設計ドキュメント（docs配下）
-- **docs/content/site-map.md**: サイト構造と学習導線（カテゴリ追加、教材構成変更等）を管理。
+
+### common (サイト共通方針・仕様)
 - **docs/common/url-design.md**: 公開URL設計とGitHub Pagesの公開URL方針を管理。
-- **docs/common/ui-design.md**: 全体のUI設計思想と共通レイアウト構造（スケルトン）を管理。
-- **docs/pages/navigation-design.md**: グローバル/コンテキストナビゲーションやパンくず、完了ボタンの移動導線を管理。
-- **docs/common/component-design.md**: 再利用するUI共通部品（ボタン、カード、Alert、コピー付きCode Block等）の設計を管理。
+- **docs/common/ui-design.md**: 全体のUI設計思想、共通レイアウト構造、外部リンクの共通ルール、およびMarkdown装飾UI共通仕様を管理。
+- **docs/common/navigation-design.md**: グローバル/コンテキストナビゲーション、パンくず、関連教材等のサイト共通の論理移動動線（UX）を管理。
+- **docs/common/component-design.md**: サイト共通コンポーネントの全体設計方針、状態管理（学習完了状態等）の共通仕様、および個別コンポーネントへのインデックスを管理。
 - **docs/common/learning-progress-design.md**: LocalStorageを用いた学習状況の保存・進捗連動表示方針を管理。
+- **docs/common/css-design.md**: 共通CSSによるスタイル管理方針、 Notion風 の見出し装飾やインライン要素（strong, code）ルールを管理。
+- **docs/common/design-token-design.md**: CSSで共通利用する各種変数（色、サイズ、余白、角丸、レスポンシブしきい値等）を管理。
+
+### components (個別コンポーネントのUI・実装仕様)
+- **docs/components/header.md**: ヘッダーUI（ロゴ、グローバルナビ、パンくず、完了ボタンのレイアウト配置）の仕様を管理。
+- **docs/components/sidebar.md**: サイドバーUI（カテゴリ内目次、完了状態表示、スマホアコーディオン挙動）の仕様を管理。
+- **docs/components/breadcrumb.md**: パンくずリストの具体的なUIマークアップ仕様を管理。
+- **docs/components/complete-button.md**: 完了ボタンのUI・LocalStorage同期の仕様を管理。
+- **docs/components/learning-card.md**: カテゴリページ等の教材カードUIおよび完了時クラス（`.is-completed`）の適用仕様を管理。
+- **docs/components/navigation-tile.md**: トップページの学習ルート（読んで学ぶ/触って学ぶ）入口タイルのUI仕様を管理。
+- **docs/components/related-content-card.md**: 教材下部で相互の行き来を促す関連教材カードのUI仕様を管理。
+- **docs/components/completion-prompt.md**: 未完了でのスクロール末尾到達時に表示される、ヘッダー完了ボタン直下の吹き出し誘導UI仕様を管理。
+
+### pages (個別画面設計)
 - **docs/pages/top-page-design.md**: トップページのレイアウト（学習導線タイル等）の設計を管理。
 - **docs/pages/category-page-design.md**: カテゴリ/サブカテゴリページのレイアウトと教材リストカード表示を管理。
 - **docs/pages/content-page-design.md**: 教材詳細ページのレイアウト、サイドバー開閉UI、完了誘導等の詳細設計を管理。
 - **docs/pages/about-page-design.md**: 「このサイトについて」ページの構成や記述内容の設計を管理。
 - **docs/pages/glossary-page-design.md**: 用語解説テーブルおよびJSによるリアルタイム用語検索機能の設計を管理。
-- **docs/content/content-common-design.md**: 共通のコンテンツ管理方針、記述ルール（見出し、Alert等）、画像・動画アセット掲載ガイドラインを管理。
+
+### content (教材コンテンツの管理・記述仕様)
+- **docs/content/site-map.md**: サイト構造と学習導線（カテゴリ追加、教材構成変更等）を管理。
+- **docs/content/content-common-design.md**: 教材コンテンツの記述ルール（見出し等のMarkdownガイドライン）やアセット掲載ルールを管理。
 - **docs/content/content-reading-design.md**: 「読んで学ぶ」（reading）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義を管理。
 - **docs/content/content-handson-design.md**: 「触って学ぶ」（hands-on）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義、HTMLスライド仕様・テンプレートを管理。
+
+### system (システム・デプロイ仕様)
 - **docs/system/static-site-generation-design.md**: EleventyによるMarkdownからHTMLへの変換生成フローおよびレイアウト適用方針を管理。
 - **docs/system/ssg-selection-design.md**: SSG選定基準（Eleventyの採用理由および静的運用の基本方針）を管理。
 - **docs/system/github-actions-design.md**: GitHub Actionsを用いたGitHub Pagesへの自動ビルド・公開デプロイフローを管理。
-- **docs/common/css-design.md**: 共通CSSによるスタイル管理方針、 Notion風 の見出し装飾やインライン要素（strong, code）ルールを管理。
-- **docs/common/design-token-design.md**: CSSで共通利用する各種変数（色、サイズ、余白、角丸、レスポンシブしきい値等）を管理。
 
 ---
 
 ## 変更時の参照先
 - **サイト構造・教材構成変更**: `site-map.md`, `url-design.md`, `category-page-design.md`, `content-page-design.md`, `content-reading-design.md`, `content-handson-design.md`
-- **画面・UI・導線変更**: `ui-design.md`, `navigation-design.md`, `component-design.md`, `top-page-design.md`, `category-page-design.md`, `content-page-design.md`
-- **学習状況管理変更**: `learning-progress-design.md`, `navigation-design.md`, `component-design.md`
+- **画面・UI・導線変更**: `ui-design.md`, `navigation-design.md`, `component-design.md`, `top-page-design.md`, `category-page-design.md`, `content-page-design.md`, `docs/components/*.md`
+- **学習状況管理変更**: `learning-progress-design.md`, `navigation-design.md`, `component-design.md`, `docs/components/complete-button.md`, `docs/components/completion-prompt.md`
 - **教材本文・Markdown仕様変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`
-- **CSS・デザイン値変更**: `css-design.md`, `design-token-design.md`, `ui-design.md`, `component-design.md`
+- **CSS・デザイン値変更**: `css-design.md`, `design-token-design.md`, `ui-design.md`, `component-design.md`, `docs/components/*.md`
 - **静的サイト生成・自動公開変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`, `ssg-selection-design.md`, `github-actions-design.md`, `url-design.md`
 
 ---
