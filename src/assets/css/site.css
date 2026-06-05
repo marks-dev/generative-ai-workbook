@@ -1635,3 +1635,338 @@ details[open] .content-sidebar__list-container {
 .code-block__copy-icon {
   font-size: 1rem;
 }
+
+/* 見出し・文章横のアラートトリガー（アイコン） */
+.alert-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: var(--space-md);
+  cursor: pointer;
+  vertical-align: middle;
+  width: 24px;  /* 固定サイズ */
+  height: 24px; /* 固定サイズ */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+  user-select: none;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.alert-trigger svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.alert-trigger__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.alert-trigger:hover .alert-trigger__icon,
+.alert-trigger:focus-within .alert-trigger__icon {
+  transform: scale(1.2); /* ホバー時にアイコンのみを適度に拡大 */
+}
+
+/* アラートタイプ別のアイコン配色テーマ (fill="currentColor" に反映される) */
+.alert-trigger--tip {
+  color: var(--color-accent); /* ティール */
+}
+
+.alert-trigger--note {
+  color: var(--color-focus); /* ブルー */
+}
+
+.alert-trigger--warning {
+  color: #c49300; /* イエロー/アンバー */
+}
+
+.alert-trigger--important {
+  color: #c81e1e; /* レッド */
+}
+
+.alert-trigger--caution {
+  color: #c81e1e; /* レッド */
+}
+
+/* スタンドアロン表示用（直前の段落などがない場合、または親要素として内包できない場合） */
+.alert-trigger--standalone {
+  display: inline-flex;
+  margin: var(--space-xs) 0 var(--space-md);
+  width: 24px;
+  height: 24px;
+}
+
+/* 吹き出し（ツールチップ）のベーススタイル */
+.alert-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 100;
+  width: 300px; /* 親の幅に引きずられないよう固定幅300pxを指定 */
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: normal; /* 改行を有効にする */
+  font-size: var(--font-size-body); /* 標準の文字サイズ */
+  font-weight: 400; /* 通常の太さ */
+  color: var(--color-text);
+  text-align: left;
+}
+
+/* 吹き出しのツノ（下向き） */
+.alert-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--color-surface) transparent transparent transparent;
+}
+
+/* 枠線の色に合わせるためのツノの裏打ち */
+.alert-tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 7px;
+  border-style: solid;
+  border-color: var(--color-border) transparent transparent transparent;
+  z-index: -1;
+}
+
+/* ホバー・フォーカス時に吹き出しを表示 */
+.alert-trigger:hover .alert-tooltip,
+.alert-trigger:focus-within .alert-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* 吹き出しヘッダー */
+.alert-tooltip__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  margin-bottom: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  border-bottom: var(--border-width) solid rgba(0, 0, 0, 0.05);
+  text-transform: uppercase;
+}
+
+.alert-tooltip__icon {
+  font-size: 1.1em;
+}
+
+.alert-tooltip__label {
+  font-size: 0.9em;
+  letter-spacing: 0.04em;
+}
+
+/* 吹き出しの中身 */
+.alert-tooltip__content {
+  display: block;
+  line-height: 1.6;
+}
+
+.alert-tooltip__content p {
+  margin: 0;
+}
+
+.alert-tooltip__content p + p {
+  margin-top: var(--space-xs);
+}
+
+/* --- 各種アラートのカラーパレット定義 --- */
+
+/* TIP (ティール) */
+.alert-trigger--tip:hover,
+.alert-trigger--tip:focus-within {
+  border-color: var(--color-accent);
+}
+.alert-tooltip--tip {
+  background: #f4faf9;
+  border-color: rgba(47, 111, 115, 0.25);
+}
+.alert-tooltip--tip::after {
+  border-top-color: #f4faf9;
+}
+.alert-tooltip--tip::before {
+  border-top-color: rgba(47, 111, 115, 0.25);
+}
+.alert-tooltip--tip .alert-tooltip__header {
+  color: var(--color-accent);
+  border-bottom-color: rgba(47, 111, 115, 0.15);
+}
+
+/* NOTE (ブルー) */
+.alert-trigger--note:hover,
+.alert-trigger--note:focus-within {
+  border-color: var(--color-focus);
+}
+.alert-tooltip--note {
+  background: #f4f8fc;
+  border-color: rgba(31, 95, 145, 0.25);
+}
+.alert-tooltip--note::after {
+  border-top-color: #f4f8fc;
+}
+.alert-tooltip--note::before {
+  border-top-color: rgba(31, 95, 145, 0.25);
+}
+.alert-tooltip--note .alert-tooltip__header {
+  color: var(--color-focus);
+  border-bottom-color: rgba(31, 95, 145, 0.15);
+}
+
+/* WARNING (イエロー) */
+.alert-trigger--warning:hover,
+.alert-trigger--warning:focus-within {
+  border-color: #b38600;
+}
+.alert-tooltip--warning {
+  background: #fffdf5;
+  border-color: rgba(179, 134, 0, 0.25);
+}
+.alert-tooltip--warning::after {
+  border-top-color: #fffdf5;
+}
+.alert-tooltip--warning::before {
+  border-top-color: rgba(179, 134, 0, 0.25);
+}
+.alert-tooltip--warning .alert-tooltip__header {
+  color: #9a7400;
+  border-bottom-color: rgba(179, 134, 0, 0.15);
+}
+
+/* IMPORTANT (レッド) */
+.alert-trigger--important:hover,
+.alert-trigger--important:focus-within {
+  border-color: #c81e1e;
+}
+.alert-tooltip--important {
+  background: #fffcfc;
+  border-color: rgba(200, 30, 30, 0.25);
+}
+.alert-tooltip--important::after {
+  border-top-color: #fffcfc;
+}
+.alert-tooltip--important::before {
+  border-top-color: rgba(200, 30, 30, 0.25);
+}
+.alert-tooltip--important .alert-tooltip__header {
+  color: #c81e1e;
+  border-bottom-color: rgba(200, 30, 30, 0.15);
+}
+
+/* CAUTION (レッド) */
+.alert-trigger--caution:hover,
+.alert-trigger--caution:focus-within {
+  border-color: #c81e1e;
+}
+.alert-tooltip--caution {
+  background: #fffcfc;
+  border-color: rgba(200, 30, 30, 0.25);
+}
+.alert-tooltip--caution::after {
+  border-top-color: #fffcfc;
+}
+.alert-tooltip--caution::before {
+  border-top-color: rgba(200, 30, 30, 0.25);
+}
+.alert-tooltip--caution .alert-tooltip__header {
+  color: #c81e1e;
+  border-bottom-color: rgba(200, 30, 30, 0.15);
+}
+
+/* デスクトップ用衝突検知：上部スペースが狭い場合に下表示へ切り替える */
+@media (min-width: 721px) {
+  .alert-tooltip--bottom {
+    bottom: auto;
+    top: calc(100% + 10px);
+    transform: translateX(-50%) translateY(-6px);
+  }
+
+  .alert-trigger:hover .alert-tooltip--bottom,
+  .alert-trigger:focus-within .alert-tooltip--bottom {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* 下表示時はツノ（三角形）を上向きに変更 */
+  .alert-tooltip--bottom::before {
+    top: auto;
+    bottom: 100%;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent var(--color-border) transparent;
+  }
+
+  .alert-tooltip--bottom::after {
+    top: auto;
+    bottom: calc(100% - 1px);
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent #f4f8fc transparent;
+  }
+
+  .alert-tooltip--bottom.alert-tooltip--tip::after {
+    border-bottom-color: #f4faf9;
+  }
+  .alert-tooltip--bottom.alert-tooltip--note::after {
+    border-bottom-color: #f4f8fc;
+  }
+  .alert-tooltip--bottom.alert-tooltip--warning::after {
+    border-bottom-color: #fffdf5;
+  }
+  .alert-tooltip--bottom.alert-tooltip--important::after {
+    border-bottom-color: #fffcfc;
+  }
+  .alert-tooltip--bottom.alert-tooltip--caution::after {
+    border-bottom-color: #fffcfc;
+  }
+}
+
+/* モバイル向けレスポンシブスタイル（720px以下） */
+@media (max-width: 720px) {
+  .alert-tooltip {
+    position: fixed;
+    bottom: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    transform: translateX(0) translateY(16px); /* 横幅中央寄せの解除 */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .alert-trigger:hover .alert-tooltip,
+  .alert-trigger:focus-within .alert-tooltip {
+    transform: translateX(0) translateY(0); /* 横幅中央寄せの解除 */
+  }
+
+  /* モバイル表示時は下矢印のツノを非表示にする */
+  .alert-tooltip::after,
+  .alert-tooltip::before {
+    display: none;
+  }
+}
