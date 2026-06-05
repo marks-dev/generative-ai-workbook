@@ -16,7 +16,7 @@
 
 ### 4. 開発・編集ルール
 - コンテキストウィンドウを意識し、読んでいないファイルを読んだかのように扱わない。
-- 教材の作成・修正時は、[content-format-design.md](docs/content/content-format-design.md) に定義されたガイドラインを厳格に遵守する。
+- 教材の作成・修正時は、[content-common-design.md](docs/content/content-common-design.md)、[content-reading-design.md](docs/content/content-reading-design.md)、[content-handson-design.md](docs/content/content-handson-design.md) に定義されたガイドラインを厳格に遵守する。
 - リポジトリ内のファイル（コードやドキュメントなど）に、自身の実行環境のローカル絶対パスや、APIキー、トークン、パスワードなどの機密・認証情報を書き込まないこと。
 
 ### 設計書間の不整合防止ルール
