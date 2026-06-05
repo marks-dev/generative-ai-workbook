@@ -226,7 +226,6 @@
       messageElement.textContent = message;
     }
   }
-
   function exportJson() {
     var state = readState();
     var blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
@@ -267,6 +266,21 @@
     reader.readAsText(file);
   }
 
+  function resetState() {
+    if (!window.confirm("学習状況をすべてリセットしますか？\nこの操作は取り消せません。")) {
+      return;
+    }
+
+    try {
+      writeState(cloneEmptyState());
+      updateCompletionButtons();
+      renderPanel();
+      showMessage("学習状況をリセットしました。");
+    } catch (error) {
+      showMessage("リセットに失敗しました。");
+    }
+  }
+
   document.addEventListener("click", function (event) {
     var completionButton = event.target.closest("[data-completion-id]");
     if (completionButton) {
@@ -286,9 +300,13 @@
 
     if (event.target.closest("[data-learning-progress-export]")) {
       exportJson();
+      return;
+    }
+
+    if (event.target.closest("[data-learning-progress-reset]")) {
+      resetState();
     }
   });
-
   document.addEventListener("change", function (event) {
     if (event.target.matches("[data-learning-progress-import]")) {
       importJson(event.target.files[0]);
