@@ -347,19 +347,119 @@
       var match = html.match(/^\s*(?:<p>)?\s*\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i);
       if (match) {
         var alertType = match[1].toUpperCase();
-        bq.className = "alert alert--" + alertType.toLowerCase();
         
         // [!TIP] の文字列のみを除去（<p>タグは維持）
-        var newHtml = html.replace(/\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i, "");
+        var cleanHtml = html.replace(/\[!(TIP|NOTE|IMPORTANT|WARNING|CAUTION)\]/i, "");
         var icon = "💡";
         var label = "TIP";
+        var svgIcon = "";
         
-        if (alertType === "NOTE") { icon = "ℹ️"; label = "NOTE"; }
-        else if (alertType === "IMPORTANT") { icon = "📢"; label = "IMPORTANT"; }
-        else if (alertType === "WARNING") { icon = "⚠️"; label = "WARNING"; }
-        else if (alertType === "CAUTION") { icon = "🚨"; label = "CAUTION"; }
+        var chatBubblePath = "M12 2C6.5 2 2 6.5 2 12c0 2.2.7 4.2 2 5.8L3 21l3.2-1c1.8 1.3 3.9 2 5.8 2 5.5 0 10-4.5 10-10S17.5 2 12 2z";
         
-        bq.innerHTML = "<div class='alert__header'><span class='alert__icon' aria-hidden='true'>" + icon + "</span><span class='alert__label'>" + label + "</span></div><div class='alert__content'>" + newHtml + "</div>";
+        if (alertType === "NOTE") {
+          icon = "ℹ️";
+          label = "NOTE";
+          svgIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="' + chatBubblePath + '" fill="currentColor"/>' +
+            '<circle cx="12" cy="8" r="1.5" fill="#FFF"/>' +
+            '<rect x="11" y="11" width="2" height="6" rx="1" fill="#FFF"/>' +
+            '</svg>';
+        }
+        else if (alertType === "IMPORTANT") {
+          icon = "📢";
+          label = "IMPORTANT";
+          svgIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="' + chatBubblePath + '" fill="currentColor"/>' +
+            '<rect x="11" y="7" width="2" height="6" rx="1" fill="#FFF"/>' +
+            '<circle cx="12" cy="15.5" r="1.5" fill="#FFF"/>' +
+            '</svg>';
+        }
+        else if (alertType === "WARNING") {
+          icon = "⚠️";
+          label = "WARNING";
+          svgIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="' + chatBubblePath + '" fill="currentColor"/>' +
+            '<rect x="11" y="7" width="2" height="6" rx="1" fill="#FFF"/>' +
+            '<circle cx="12" cy="15.5" r="1.5" fill="#FFF"/>' +
+            '</svg>';
+        }
+        else if (alertType === "CAUTION") {
+          icon = "🚨";
+          label = "CAUTION";
+          svgIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="' + chatBubblePath + '" fill="currentColor"/>' +
+            '<rect x="11" y="7" width="2" height="6" rx="1" fill="#FFF"/>' +
+            '<circle cx="12" cy="15.5" r="1.5" fill="#FFF"/>' +
+            '</svg>';
+        }
+        else {
+          // TIP
+          svgIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="' + chatBubblePath + '" fill="currentColor"/>' +
+            '<path d="M12 6c-2.2 0-4 1.8-4 4 0 1.4.7 2.6 1.7 3.3V15c0 .6.4 1 1 1h2.6c.6 0 1-.4 1-1v-1.7c1-.7 1.7-1.9 1.7-3.3 0-2.2-1.8-4-4-4zm1.5 11h-3c-.3 0-.5.2-.5.5s.2.5.5.5h3c.3 0 .5-.2.5-.5s-.2-.5-.5-.5z" fill="#FFF"/>' +
+            '</svg>';
+        }
+        
+        // トリガーバッジの作成
+        var trigger = document.createElement("span");
+        trigger.className = "alert-trigger alert-trigger--" + alertType.toLowerCase();
+        trigger.setAttribute("tabindex", "0");
+        trigger.setAttribute("role", "button");
+        trigger.setAttribute("aria-label", label + "の情報を表示");
+
+        // 吹き出し要素の作成
+        var tooltip = document.createElement("span");
+        tooltip.className = "alert-tooltip alert-tooltip--" + alertType.toLowerCase();
+        tooltip.innerHTML = "<span class='alert-tooltip__header'><span class='alert-tooltip__icon'>" + icon + "</span><span class='alert-tooltip__label'>" + label + "</span></span><span class='alert-tooltip__content'>" + cleanHtml + "</span>";
+        
+        var iconSpan = document.createElement("span");
+        iconSpan.className = "alert-trigger__icon";
+        iconSpan.innerHTML = svgIcon;
+
+        trigger.appendChild(iconSpan);
+        trigger.appendChild(tooltip);
+
+        // 衝突検知と動的ポジショニングの追加
+        function updateTooltipPosition() {
+          if (window.innerWidth <= 720) return; // モバイル表示時は処理をスキップ
+
+          var triggerRect = trigger.getBoundingClientRect();
+          var headerHeight = 108; // 固定ヘッダーの高さ (64px site-header + 44px context-header)
+          var spaceAbove = triggerRect.top - headerHeight;
+          var tooltipHeight = tooltip.offsetHeight || 150;
+
+          if (spaceAbove < tooltipHeight + 10) {
+            tooltip.classList.add("alert-tooltip--bottom");
+          } else {
+            tooltip.classList.remove("alert-tooltip--bottom");
+          }
+        }
+
+        trigger.addEventListener("mouseenter", updateTooltipPosition);
+        trigger.addEventListener("focusin", updateTooltipPosition);
+
+        // 挿入先要素の検証（上方向に遡って最も近い見出しを探す）
+        var heading = null;
+        var prev = bq.previousElementSibling;
+        while (prev) {
+          var tagName = prev.tagName.toUpperCase();
+          if (tagName === "H2" || tagName === "H3" || tagName === "H4") {
+            heading = prev;
+            break;
+          }
+          prev = prev.previousElementSibling;
+        }
+
+        if (heading) {
+          heading.appendChild(trigger);
+        } else {
+          // 見出しがない場合は元の位置にスタンドアロンバッジとして挿入する
+          trigger.classList.add("alert-trigger--standalone");
+          bq.parentNode.insertBefore(trigger, bq);
+        }
+
+        // 元の blockquote は非表示にする
+        bq.style.display = "none";
       }
     });
   }
