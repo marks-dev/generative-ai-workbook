@@ -18,7 +18,7 @@
 
 ### common (サイト共通方針・仕様)
 - **docs/common/url-design.md**: 公開URL設計とGitHub Pagesの公開URL方針を管理。
-- **docs/common/ui-design.md**: 全体のUI設計思想、共通レイアウト構造、外部リンクの共通ルール、およびMarkdown装飾UI共通仕様を管理。
+- **docs/common/ui-design.md**: サイト全体のUI設計思想、共通の表示/インタラクションルール、教材記述ルール（Markdownガイドライン）、およびメディアアセット掲載基準を管理。
 - **docs/common/navigation-design.md**: グローバル/コンテキストナビゲーション、パンくず、関連教材等のサイト共通の論理移動動線（UX）を管理。
 - **docs/common/component-design.md**: サイト共通コンポーネントの全体設計方針、状態管理（学習完了状態等）の共通仕様、および個別コンポーネントへのインデックスを管理。
 - **docs/common/learning-progress-design.md**: LocalStorageを用いた学習状況の保存・進捗連動表示方針を管理。
@@ -44,7 +44,6 @@
 
 ### content (教材コンテンツの管理・記述仕様)
 - **docs/content/site-map.md**: サイト構造と学習導線（カテゴリ追加、教材構成変更等）を管理。
-- **docs/content/content-common-design.md**: 教材コンテンツの記述ルール（見出し等のMarkdownガイドライン）やアセット掲載ルールを管理。
 - **docs/content/content-reading-design.md**: 「読んで学ぶ」（reading）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義を管理。
 - **docs/content/content-handson-design.md**: 「触って学ぶ」（hands-on）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義、HTMLスライド仕様・テンプレートを管理。
 
@@ -59,9 +58,9 @@
 - **サイト構造・教材構成変更**: `site-map.md`, `url-design.md`, `category-page-design.md`, `content-page-design.md`, `content-reading-design.md`, `content-handson-design.md`
 - **画面・UI・導線変更**: `ui-design.md`, `navigation-design.md`, `component-design.md`, `top-page-design.md`, `category-page-design.md`, `content-page-design.md`, `docs/components/*.md`
 - **学習状況管理変更**: `learning-progress-design.md`, `navigation-design.md`, `component-design.md`, `docs/components/complete-button.md`, `docs/components/completion-prompt.md`
-- **教材本文・Markdown仕様変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`
+- **教材本文・Markdown仕様変更**: `ui-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`
 - **CSS・デザイン値変更**: `css-design.md`, `design-token-design.md`, `ui-design.md`, `component-design.md`, `docs/components/*.md`
-- **静的サイト生成・自動公開変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`, `ssg-selection-design.md`, `github-actions-design.md`, `url-design.md`
+- **静的サイト生成・自動公開変更**: `ui-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`, `ssg-selection-design.md`, `github-actions-design.md`, `url-design.md`
 
 ---
 

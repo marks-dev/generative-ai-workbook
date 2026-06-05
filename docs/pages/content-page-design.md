@@ -39,5 +39,4 @@
 ---
 
 ## コンテンツエリアのスタイル定義
-Markdown レンダラーから生成される各要素（見出し、Alert, Tip, Code Block, Table 等）の共通UI仕様、および外部リンクのセキュリティ/別タブ挙動については、**[ui-design.md](../common/ui-design.md)** を参照してください。
-- 執筆者向けのMarkdown記述ガイドラインについては **[content-common-design.md](../content/content-common-design.md)** を参照。
+Markdown レンダラーから生成される各要素（見出し、Alert, Tip, Code Block, Table 等）の共通UI仕様、および外部リンクのセキュリティ/別タブ挙動、執筆者向けのMarkdown記述ガイドラインやメディアアセット掲載ルールについては、**[ui-design.md](../common/ui-design.md)** を参照してください。
