@@ -9,7 +9,6 @@
 
 ## 主要管理ファイル
 - **AGENTS.md**: AIが作業する際の行動ルール、設計書参照順序、実装時の判断基準を管理。
-- **index.html**: トップページ（移行期の一時的HTML実装。最終的にEleventy生成物に移行予定）。
 - **README.md / LICENSE**: リポジトリ概要およびMITライセンスの管理。
 
 ---
@@ -66,7 +65,7 @@
 
 ## ディレクトリ方針と責務境界
 - **docs/**: 設計書および管理ドキュメントのみを配置。実装コードや教材本文は配置しない。
-- **content/**: 教材Markdownの将来的な配置先（現状は移行中、移行期は `src/` を利用）。
+- **src/**: 静的サイト生成（Eleventy）のソースディレクトリ。教材Markdown（`src/reading/`, `src/hands-on/`）、その他主要ページのMarkdown、および静的アセットなどを配置する。
+- **src/assets/**: 画像（`.webp`）、CSS、JS、HTMLスライドなどの静的アセットの配置先。
 - **_site/**: EleventyによるHTML生成物の出力先（Git管理外、.gitignore対象）。
-- **assets/**: 画像（`.webp`）、HTMLスライド、CSS、JSアセットの配置先。
 - **共通レイアウト**: `layout-design.md` は廃止され、共通構造は `ui-design.md`、個別構造は各画面設計書へ移譲されました。CSS定数は `design-token-design.md` に集約・一元化しています。
