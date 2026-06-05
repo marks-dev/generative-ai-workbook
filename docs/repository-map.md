@@ -25,6 +25,8 @@
 - **docs/pages/top-page-design.md**: トップページのレイアウト（学習導線タイル等）の設計を管理。
 - **docs/pages/category-page-design.md**: カテゴリ/サブカテゴリページのレイアウトと教材リストカード表示を管理。
 - **docs/pages/content-page-design.md**: 教材詳細ページのレイアウト、サイドバー開閉UI、完了誘導等の詳細設計を管理。
+- **docs/pages/about-page-design.md**: 「このサイトについて」ページの構成や記述内容の設計を管理。
+- **docs/pages/glossary-page-design.md**: 用語解説テーブルおよびJSによるリアルタイム用語検索機能の設計を管理。
 - **docs/content/content-common-design.md**: 共通のコンテンツ管理方針、記述ルール（見出し、Alert等）、画像・動画アセット掲載ガイドラインを管理。
 - **docs/content/content-reading-design.md**: 「読んで学ぶ」（reading）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義を管理。
 - **docs/content/content-handson-design.md**: 「触って学ぶ」（hands-on）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義、HTMLスライド仕様・テンプレートを管理。
