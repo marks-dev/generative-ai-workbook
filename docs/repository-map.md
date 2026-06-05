@@ -25,8 +25,9 @@
 - **docs/pages/top-page-design.md**: トップページのレイアウト（学習導線タイル等）の設計を管理。
 - **docs/pages/category-page-design.md**: カテゴリ/サブカテゴリページのレイアウトと教材リストカード表示を管理。
 - **docs/pages/content-page-design.md**: 教材詳細ページのレイアウト、サイドバー開閉UI、完了誘導等の詳細設計を管理。
-- **docs/content/content-format-design.md**: 教材本文の記述ルール、アラート構文、メディアアセット（WebP画像、HTMLスライド、動画外部リンク等）掲載ガイドラインを管理。
-- **docs/content/content-management-design.md**: Markdownを正本・HTMLを生成物とする管理方式、およびフロントマターYAMLメタ情報定義を管理。
+- **docs/content/content-common-design.md**: 共通のコンテンツ管理方針、記述ルール（見出し、Alert等）、画像・動画アセット掲載ガイドラインを管理。
+- **docs/content/content-reading-design.md**: 「読んで学ぶ」（reading）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義を管理。
+- **docs/content/content-handson-design.md**: 「触って学ぶ」（hands-on）教材の推奨構成、ディレクトリ配置、YAMLメタ情報定義、HTMLスライド仕様・テンプレートを管理。
 - **docs/system/static-site-generation-design.md**: EleventyによるMarkdownからHTMLへの変換生成フローおよびレイアウト適用方針を管理。
 - **docs/system/ssg-selection-design.md**: SSG選定基準（Eleventyの採用理由および静的運用の基本方針）を管理。
 - **docs/system/github-actions-design.md**: GitHub Actionsを用いたGitHub Pagesへの自動ビルド・公開デプロイフローを管理。
@@ -36,12 +37,12 @@
 ---
 
 ## 変更時の参照先
-- **サイト構造・教材構成変更**: `site-map.md`, `url-design.md`, `category-page-design.md`, `content-page-design.md`, `content-management-design.md`
+- **サイト構造・教材構成変更**: `site-map.md`, `url-design.md`, `category-page-design.md`, `content-page-design.md`, `content-reading-design.md`, `content-handson-design.md`
 - **画面・UI・導線変更**: `ui-design.md`, `navigation-design.md`, `component-design.md`, `top-page-design.md`, `category-page-design.md`, `content-page-design.md`
 - **学習状況管理変更**: `learning-progress-design.md`, `navigation-design.md`, `component-design.md`
-- **教材本文・Markdown仕様変更**: `content-format-design.md`, `content-management-design.md`, `static-site-generation-design.md`
+- **教材本文・Markdown仕様変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`
 - **CSS・デザイン値変更**: `css-design.md`, `design-token-design.md`, `ui-design.md`, `component-design.md`
-- **静的サイト生成・自動公開変更**: `content-management-design.md`, `static-site-generation-design.md`, `ssg-selection-design.md`, `github-actions-design.md`, `url-design.md`
+- **静的サイト生成・自動公開変更**: `content-common-design.md`, `content-reading-design.md`, `content-handson-design.md`, `static-site-generation-design.md`, `ssg-selection-design.md`, `github-actions-design.md`, `url-design.md`
 
 ---
 
