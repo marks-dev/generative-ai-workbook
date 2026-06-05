@@ -52,12 +52,28 @@ layout: base.njk
 
     {% if keypoints or relatedHandson %}
       <footer class="content-summary-card">
-        <h2 class="content-summary-card__title">まとめ</h2>
+        <h2 class="content-summary-card__title">
+          <svg class="content-summary-card__title-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          まとめ
+        </h2>
         
         <div class="content-summary-card__stack">
           {% if keypoints %}
             <div class="content-summary-card__section content-summary-card__section--keypoints">
-              <h3 class="content-summary-card__subtitle">抑えるべきポイント</h3>
+              <h3 class="content-summary-card__subtitle">
+                <svg class="content-summary-card__subtitle-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                抑えるべきポイント
+              </h3>
               <ul class="content-summary-card__list">
                 {% for pt in keypoints %}
                   <li class="content-summary-card__list-item">{{ pt }}</li>
@@ -69,6 +85,10 @@ layout: base.njk
           {% if relatedHandson %}
             <div class="content-summary-card__section content-summary-card__section--related">
               <h3 class="content-summary-card__subtitle">
+                <svg class="content-summary-card__subtitle-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
                 {% if "/reading/" in page.url %}
                   関連ハンズオン
                 {% else %}
@@ -79,14 +99,20 @@ layout: base.njk
                 {% for handson in relatedHandson %}
                   <li class="content-summary-card__link-item">
                     <a class="content-summary-card__link" href="{{ handson.url | url }}">
-                      <span class="content-summary-card__link-icon" aria-hidden="true">
+                      <span class="content-summary-card__link-icon-wrapper">
                         {% if "/reading/" in page.url %}
                           🛠️
                         {% else %}
                           📖
                         {% endif %}
                       </span>
-                      {{ handson.title }}
+                      <span class="content-summary-card__link-content">
+                        <span class="content-summary-card__link-label">
+                          {% if "/reading/" in page.url %}関連ハンズオン{% else %}関連読み物{% endif %}
+                        </span>
+                        <span class="content-summary-card__link-title">{{ handson.title }}</span>
+                      </span>
+                      <span class="content-summary-card__link-arrow" aria-hidden="true">→</span>
                     </a>
                   </li>
                 {% endfor %}
