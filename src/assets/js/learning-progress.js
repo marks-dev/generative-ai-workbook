@@ -282,6 +282,13 @@
   }
 
   document.addEventListener("click", function (event) {
+    var tooltip = event.target.closest("[data-completion-tooltip]");
+    if (tooltip) {
+      tooltip.classList.remove("is-visible");
+      tooltip.setAttribute("aria-hidden", "true");
+      return;
+    }
+
     var completionButton = event.target.closest("[data-completion-id]");
     if (completionButton) {
       toggleCompletion(completionButton);
