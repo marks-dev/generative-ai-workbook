@@ -40,6 +40,17 @@ layout: base.njk
 
   <article class="content-article">
     <header class="content-article__header">
+      <div class="content-article__header-badge">
+        {% if "/reading/" in page.url %}
+          <span class="content-article__header-tag content-article__header-tag--reading">
+            <span class="content-article__header-tag-icon" aria-hidden="true">📘</span>読んで学ぶ
+          </span>
+        {% else %}
+          <span class="content-article__header-tag content-article__header-tag--handson">
+            <span class="content-article__header-tag-icon" aria-hidden="true">🛠️</span>触って学ぶ
+          </span>
+        {% endif %}
+      </div>
       <h1 class="content-article__title">{{ title }}</h1>
       {% if description %}
         <p class="content-article__description">{{ description }}</p>
