@@ -1,5 +1,12 @@
 # Component Design: Sidebar
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン2（Nunjucks静的定義 ＋ 共通CSS ＋ JS状態連動）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/content.njk](../../src/_includes/content.njk)
+  - **JavaScript (状態同期・スマホ開閉制御)**: [src/assets/js/learning-progress.js](../../src/assets/js/learning-progress.js)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 サイドバーは、現在閲覧しているカテゴリに属する教材の一覧、および各教材の学習完了状態（✅）を表示し、学習者が教材間の移動と全体の進捗把握を容易に行えるようにします。
 

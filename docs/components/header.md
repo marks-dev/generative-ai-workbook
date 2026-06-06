@@ -1,5 +1,12 @@
 # Component Design: Header
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン2（Nunjucks静的定義 ＋ 共通CSS ＋ JS状態連動）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/base.njk](../../src/_includes/base.njk)
+  - **JavaScript (パネル開閉制御)**: [src/assets/js/learning-progress.js](../../src/assets/js/learning-progress.js)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 ヘッダーはサイト全体の共通レイアウトの上部に配置され、グローバルなサイト内案内（ロゴやユーティリティリンク）および閲覧中の教材に応じた固有操作（パンくずや完了状態のトグル）を提供します。
 

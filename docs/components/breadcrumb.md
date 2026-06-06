@@ -1,5 +1,11 @@
 # Component Design: Breadcrumb
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン1（Nunjucks静的定義 ＋ 共通CSS）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/base.njk](../../src/_includes/base.njk)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 パンくずリスト（Breadcrumb）は、学習者が現在サイト内のどの位置（どのカテゴリのどの教材）にいるかを階層構造で明示し、上位の階層（トップページやカテゴリページ）へ1クリックで戻るためのナビゲーションUIです。
 

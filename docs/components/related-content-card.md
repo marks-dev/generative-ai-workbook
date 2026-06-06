@@ -1,5 +1,13 @@
 # Component Design: Related Content Card
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン1（Nunjucks静的定義 ＋ 共通CSS）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/content.njk](../../src/_includes/content.njk)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+- **補足**:
+  - 本コンポーネントは、視覚的には「教材まとめカード（[content-summary-card.md](content-summary-card.md)）」の中に組み込まれて表示されます。
+
 ## 用途
 関連コンテンツカード（Related Content Card）は、教材詳細ページの最下部に配置され、現在学習しているテーマに関連する別の教材（座学からハンズオン、あるいはその逆）への相互移動を促すためのUI部品です。関連知識の補完や実践への移行をスムーズにします。
 

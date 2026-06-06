@@ -33,6 +33,10 @@
 - **docs/components/navigation-tile.md**: トップページの学習ルート（読んで学ぶ/触って学ぶ）入口タイルのUI仕様を管理。
 - **docs/components/related-content-card.md**: 教材下部で相互の行き来を促す関連教材カードのUI仕様を管理。
 - **docs/components/completion-prompt.md**: 未完了でのスクロール末尾到達時に表示される、ヘッダー完了ボタン直下の吹き出し誘導UI仕様を管理。
+- **docs/components/learning-progress-panel.md**: 学習状況管理パネル（データのインポート/エクスポート/リセット操作、ダイアログおよびアクセシビリティ仕様）を管理。
+- **docs/components/callout-alert.md**: Markdownのアラート記法をトリガーとするホバー型吹き出しアラートのUIおよび自動配置仕様を管理。
+- **docs/components/code-block.md**: コードブロックに対する「📋 コピー」ボタンの動的配備とクリップボード連携のUI仕様を管理。
+- **docs/components/content-summary-card.md**: 教材詳細ページ最下部に表示される要点箇条書きと関連リンクを含むまとめカードUI仕様を管理。
 
 ### pages (個別画面設計)
 - **docs/pages/top-page-design.md**: トップページのレイアウト（学習導線タイル等）の設計を管理。

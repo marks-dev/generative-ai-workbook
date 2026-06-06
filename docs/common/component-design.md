@@ -35,6 +35,10 @@
 - **[Learning Card](../components/learning-card.md)**: カテゴリページ等における3カラムの教材一覧カード。
 - **[Navigation Tile](../components/navigation-tile.md)**: トップページの学習ルート（読んで学ぶ/触って学ぶ）入口タイル。
 - **[Related Content Card](../components/related-content-card.md)**: 教材ページ下部で相互の行き来を促す関連教材カード。
+- **[Content Summary Card](../components/content-summary-card.md)**: 要点整理と関連リンクを提示するまとめカード。
+- **[Callout Alert](../components/callout-alert.md)**: 補足や警告をホバー吹き出し形式で表示するアラート。
+- **[Code Block](../components/code-block.md)**: クリップボードへのコピー機能を備えたソースコード表示ブロック。
 
 ### 学習状況・誘導系
 - **[Completion Prompt (誘導ツールチップ)](../components/completion-prompt.md)**: 未完了でのスクロール末尾到達時に表示される、ヘッダー完了ボタン直下のグラスモーフィズム吹き出し。
+- **[Learning Progress Panel](../components/learning-progress-panel.md)**: 学習履歴の確認、JSONでのデータインポート/エクスポートおよびリセットを提供する管理パネル。
