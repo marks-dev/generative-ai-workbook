@@ -28,6 +28,29 @@ sidebar:
       url: /reading/fundamentals/ai-history/
     - title: AIの種類
       url: /reading/fundamentals/ai-types/
+    - title: 生成AIの仕組み
+      url: /reading/fundamentals/generative-ai-mechanism/
+    - title: LLMの仕組み
+      url: /reading/fundamentals/llm-mechanism/
+    - title: 生成AIツール比較
+      url: /reading/fundamentals/ai-tools-comparison/
+    - title: マルチモーダルAI
+      url: /reading/fundamentals/multimodal-ai/
+    - title: ローカルLLMとは
+      url: /reading/fundamentals/what-is-local-llm/
+    - title: AI利用時の注意点
+      url: /reading/fundamentals/ai-precautions/
+    - title: AI評価と検証
+      url: /reading/fundamentals/ai-evaluation/
+    - title: AIガバナンス
+      url: /reading/fundamentals/ai-governance/
+    - title: AI倫理
+      url: /reading/fundamentals/ai-ethics/
+    - title: AI法規制
+      url: /reading/fundamentals/ai-regulations/
+next:
+  title: AIの歴史
+  url: /reading/fundamentals/ai-history/
 keypoints:
   - AI（Artificial Intelligence）は、人間の知的能力（学習・推論・判断など）をコンピューター上で再現する技術
   - 音声アシスタントやおすすめ機能、自動翻訳など、すでに日常生活やビジネスの至る所に溶け込んでいる

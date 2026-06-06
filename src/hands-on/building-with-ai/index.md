@@ -44,4 +44,40 @@ learningCards:
           - Claude
           - Cursor
         status: 未実施
+      - title: エージェント設計
+        url: /hands-on/building-with-ai/agent-design/
+        completionId: hands-on-building-with-ai-agent-design
+        icon: 🤖
+        description: 役割分担された複数のAIエージェントが協調して動作するマルチエージェントシステムの設計・指示を体験します。
+        difficulty: 上級
+        plan: Free
+        service:
+          - ChatGPT
+          - Gemini
+          - Claude
+        status: 未実施
+      - title: ワークフロー自動化
+        url: /hands-on/building-with-ai/workflow-automation/
+        completionId: hands-on-building-with-ai-workflow-automation
+        icon: ⚙️
+        description: Difyやn8nなどのツールを使って、外部APIやスクレイピングからAIを動かす自動化システムを設計します。
+        difficulty: 上級
+        plan: Free
+        service:
+          - ChatGPT
+          - Gemini
+          - Claude
+        status: 未実施
+      - title: AIアプリ開発
+        url: /hands-on/building-with-ai/app-development/
+        completionId: hands-on-building-with-ai-app-development
+        icon: 💻
+        description: OpenAIやGeminiのAPIを使って、HTMLとJavaScriptのみで動くチャットアプリをローカル環境で実装します。
+        difficulty: 上級
+        plan: Free
+        service:
+          - ChatGPT
+          - Gemini
+          - Claude
+        status: 未実施
 ---

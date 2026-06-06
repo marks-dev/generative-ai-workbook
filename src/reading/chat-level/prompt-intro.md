@@ -24,17 +24,29 @@ sidebar:
   items:
     - title: プロンプト入門
       url: /reading/chat-level/prompt-intro/
-      completionId: reading-chat-level-prompt-intro
-      status: 未実施
+    - title: プロンプト実践
+      url: /reading/chat-level/prompt-practice/
     - title: 業務活用
       url: /reading/chat-level/business-use/
-      status: 未実施
+    - title: Deep Research
+      url: /reading/chat-level/deep-research/
     - title: AI検索
       url: /reading/chat-level/ai-search/
-      status: 未実施
+    - title: カスタムGPT
+      url: /reading/chat-level/custom-gpts/
+    - title: Projects
+      url: /reading/chat-level/projects/
+    - title: メモリ
+      url: /reading/chat-level/memory/
+    - title: ファイル活用
+      url: /reading/chat-level/file-utilization/
+    - title: 画像活用
+      url: /reading/chat-level/image-utilization/
+    - title: 音声活用
+      url: /reading/chat-level/voice-utilization/
 next:
-  title: 業務活用
-  url: /reading/chat-level/business-use/
+  title: プロンプト実践
+  url: /reading/chat-level/prompt-practice/
 ---
 
 ## 概要

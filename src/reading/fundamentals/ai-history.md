@@ -24,14 +24,30 @@ sidebar:
   items:
     - title: AIとは
       url: /reading/fundamentals/what-is-ai/
-      status: 未実施
     - title: AIの歴史
       url: /reading/fundamentals/ai-history/
-      completionId: reading-fundamentals-ai-history
-      status: 未実施
     - title: AIの種類
       url: /reading/fundamentals/ai-types/
-      status: 未実施
+    - title: 生成AIの仕組み
+      url: /reading/fundamentals/generative-ai-mechanism/
+    - title: LLMの仕組み
+      url: /reading/fundamentals/llm-mechanism/
+    - title: 生成AIツール比較
+      url: /reading/fundamentals/ai-tools-comparison/
+    - title: マルチモーダルAI
+      url: /reading/fundamentals/multimodal-ai/
+    - title: ローカルLLMとは
+      url: /reading/fundamentals/what-is-local-llm/
+    - title: AI利用時の注意点
+      url: /reading/fundamentals/ai-precautions/
+    - title: AI評価と検証
+      url: /reading/fundamentals/ai-evaluation/
+    - title: AIガバナンス
+      url: /reading/fundamentals/ai-governance/
+    - title: AI倫理
+      url: /reading/fundamentals/ai-ethics/
+    - title: AI法規制
+      url: /reading/fundamentals/ai-regulations/
 previous:
   title: AIとは
   url: /reading/fundamentals/what-is-ai/

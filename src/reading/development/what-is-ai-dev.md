@@ -24,17 +24,33 @@ sidebar:
   items:
     - title: AI開発とは
       url: /reading/development/what-is-ai-dev/
-      completionId: reading-development-what-is-ai-dev
-      status: 未実施
+    - title: APIとは
+      url: /reading/development/what-is-api/
     - title: API利用の基本
       url: /reading/development/api-basics/
-      status: 未実施
+    - title: プロンプトエンジニアリング
+      url: /reading/development/prompt-engineering/
+    - title: Function Calling
+      url: /reading/development/function-calling/
+    - title: Structured Output
+      url: /reading/development/structured-output/
+    - title: Embedding
+      url: /reading/development/embedding/
+    - title: ベクトルDB
+      url: /reading/development/vector-db/
     - title: RAG
       url: /reading/development/rag/
-      status: 未実施
+    - title: AIアプリ設計
+      url: /reading/development/ai-app-design/
+    - title: AIサービス設計
+      url: /reading/development/ai-service-design/
+    - title: 評価基盤
+      url: /reading/development/evaluation-infrastructure/
+    - title: 運用監視
+      url: /reading/development/operation-monitoring/
 next:
-  title: API利用の基本
-  url: /reading/development/api-basics/
+  title: APIとは
+  url: /reading/development/what-is-api/
 ---
 
 ## 概要

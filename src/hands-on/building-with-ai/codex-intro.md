@@ -22,14 +22,16 @@ sidebar:
   items:
     - title: AIコーディング
       url: /hands-on/building-with-ai/ai-coding/
-      status: 未実施
     - title: Codex入門
       url: /hands-on/building-with-ai/codex-intro/
-      completionId: hands-on-building-with-ai-codex-intro
-      status: 未実施
     - title: MCP入門
       url: /hands-on/building-with-ai/mcp-intro/
-      status: 未実施
+    - title: エージェント設計
+      url: /hands-on/building-with-ai/agent-design/
+    - title: ワークフロー自動化
+      url: /hands-on/building-with-ai/workflow-automation/
+    - title: AIアプリ開発
+      url: /hands-on/building-with-ai/app-development/
 previous:
   title: AIコーディング
   url: /hands-on/building-with-ai/ai-coding/

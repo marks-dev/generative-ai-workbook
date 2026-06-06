@@ -24,20 +24,24 @@ sidebar:
   items:
     - title: 議事録作成
       url: /hands-on/business/meeting-minutes/
-      status: 未実施
     - title: 調査・リサーチ
       url: /hands-on/business/research/
-      completionId: hands-on-business-research
-      status: 未実施
+    - title: 企画書作成
+      url: /hands-on/business/proposal/
+    - title: スライド作成
+      url: /hands-on/business/slides/
     - title: Excel活用
       url: /hands-on/business/excel/
-      status: 未実施
+    - title: 業務効率化
+      url: /hands-on/business/efficiency/
+    - title: 複数AI比較
+      url: /hands-on/business/comparison/
 previous:
   title: 議事録作成
   url: /hands-on/business/meeting-minutes/
 next:
-  title: Excel活用
-  url: /hands-on/business/excel/
+  title: 企画書作成
+  url: /hands-on/business/proposal/
 ---
 
 ## 概要

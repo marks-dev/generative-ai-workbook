@@ -23,20 +23,54 @@ sidebar:
   items:
     - title: MCP
       url: /reading/advanced/mcp/
-      status: 未実施
+    - title: MCP Server
+      url: /reading/advanced/mcp-server/
+    - title: MCP Client
+      url: /reading/advanced/mcp-client/
     - title: エージェント
       url: /reading/advanced/agents/
-      completionId: reading-advanced-agents
-      status: 未実施
+    - title: シングルエージェント
+      url: /reading/advanced/single-agent/
+    - title: マルチエージェント
+      url: /reading/advanced/multi-agent/
+    - title: エージェント設計
+      url: /reading/advanced/agent-design/
+    - title: ワークフロー自動化
+      url: /reading/advanced/workflow-automation/
+    - title: AIコーディング
+      url: /reading/advanced/ai-coding/
+    - title: Claude Code
+      url: /reading/advanced/claude-code/
+    - title: Codex
+      url: /reading/advanced/codex/
+    - title: GitHub Copilot
+      url: /reading/advanced/github-copilot/
+    - title: Cursor
+      url: /reading/advanced/cursor/
     - title: ローカルLLM
       url: /reading/advanced/local-llm/
-      status: 未実施
+    - title: Ollama
+      url: /reading/advanced/ollama/
+    - title: LM Studio
+      url: /reading/advanced/lm-studio/
+    - title: GGUF
+      url: /reading/advanced/gguf/
+    - title: 推論モデル
+      url: /reading/advanced/reasoning-models/
+    - title: OSSモデル
+      url: /reading/advanced/oss-models/
+    - title: ファインチューニング
+      url: /reading/advanced/fine-tuning/
+    - title: 蒸留
+      url: /reading/advanced/distillation/
+    - title: 最新トレンド
+      url: /reading/advanced/latest-trends/
 previous:
-  title: MCP
-  url: /reading/advanced/mcp/
+  title: MCP Client
+  url: /reading/advanced/mcp-client/
 next:
-  title: ローカルLLM
-  url: /reading/advanced/local-llm/
+  title: シングルエージェント
+  url: /reading/advanced/single-agent/
 ---
 
 ## 概要
