@@ -37,6 +37,7 @@
 - **docs/components/callout-alert.md**: Markdownのアラート記法をトリガーとするホバー型吹き出しアラートのUIおよび自動配置仕様を管理。
 - **docs/components/code-block.md**: コードブロックに対する「📋 コピー」ボタンの動的配備とクリップボード連携のUI仕様を管理。
 - **docs/components/content-summary-card.md**: 教材詳細ページ最下部に表示される要点箇条書きと関連リンクを含むまとめカードUI仕様を管理。
+- **docs/components/content-header.md**: 教材詳細ページ最上部のタイトル・概要説明を表示するヘッダーブロックUI仕様を管理。
 
 ### pages (個別画面設計)
 - **docs/pages/top-page-design.md**: トップページのレイアウト（学習導線タイル等）の設計を管理。
