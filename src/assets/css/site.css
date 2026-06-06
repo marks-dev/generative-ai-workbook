@@ -1004,41 +1004,7 @@ details[open] .content-sidebar__list-container {
   overflow: hidden;
 }
 
-.content-article__header-badge {
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-}
 
-.content-article__header-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xxs);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: var(--space-xxs) var(--space-xs);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-  line-height: 1;
-}
-
-.content-article__header-tag--reading {
-  background: #ebf5fa;
-  color: #1a5c8a;
-  border-color: #d0e6f5;
-}
-
-.content-article__header-tag--handson {
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-  border-color: rgba(47, 111, 115, 0.2);
-}
-
-.content-article__header-tag-icon {
-  font-size: 11px;
-}
 
 .content-article__title {
   margin-top: 0;
