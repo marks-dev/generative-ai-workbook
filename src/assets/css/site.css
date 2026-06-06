@@ -32,7 +32,7 @@
 
   --container-width: 1040px;
   --content-width: 760px;
-  --header-z-index: 10;
+  --header-z-index: 100;
 }
 
 [hidden] {
@@ -194,7 +194,7 @@ button {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  z-index: 100;
+  z-index: 110;
   width: max-content;
   max-width: 320px;
   padding: 6px 14px;
@@ -246,7 +246,7 @@ button {
 .learning-progress-panel {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 300;
 }
 
 .learning-progress-panel__backdrop {
@@ -978,6 +978,59 @@ details[open] .content-sidebar__list-container {
   flex-shrink: 0;
 }
 
+/* スクロールナビゲーション (↑・↓ボタン) */
+.content-scroll-nav {
+  position: fixed;
+  top: 188px;
+  left: max(16px, calc(50% - var(--container-width)/2 - 54px));
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* サイドバーが開いているときは、↑↓スクロールボタンを非表示にして重なりを防ぐ */
+.content-sidebar__details[open] ~ .content-scroll-nav {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.content-scroll-nav__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.content-scroll-nav__btn:hover {
+  transform: scale(1.08);
+  background: var(--color-accent-muted);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(47, 111, 115, 0.2);
+}
+
+.content-scroll-nav__btn svg {
+  transition: transform 0.2s ease;
+}
+
+.content-scroll-nav__btn--up:hover svg {
+  transform: translateY(-2px);
+}
+
+.content-scroll-nav__btn--down:hover svg {
+  transform: translateY(2px);
+}
+
 .content-article {
   min-width: 0;
   width: min(100% - var(--space-xl), var(--container-width));
@@ -1030,6 +1083,21 @@ details[open] .content-sidebar__list-container {
   margin-bottom: var(--space-xl);
 }
 
+/* 教材本文内のセクション見出し（h2）の区切り線と余白強化 */
+.content-article__body h2 {
+  margin-top: 5rem; /* 前のセクションとの十分な距離 */
+  margin-bottom: var(--space-lg);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border); /* 上部に薄い区切り線を配置 */
+}
+
+/* 最初の見出しはヘッダー直下にあるため、区切り線と過剰な上部余白を排除 */
+.content-article__body h2:first-of-type {
+  margin-top: var(--space-xl);
+  padding-top: 0;
+  border-top: none;
+}
+
 /* メディア埋め込み（画像・動画・スライド） */
 .content-article__body img {
   max-width: 100%;
@@ -1062,7 +1130,7 @@ details[open] .content-sidebar__list-container {
   background: var(--color-surface);
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
   padding: var(--space-lg);
-  margin-top: var(--space-xl);
+  margin-top: 5rem;                  /* 直前のセクションとの十分な距離 */
   margin-bottom: var(--space-xl);
 }
 
@@ -1682,7 +1750,42 @@ details[open] .content-sidebar__list-container {
   details[open] .content-sidebar__summary::after {
     content: "閉じる";
   }
+
+  /* スクロールナビゲーションのスマートフォン位置（右下のサイドバー開閉ボタンの上に並べ、非操作時は超半透明化） */
+  .content-scroll-nav {
+    top: auto;
+    left: auto;
+    bottom: 80px;
+    right: 24px;
+    opacity: 0.35; /* 通常時は存在感を抑えるため超半透明に */
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .content-scroll-nav:hover,
+  .content-scroll-nav:focus-within,
+  .content-scroll-nav:active {
+    opacity: 1;
+  }
+
+  /* スマートフォンでのコードブロックの調整（横スクロール禁止・自動折り返し・高さ自動拡張） */
+  .code-block-wrapper pre {
+    font-size: 0.85rem;
+    padding-top: 2.6rem;
+    padding-right: 44px;         /* コピーボタンとテキストの重なりを防ぐ右余白 */
+    white-space: pre-wrap;       /* 自動折り返しを強制 */
+    word-break: break-all;       /* 長い単語でも折り返し */
+    overflow-x: hidden;          /* 横スクロールを禁止 */
+    height: auto;                /* 高さを可視範囲まで自動拡張 */
+  }
+
+  .code-block-wrapper pre code {
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: block;
+  }
 }
+
+
 
 /* コードブロックのコピーボタン自動生成用スタイル */
 .code-block-wrapper {
@@ -1705,13 +1808,13 @@ details[open] .content-sidebar__list-container {
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
   cursor: pointer;
-  padding: 6px 10px;
-  font-size: var(--font-size-small);
+  width: 32px;  /* 幅を固定 */
+  height: 32px; /* 高さを固定 */
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
+  justify-content: center; /* アイコンを中央寄せ */
   transition: all 0.2s ease;
-  z-index: 10;
+  z-index: 2;
   font-family: system-ui, sans-serif;
 }
 
@@ -1813,7 +1916,7 @@ details[open] .content-sidebar__list-container {
   bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  z-index: 100;
+  z-index: 90;
   width: 300px; /* 親の幅に引きずられないよう固定幅300pxを指定 */
   padding: var(--space-md);
   border-radius: var(--radius-md);

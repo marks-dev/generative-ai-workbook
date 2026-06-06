@@ -35,6 +35,19 @@ layout: base.njk
           </div>
         {% endif %}
       </details>
+
+      <div class="content-scroll-nav">
+        <button class="content-scroll-nav__btn content-scroll-nav__btn--up" type="button" aria-label="前のセクションへ" title="前のセクションへ">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+        <button class="content-scroll-nav__btn content-scroll-nav__btn--down" type="button" aria-label="次のセクションへ" title="次のセクションへ">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
     </aside>
   {% endif %}
 
