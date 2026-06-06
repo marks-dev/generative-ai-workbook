@@ -1,5 +1,12 @@
 # Component Design: Complete Button
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン2（Nunjucks静的定義 ＋ 共通CSS ＋ JS状態連動）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/base.njk](../../src/_includes/base.njk)
+  - **JavaScript (状態制御)**: [src/assets/js/learning-progress.js](../../src/assets/js/learning-progress.js)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 完了ボタンは、現在閲覧している教材の学習完了状態を学習者がトグル操作で切り替えるためのUI部品です。学習者が進捗を手動で管理し、自己の学習状況を視覚的に把握するコア要素です。
 

@@ -1,5 +1,12 @@
 # Component Design: Learning Card
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン2（Nunjucks静的定義 ＋ 共通CSS ＋ JS状態連動）
+- **主要関連ファイル**:
+  - **HTML (テンプレート)**: [src/_includes/category.njk](../../src/_includes/category.njk)
+  - **JavaScript (状態同期)**: [src/assets/js/learning-progress.js](../../src/assets/js/learning-progress.js)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 ラーニングカード（Learning Card）は、カテゴリページにおいて、各教材を一覧表示するためのカード型UI部品です。教材の概要を簡潔に示し、学習者が興味のある教材を選択しやすくするとともに、進捗状況を視覚的に伝えます。
 

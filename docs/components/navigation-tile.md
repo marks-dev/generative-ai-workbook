@@ -1,5 +1,11 @@
 # Component Design: Navigation Tile
 
+## 実装仕様 (Implementation Specification)
+- **実装パターン**: パターン1（Nunjucks静的定義 ＋ 共通CSS）
+- **主要関連ファイル**:
+  - **HTML/Markdown (マークアップ)**: [src/index.md](../../src/index.md)
+  - **CSS (スタイル)**: [src/assets/css/site.css](../../src/assets/css/site.css)
+
 ## 用途
 ナビゲーションタイル（Navigation Tile）は、トップページにおいて学習者が主要な学習ルート（「読んで学ぶ」または「触って学ぶ」）を選択するための入り口となるカード型UI部品です。複雑な説明を廃し、直感的にルートを選択できるシンプルな構成を持ちます。
 
