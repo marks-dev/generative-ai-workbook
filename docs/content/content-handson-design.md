@@ -15,7 +15,8 @@
    - 完了状態トラッキングのための `completionId` も必須定義。
    - **Markdown本文中に「## 概要」などの見出しや概要テキストを直接記述することは厳禁**とします。
 2. **Markdown本文 (メインコンテンツ)**:
-   - **「準備するもの」および「実践ステップ」は、スクロール負荷低減のため必ずHTMLスライドとしてアセット化し、Markdown本文からは排除して `iframe` 埋め込み（相対パス）のみで構成**します。外部のスライドサービスの iframe 直接埋め込みは全面禁止です。
+   - **「準備するもの」および「実践ステップ」は、Markdown本文中に直接記述**します。スマートフォンの2重縦スクロール問題を回避するため、`iframe` によるスライド埋め込み仕様は廃止されました。
+   - 代わりに、共通スクリプトにより見出し等へアンカーIDが自動付与され、画面上に表示される「↑」「↓」ボタンで各セクション間をスムーズにアンカースクロール移動できるようになります。
 
 ---
 
@@ -59,234 +60,36 @@ relatedHandson:
 
 ---
 
-## HTMLスライド仕様
-ハンズオンの「準備するもの」「実践ステップ」を埋め込むためのHTMLスライドは、以下の要件を満たす必要があります。
+## 見出し構成とアンカー仕様
+ハンズオン教材のMarkdown本文は、以下の構成を固定として作成します。
 
-### 1. 配置と記述制約
-- スライドは `src/assets/slides/` 配下に配置し、Markdown中から iframe を使って相対パスで埋め込みます。
-- Eleventyのフロントマターが画面上に露出するのを防ぐため、スライドHTML内にはフロントマターを一切書かず、ピュアな静的HTMLとして作成します。
+### 1. 標準的な構成
+Markdownファイルには、以下の見出しレベル2（`##`）を順番に記述してください。
 
-### 2. デザイン・実装要件
-- **ページ番号**: `1 / 4` などのページ番号を**フッター右端**に必ず常時表示します。
-- **配色**: 教材ページと調和する**ホワイト系（明るい色合い）**に統一します。
-- **iframeサイズ**: 幅 `100%`、高さ `450` とし、以下のスタイル属性を指定します。
-  `style="border: 1px solid var(--color-border); border-radius: var(--border-radius-md);"`
+1. **`## 準備`** (または `## 準備するもの`): 実践にあたって必要なツールや前提知識などを記述します。
+2. **`## ステップ 1: [タイトル]`、`## ステップ 2: [タイトル]`...**: 実際の手順をステップごとに分かりやすく記述します。
+3. （最下部には、Front Matter から自動生成されるまとめカードが表示されます）
 
-### 3. スライドHTML of ボイラープレート
-新規スライドを作成する際は、デザインおよび動作の一貫性を保つため、必ず以下のコードをベースとして使用してください。
+### 2. アンカーIDの自動付与仕様
+学習者が「↑」「↓」ボタンでスムーズにスクロール移動できるよう、共通スクリプト（`learning-progress.js`）が実行時に以下のIDおよび共通クラス（`.js-scroll-section`）を自動付与します。執筆者がMarkdown内に直接IDを記述する必要はありません。
 
-```html
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>スライドタイトル</title>
-  <link rel="stylesheet" href="../../css/site.css">
-  <style>
-    body {
-      background: var(--color-surface, #ffffff);
-      margin: 0;
-      padding: 24px;
-      font-family: var(--font-family, sans-serif);
-      height: 100vh;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-    }
-    .slide-step {
-      flex: 1;
-      display: none;
-      animation: fadeIn 0.4s ease-in-out forwards;
-      overflow-y: auto; /* 縦溢れ時のスクロール安全対策 */
-    }
-    .slide-step.is-active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .slide-step h2 {
-      color: #2f6f73;
-      font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 12px;
-      border-bottom: 2px solid rgba(47, 111, 115, 0.2);
-      padding-bottom: 8px;
-      font-weight: 800;
-    }
-    .slide-step p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #555555;
-      margin-bottom: 12px;
-      margin-top: 0;
-    }
-    .prompt-box {
-      background: #f5f5f5;
-      border: 1px solid #dcdcdc;
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column; /* 常にコピーボタンを縦積みにし、スマホの幅狭画面を圧迫しない設計 */
-      gap: 8px;
-    }
-    .prompt-text {
-      margin: 0;
-      font-family: monospace;
-      font-size: 0.88rem;
-      color: #2f6f73;
-      line-height: 1.5;
-      white-space: pre-wrap;
-    }
-    .copy-btn {
-      align-self: flex-end; /* 右下に流す */
-      background: #ffffff;
-      border: 1px solid #2f6f73;
-      color: #2f6f73;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-weight: 600;
-    }
-    .copy-btn:hover {
-      background: #2f6f73;
-      color: #ffffff;
-    }
-    .slide-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-      padding-top: 12px;
-      border-top: 1px solid var(--color-border, #e0e0e0);
-    }
-    .slide-controls {
-      display: flex;
-      gap: 8px;
-    }
-    .slide-controls button {
-      background: #ffffff;
-      border: 1px solid #cccccc;
-      color: #2f6f73;
-      padding: 6px 16px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .slide-controls button:hover:not(:disabled) {
-      background: #e6f0ef;
-      border-color: #2f6f73;
-    }
-    .slide-controls button:disabled {
-      color: #cccccc;
-      cursor: not-allowed;
-      background: #f5f5f5;
-    }
-    .slide-page-number {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #666666;
-      letter-spacing: 0.05em;
-    }
-    .toast {
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(47, 111, 115, 0.9);
-      color: #ffffff;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      z-index: 100;
-    }
-  </style>
-</head>
-<body>
-  <!-- スライド 1/N: 準備するもの -->
-  <div class="slide-step is-active" data-step="1">
-    <h2>準備するもの</h2>
-    <ul>
-      <li>準備アイテム...</li>
-    </ul>
-  </div>
+- **`#content-header`** (教材ヘッダー部、`content.njk` により自動出力)
+- **`#preparation`** (「準備」見出し)
+- **`#step-1`、`#step-2`...** (各ステップの見出し)
+- **`#related-content-card`** (まとめ・関連教材カード部、`content.njk` により自動出力)
 
-  <!-- スライド 2/N: 実践ステップ（プロンプト例） -->
-  <div class="slide-step" data-step="2">
-    <h2>ステップ 1: タイトル</h2>
-    <p>ステップ説明文...</p>
-    <div class="prompt-box">
-      <p class="prompt-text" id="prompt1">コピーしたいプロンプトテキスト...</p>
-      <button class="copy-btn" onclick="copyPrompt('prompt1')">📋 コピー</button>
-    </div>
-  </div>
+### 3. コピーボタン付きプロンプトブロック
+ハンズオンのステップ内に記述するプロンプト例は、Markdown標準のコードブロック記法を用いて記述します。
+共通スクリプトが自動的に「📋 コピー」ボタンを配備するため、特別なマークアップは不要です。
 
-  <!-- 共通フッター -->
-  <div class="slide-footer">
-    <div class="slide-controls">
-      <button type="button" id="prev-btn" disabled>戻る</button>
-      <button type="button" id="next-btn">次へ</button>
-    </div>
-    <div class="slide-page-number" id="page-num">1 / 2</div>
-  </div>
-
-  <div class="toast" id="toast">コピーしました！</div>
-
-  <script>
-    var current = 1;
-    var steps = document.querySelectorAll('.slide-step');
-    var total = steps.length;
-    var prevBtn = document.getElementById('prev-btn');
-    var nextBtn = document.getElementById('next-btn');
-    var pageNum = document.getElementById('page-num');
-    var toast = document.getElementById('toast');
-
-    function updateSlide() {
-      steps.forEach(function(step) {
-        step.classList.toggle('is-active', parseInt(step.dataset.step) === current);
-      });
-      prevBtn.disabled = current === 1;
-      nextBtn.disabled = current === total;
-      pageNum.textContent = current + ' / ' + total;
-    }
-
-    prevBtn.addEventListener('click', function() {
-      if (current > 1) { current--; updateSlide(); }
-    });
-    nextBtn.addEventListener('click', function() {
-      if (current < total) { current++; updateSlide(); }
-    });
-
-    function copyPrompt(id) {
-      var textEl = document.getElementById(id);
-      if (!textEl) return;
-      var text = textEl.innerText;
-      navigator.clipboard.writeText(text).then(function() {
-        toast.style.opacity = 1;
-        setTimeout(function() {
-          toast.style.opacity = 0;
-        }, 1500);
-      }).catch(function(err) {
-        console.error("Failed to copy text: ", err);
-      });
-    }
-  </script>
-</body>
-</html>
+```text
+ここにプロンプトの内容を記述します。
 ```
 
 ---
 
 ## AI生成時の固有ルール
-- Markdown生成と同時に、上記ガイドラインに準拠したHTMLスライドモックアセットを `src/assets/slides/` 配下に自動で作成・格納する。
-- ユーザーのアクションに繋がるステップ構成とし、適宜プロンプト例のコピーボタンを設置する。
+- Markdown生成時に、上記見出し構成（`## 準備`、`## ステップ 1` 等）に準拠したフラットなMarkdownドキュメントを作成・格納する。
+- ユーザーのアクションに繋がるステップ構成とし、適宜プロンプト例（コードブロック）を設置する。
 - `completionId` をYAMLフロントマターに必ず付与し、学習完了時にLocalStorageに保存されるように設計する。
+

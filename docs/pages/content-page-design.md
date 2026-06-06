@@ -36,6 +36,7 @@
 - **[Completion Prompt (完了誘導)](../components/completion-prompt.md)**: 未完了状態でスクロールが末尾に到達した際にヘッダーの完了ボタン直下に出現する吹き出し（グラスモーフィズム、3秒自動消滅）。
 - **[Related Content Card (関連教材)](../components/related-content-card.md)**: 本文最下部のまとめカード内に配置される、座学とハンズオンを繋ぐ動的リンクカード。
 - **[Content Header (教材ヘッダー)](../components/content-header.md)**: メインコンテンツ最上部のタイトル・概要説明のレイアウト表示。
+- **スクロールナビゲーション (↑・↓ボタン)**: 教材詳細ページのセクション（ヘッダー、準備、各ステップ、まとめカード）間をスムーズにアンカースクロール移動するためのUI（仕様は [Sidebar (サイドバー)](../components/sidebar.md) に集約）。
 
 ---
 

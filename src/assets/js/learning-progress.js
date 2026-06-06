@@ -590,7 +590,7 @@
       copyBtn.className = "code-block__copy-btn";
       copyBtn.type = "button";
       copyBtn.setAttribute("aria-label", "コードをコピー");
-      copyBtn.innerHTML = '<span class="code-block__copy-icon">📋</span>コピー';
+      copyBtn.innerHTML = '<span class="code-block__copy-icon">📋</span>';
 
       // DOMの再構成: preの前にwrapperを置き、その中にpreとcopyBtnを格納
       pre.parentNode.insertBefore(wrapper, pre);
@@ -603,18 +603,117 @@
         var codeText = codeEl ? codeEl.innerText : pre.innerText;
 
         navigator.clipboard.writeText(codeText).then(function () {
-          var originalHTML = copyBtn.innerHTML;
-          copyBtn.innerHTML = '<span class="code-block__copy-icon">✅</span>コピー完了';
+          copyBtn.innerHTML = '<span class="code-block__copy-icon">✅</span>';
           copyBtn.classList.add("code-block__copy-btn--copied");
+          copyBtn.setAttribute("aria-label", "コピー完了");
           setTimeout(function () {
-            copyBtn.innerHTML = originalHTML;
+            copyBtn.innerHTML = '<span class="code-block__copy-icon">📋</span>';
             copyBtn.classList.remove("code-block__copy-btn--copied");
+            copyBtn.setAttribute("aria-label", "コードをコピー");
           }, 2000);
         }).catch(function (err) {
           console.error("Failed to copy code: ", err);
         });
       });
     });
+  }
+
+  // セクションの自動ID付与とアンカースクロール制御
+  function applyScrollNavigation() {
+    var article = document.querySelector(".content-article");
+    if (!article) return;
+
+    var sections = [];
+
+    // 1. 教材ヘッダー
+    var header = article.querySelector(".content-article__header");
+    if (header) {
+      header.id = "content-header";
+      header.classList.add("js-scroll-section");
+      sections.push(header);
+    }
+
+    // 2. 本文内の各h2
+    var body = article.querySelector(".content-article__body");
+    if (body) {
+      var h2List = body.querySelectorAll("h2");
+      var stepCount = 1;
+      h2List.forEach(function (h2) {
+        h2.classList.add("js-scroll-section");
+        var text = h2.textContent.trim();
+        // 準備セクションかステップセクションかを判定してIDを付与
+        if (text.indexOf("準備") !== -1) {
+          h2.id = "preparation";
+        } else {
+          h2.id = "step-" + stepCount;
+          stepCount++;
+        }
+        sections.push(h2);
+      });
+    }
+
+    // 3. まとめカード
+    var footer = article.querySelector(".content-summary-card");
+    if (footer) {
+      footer.id = "related-content-card";
+      footer.classList.add("js-scroll-section");
+      sections.push(footer);
+    }
+
+    // ↑・↓ボタンのイベント設定
+    var upBtn = document.querySelector(".content-scroll-nav__btn--up");
+    var downBtn = document.querySelector(".content-scroll-nav__btn--down");
+
+    if (upBtn && downBtn) {
+      upBtn.addEventListener("click", function () {
+        scrollToNextSection(-1);
+      });
+      downBtn.addEventListener("click", function () {
+        scrollToNextSection(1);
+      });
+    }
+
+    function scrollToNextSection(direction) {
+      var currentScroll = window.scrollY || window.pageYOffset;
+      
+      // 固定ヘッダーの実際の高さを動的に取得し、余白（24px）を加える
+      var headerEl = document.querySelector(".site-header");
+      var headerHeight = headerEl ? headerEl.offsetHeight : 100;
+      var headerOffset = headerHeight + 24;
+
+      var targets = sections.map(function (el) {
+        return {
+          element: el,
+          top: el.getBoundingClientRect().top + window.pageYOffset - headerOffset
+        };
+      });
+
+      var target = null;
+      if (direction === 1) {
+        // 下方向: 現在より下にある最も近い要素
+        for (var i = 0; i < targets.length; i++) {
+          if (targets[i].top > currentScroll + 5) {
+            target = targets[i];
+            break;
+          }
+        }
+      } else {
+        // 上方向: 現在より上にある最も近い要素
+        for (var i = targets.length - 1; i >= 0; i--) {
+          if (targets[i].top < currentScroll - 5) {
+            target = targets[i];
+            break;
+          }
+        }
+      }
+
+      if (target) {
+        window.scrollTo({
+          top: target.top,
+          behavior: "smooth"
+        });
+      }
+    }
   }
 
   applyExternalLinks();
@@ -624,4 +723,5 @@
   renderPanel();
   applyCompletionTooltipScroll();
   applyCodeBlockCopyButtons();
+  applyScrollNavigation();
 })();
