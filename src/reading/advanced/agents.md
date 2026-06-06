@@ -23,30 +23,62 @@ sidebar:
   items:
     - title: MCP
       url: /reading/advanced/mcp/
-      status: 未実施
+    - title: MCP Server
+      url: /reading/advanced/mcp-server/
+    - title: MCP Client
+      url: /reading/advanced/mcp-client/
     - title: エージェント
       url: /reading/advanced/agents/
-      completionId: reading-advanced-agents
-      status: 未実施
+    - title: シングルエージェント
+      url: /reading/advanced/single-agent/
+    - title: マルチエージェント
+      url: /reading/advanced/multi-agent/
+    - title: エージェント設計
+      url: /reading/advanced/agent-design/
+    - title: ワークフロー自動化
+      url: /reading/advanced/workflow-automation/
+    - title: AIコーディング
+      url: /reading/advanced/ai-coding/
+    - title: Claude Code
+      url: /reading/advanced/claude-code/
+    - title: Codex
+      url: /reading/advanced/codex/
+    - title: GitHub Copilot
+      url: /reading/advanced/github-copilot/
+    - title: Cursor
+      url: /reading/advanced/cursor/
     - title: ローカルLLM
       url: /reading/advanced/local-llm/
-      status: 未実施
+    - title: Ollama
+      url: /reading/advanced/ollama/
+    - title: LM Studio
+      url: /reading/advanced/lm-studio/
+    - title: GGUF
+      url: /reading/advanced/gguf/
+    - title: 推論モデル
+      url: /reading/advanced/reasoning-models/
+    - title: OSSモデル
+      url: /reading/advanced/oss-models/
+    - title: ファインチューニング
+      url: /reading/advanced/fine-tuning/
+    - title: 蒸留
+      url: /reading/advanced/distillation/
+    - title: 最新トレンド
+      url: /reading/advanced/latest-trends/
 previous:
-  title: MCP
-  url: /reading/advanced/mcp/
+  title: MCP Client
+  url: /reading/advanced/mcp-client/
 next:
-  title: ローカルLLM
-  url: /reading/advanced/local-llm/
+  title: シングルエージェント
+  url: /reading/advanced/single-agent/
+keypoints:
+  - AIエージェントは、ユーザーの抽象的な大目標に対し、自律的に思考・計画し、ツールを駆使してタスクを実行するシステムである
+  - エージェントは「プランニング（計画）」「メモリー（記憶）」「ツール（実行）」の要素で構成される
+  - 1つのAIがすべてを担当する「シングルエージェント」と、複数のAIが役割分担して連携する「マルチエージェント」がある
+relatedHandson:
+  - title: エージェント設計
+    url: /hands-on/building-with-ai/agent-design/
 ---
-
-## 概要
-
-一回きりのチャットのやり取りを超え、AI自身が計画を立て、ツールを使い、エラーを自己修復しながら目的を達成する仕組みを「AIエージェント」と呼びます。この教材では、エージェントの基本構造と動作パターンを学びます。
-
-## 学習目標
-
-- 「AIエージェント」とは何か、従来のチャットAIとの違いを説明できる
-- エージェントを構成する主要な要素（プランニング、メモリー、ツール）を理解する
 
 ## AIエージェントとは？
 
@@ -54,19 +86,14 @@ next:
 
 ### 構成要素
 
-- プランニング（計画能力）
+- **プランニング（計画能力）**
   - 目標をサブタスクに分解し、どのような順番で行動するか自律的に決定します。
-- メモリー（記憶能力）
+- **メモリー（記憶能力）**
   - 短期記憶（チャットの文脈）や長期記憶（過去の試行錯誤や外部ナレッジ）を使い、一貫性のある作業を行います。
-- ツール（実行能力）
+- **ツール（実行能力）**
   - Web検索、ファイル操作、電卓、プログラミング環境などを呼び出して実作業を行います。
 
 ## シングルとマルチエージェント
 
 - **シングルエージェント**: 1つのAIがすべての計画・実行を担当します。シンプルですが、タスクが複雑になると混乱しやすくなります。
 - **マルチエージェント**: 「設計担当」「コーディング担当」「レビュー担当」など、異なる役割を持つ複数のエージェントが対話し協力しながらタスクを達成します。
-
-## まとめ
-
-AIエージェントの発展により、私たちは「AIに作業を手伝ってもらう」段階から「AIに作業を丸ごと任せる」段階へと進化しつつあります。
-次のステップでは、セキュリティやプライベートなデータを守るために、自身のPCやローカル環境でAIを安全に動作させる「ローカルLLM」について学びましょう。

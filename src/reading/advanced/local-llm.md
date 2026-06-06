@@ -23,27 +23,60 @@ sidebar:
   items:
     - title: MCP
       url: /reading/advanced/mcp/
-      status: 未実施
+    - title: MCP Server
+      url: /reading/advanced/mcp-server/
+    - title: MCP Client
+      url: /reading/advanced/mcp-client/
     - title: エージェント
       url: /reading/advanced/agents/
-      status: 未実施
+    - title: シングルエージェント
+      url: /reading/advanced/single-agent/
+    - title: マルチエージェント
+      url: /reading/advanced/multi-agent/
+    - title: エージェント設計
+      url: /reading/advanced/agent-design/
+    - title: ワークフロー自動化
+      url: /reading/advanced/workflow-automation/
+    - title: AIコーディング
+      url: /reading/advanced/ai-coding/
+    - title: Claude Code
+      url: /reading/advanced/claude-code/
+    - title: Codex
+      url: /reading/advanced/codex/
+    - title: GitHub Copilot
+      url: /reading/advanced/github-copilot/
+    - title: Cursor
+      url: /reading/advanced/cursor/
     - title: ローカルLLM
       url: /reading/advanced/local-llm/
-      completionId: reading-advanced-local-llm
-      status: 未実施
+    - title: Ollama
+      url: /reading/advanced/ollama/
+    - title: LM Studio
+      url: /reading/advanced/lm-studio/
+    - title: GGUF
+      url: /reading/advanced/gguf/
+    - title: 推論モデル
+      url: /reading/advanced/reasoning-models/
+    - title: OSSモデル
+      url: /reading/advanced/oss-models/
+    - title: ファインチューニング
+      url: /reading/advanced/fine-tuning/
+    - title: 蒸留
+      url: /reading/advanced/distillation/
+    - title: 最新トレンド
+      url: /reading/advanced/latest-trends/
 previous:
-  title: エージェント
-  url: /reading/advanced/agents/
+  title: Cursor
+  url: /reading/advanced/cursor/
+next:
+  title: Ollama
+  url: /reading/advanced/ollama/
+keypoints:
+  - ローカルLLMは、クラウドAPIを使用せず、自身のPCローカル環境でモデルを動かすアプローチである
+  - データ流出リスクがなく機密情報を安全に扱える一方、動作には高性能なGPUやメモリなどのPCスペックが必要となる
+  - Ollama（CLIベース）やLM Studio（GUIベース）などのツールを活用することで、容易にモデルの実行・管理が行える
+relatedHandson: []
 ---
-
-## 概要
-
-クラウド上のAPI（ChatGPTなど）を使わず、自分のパソコン（ローカルPC）のハードウェア上でモデルをダウンロードして動かすことを「ローカルLLM」と呼びます。この教材では、その特徴と代表的な実行手段について学びます。
-
-## 学習目標
-
-- 「ローカルLLM」のメリットとデメリットをクラウドLLMと比較して説明できる
-- ローカルLLMを簡単に動かすための主要なソフトウェア（Ollamaなど）の名前と役割を挙げる
 
 ## ローカルLLMのメリットとデメリット
 
@@ -64,7 +97,3 @@ previous:
   - MacやWindows、Linuxのターミナル（コマンドライン）から、コマンド一つでさまざまなオープンソースモデルをダウンロードして実行・管理できる非常に人気のあるツールです。
 - **LM Studio（エルエムスタジオ）**
   - 直感的で分かりやすいGUI（画面操作）で、チャット形式で簡単にローカルモデルを動作させ、APIサーバー化も行えるソフトウェアです。
-
-## まとめ
-
-ローカルLLMは、セキュリティの厳格なビジネスシーンやオフライン開発において、非常に重要な選択肢となっています。

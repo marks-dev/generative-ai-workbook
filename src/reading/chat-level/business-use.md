@@ -24,40 +24,50 @@ sidebar:
   items:
     - title: プロンプト入門
       url: /reading/chat-level/prompt-intro/
-      status: 未実施
+    - title: プロンプト実践
+      url: /reading/chat-level/prompt-practice/
     - title: 業務活用
       url: /reading/chat-level/business-use/
-      completionId: reading-chat-level-business-use
-      status: 未実施
+    - title: Deep Research
+      url: /reading/chat-level/deep-research/
     - title: AI検索
       url: /reading/chat-level/ai-search/
-      status: 未実施
+    - title: カスタムGPT
+      url: /reading/chat-level/custom-gpts/
+    - title: Projects
+      url: /reading/chat-level/projects/
+    - title: メモリ
+      url: /reading/chat-level/memory/
+    - title: ファイル活用
+      url: /reading/chat-level/file-utilization/
+    - title: 画像活用
+      url: /reading/chat-level/image-utilization/
+    - title: 音声活用
+      url: /reading/chat-level/voice-utilization/
 previous:
-  title: プロンプト入門
-  url: /reading/chat-level/prompt-intro/
+  title: プロンプト実践
+  url: /reading/chat-level/prompt-practice/
 next:
-  title: AI検索
-  url: /reading/chat-level/ai-search/
+  title: Deep Research
+  url: /reading/chat-level/deep-research/
+keypoints:
+  - 生成AIは、ブレインストーミング（アイデア出し）、文章の作成・校正、長文の要約など、多様な業務プロセスで高い効果を発揮する
+  - AIが事実とは異なる誤った情報を出力する「ハルシネーション（幻覚）」という現象に注意が必要である
+  - ビジネス利用においては、AIの回答をそのまま鵜呑みにせず、最終的に人間が必ずファクトチェックを行う
+relatedHandson:
+  - title: 要約してみよう
+    url: /hands-on/getting-started/summary/
 ---
-
-## 概要
-
-生成AIは単なる調べ物ツールではありません。日々の仕事の中でAIを「優秀なアシスタント」として活用するための実践的な手法やシーンを整理します。
-
-## 学習目標
-
-- ビジネスにおける生成AIの得意分野と不得意分野を説明できる
-- 自分の業務の中でAIを導入できる具体例を3つ以上挙げられる
 
 ## ビジネスでの得意な活用シーン
 
 AIは以下のような業務プロセスで非常に高い効果を発揮します。
 
-- アイデア出し（ブレインストーミング）
+- **アイデア出し（ブレインストーミング）**
   - 新商品の企画や、ブログのタイトル案などを大量に出力させます。
-- 文章の作成と推敲
+- **文章の作成と推敲**
   - メールの文面作成、報告書の誤字脱字チェック、表現を「より丁寧に」修正させるなど。
-- 要約と情報整理
+- **要約と情報整理**
   - 長文の議事録やレポートから、重要ポイントを短時間で抽出します。
 
 ## AI活用時の注意点（ハルシネーション）
@@ -65,10 +75,5 @@ AIは以下のような業務プロセスで非常に高い効果を発揮しま
 AIは時として、本当らしく聞こえる嘘（ハルシネーション）を回答することがあります。
 
 > [!IMPORTANT]
-> 人間による最終チェック
+> **人間による最終チェック**
 > ビジネスで利用する際は、AIの出した回答は必ず人間が最終チェックするというルールを徹底しましょう。
-
-## まとめ
-
-生成AIを仕事に導入すると、定型業務の時間を劇的に減らし、創造的な業務に集中できます。
-次のステップでは、日々進化するAIを使った「新しい検索・情報収集の手法」について学びましょう。

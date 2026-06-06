@@ -23,27 +23,59 @@ sidebar:
   items:
     - title: MCP
       url: /reading/advanced/mcp/
-      completionId: reading-advanced-mcp
-      status: 未実施
+    - title: MCP Server
+      url: /reading/advanced/mcp-server/
+    - title: MCP Client
+      url: /reading/advanced/mcp-client/
     - title: エージェント
       url: /reading/advanced/agents/
-      status: 未実施
+    - title: シングルエージェント
+      url: /reading/advanced/single-agent/
+    - title: マルチエージェント
+      url: /reading/advanced/multi-agent/
+    - title: エージェント設計
+      url: /reading/advanced/agent-design/
+    - title: ワークフロー自動化
+      url: /reading/advanced/workflow-automation/
+    - title: AIコーディング
+      url: /reading/advanced/ai-coding/
+    - title: Claude Code
+      url: /reading/advanced/claude-code/
+    - title: Codex
+      url: /reading/advanced/codex/
+    - title: GitHub Copilot
+      url: /reading/advanced/github-copilot/
+    - title: Cursor
+      url: /reading/advanced/cursor/
     - title: ローカルLLM
       url: /reading/advanced/local-llm/
-      status: 未実施
+    - title: Ollama
+      url: /reading/advanced/ollama/
+    - title: LM Studio
+      url: /reading/advanced/lm-studio/
+    - title: GGUF
+      url: /reading/advanced/gguf/
+    - title: 推論モデル
+      url: /reading/advanced/reasoning-models/
+    - title: OSSモデル
+      url: /reading/advanced/oss-models/
+    - title: ファインチューニング
+      url: /reading/advanced/fine-tuning/
+    - title: 蒸留
+      url: /reading/advanced/distillation/
+    - title: 最新トレンド
+      url: /reading/advanced/latest-trends/
 next:
-  title: エージェント
-  url: /reading/advanced/agents/
+  title: MCP Server
+  url: /reading/advanced/mcp-server/
+keypoints:
+  - MCP（Model Context Protocol）は、AIモデルと外部のツールやデータソースを安全に接続するための標準化プロトコルである
+  - 一度MCPサーバーを構築すれば、異なるAIアプリケーション（Claude DesktopやCursor等）から共通の形式でアクセス可能になる
+  - 構成要素は「MCPクライアント」「MCPサーバー」「データソース/ツール」の3つに分類される
+relatedHandson:
+  - title: MCP入門
+    url: /hands-on/building-with-ai/mcp-intro/
 ---
-
-## 概要
-
-AIとさまざまなデータソースや外部ツール（データベース、Git、APIなど）を連携させる際、個別に接続コードを書くのは大変です。この課題を解決するために Anthropic が提唱したオープンな規格「MCP」について学びます。
-
-## 学習目標
-
-- 「MCP（Model Context Protocol）」の基本的な役割を説明できる
-- MCPのアーキテクチャ（クライアント、サーバー、データソース）の関係性を理解する
 
 ## MCPとは？
 
@@ -63,8 +95,3 @@ AIモデルが安全にローカルファイル、社内データベース、開
    - 外部ツールやデータの読み書きを制御し、クライアントに標準化されたインターフェース（API）を提供する軽量プログラム。
 3. **Data Source / Tools（リソースとツール）**
    - 実際に読み書きされるファイル、データベース、APIなど。
-
-## まとめ
-
-MCPは、AIが外部世界と繋がり、ツールを自在に操るための強力な技術基盤です。
-次のステップでは、このMCPなどのツールを駆使して自律的に目的を達成する「AIエージェント」の概念を学びましょう。

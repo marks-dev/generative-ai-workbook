@@ -24,41 +24,46 @@ sidebar:
   items:
     - title: プロンプト入門
       url: /reading/chat-level/prompt-intro/
-      completionId: reading-chat-level-prompt-intro
-      status: 未実施
+    - title: プロンプト実践
+      url: /reading/chat-level/prompt-practice/
     - title: 業務活用
       url: /reading/chat-level/business-use/
-      status: 未実施
+    - title: Deep Research
+      url: /reading/chat-level/deep-research/
     - title: AI検索
       url: /reading/chat-level/ai-search/
-      status: 未実施
+    - title: カスタムGPT
+      url: /reading/chat-level/custom-gpts/
+    - title: Projects
+      url: /reading/chat-level/projects/
+    - title: メモリ
+      url: /reading/chat-level/memory/
+    - title: ファイル活用
+      url: /reading/chat-level/file-utilization/
+    - title: 画像活用
+      url: /reading/chat-level/image-utilization/
+    - title: 音声活用
+      url: /reading/chat-level/voice-utilization/
+previous: null
 next:
-  title: 業務活用
-  url: /reading/chat-level/business-use/
+  title: プロンプト実践
+  url: /reading/chat-level/prompt-practice/
+keypoints:
+  - AIに対する命令文や指示文のことを「プロンプト」と呼ぶ
+  - 期待通りの回答を得るためには、「前提（役割）を与える」「指示を明確にする」「出力形式を指定する」の3つが基本となる
+  - 指示の与え方を工夫することで、回答の品質や実用性は劇的に向上する
+relatedHandson:
+  - title: AIと会話してみよう
+    url: /hands-on/getting-started/chat/
 ---
-
-## 概要
-
-生成AIを使う際、AIに入力する命令や指示の文章を「プロンプト」と呼びます。この教材では、AIから期待する回答を効率よく引き出すためのプロンプトの基本原則を学びます。
-
-## 学習目標
-
-- 「プロンプト」とは何かを説明できる
-- AIへ明確に指示を与えるための3つの基本ルールを挙げられる
 
 ## 良いプロンプトのための基本ルール
 
 AIは曖昧な指示よりも、具体的で明確な指示を好みます。以下の3つのルールを意識しましょう。
 
-1. 前提（役割）を与える
+1. **前提（役割）を与える**
    - AIに「あなたは優秀な編集者です」「あなたはプログラミングの先生です」といった役割を与えることで、回答のトーンや質が向上します。
-2. 指示を明確にする
+2. **指示を明確にする**
    - 「〜について教えて」ではなく、「〜について、メリットとデメリットをそれぞれ3つ箇条書きで説明してください」のように具体的に指示します。
-3. 出力形式を指定する
+3. **出力形式を指定する**
    - 「表形式で」「箇条書きで」「小学生にもわかるように」など、回答のフォーマットや対象読者を指定します。
-
-## まとめ
-
-プロンプトはAIとのコミュニケーションの道具です。少し指示の書き方を変えるだけで、AIの回答は劇的に分かりやすくなります。
-
-次のステップでは、このプロンプトを実際のビジネスシーン（日常業務）でどのように活用できるかを見ていきましょう。
