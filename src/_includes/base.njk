@@ -4,12 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
+  <link rel="icon" href="{{ '/favicon.ico' | url }}" sizes="any">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | url }}">
+  <meta name="msapplication-TileImage" content="{{ '/ms-tile.png' | url }}">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__global">
-      <a class="site-header__logo" href="{{ '/' | url }}">Generative AI Workbook</a>
+      <a class="site-header__logo" href="{{ '/' | url }}">
+        <img src="{{ '/assets/images/logo.svg' | url }}" alt="Generative AI Workbook Logo" class="site-header__logo-img">
+      </a>
       <nav class="site-header__nav" aria-label="グローバルナビゲーション">
         <a class="site-header__nav-link" href="{{ '/about/' | url }}">このサイトについて</a>
         <a class="site-header__nav-link" href="{{ '/glossary/' | url }}">用語集</a>
