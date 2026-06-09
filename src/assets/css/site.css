@@ -122,10 +122,21 @@ button {
 }
 
 .site-header__logo {
-  color: var(--color-text);
-  font-size: var(--font-size-body);
-  font-weight: 700;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+}
+
+.site-header__logo-img {
+  display: block;
+  height: auto;
+  max-height: 45px;
+  max-width: 100%;
+  transition: opacity 0.2s ease;
+}
+
+.site-header__logo:hover .site-header__logo-img {
+  opacity: 0.85;
 }
 
 .site-header__nav {
